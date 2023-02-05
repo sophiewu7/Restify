@@ -1,15 +1,36 @@
-.page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
 .navbar-brand {
     text-decoration: none;
     font-weight: bold;
     color: #0F8FEE;
 }
 
+.profile-img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  
+    #searchBar {
+        width: 40vw;
+        border-radius: 30px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {  
+    #searchBar {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
 /* not in use */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
 
 main {
     background-color: black;
