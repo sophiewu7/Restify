@@ -1,3 +1,4 @@
+/* NavBar Styles */
 .navbar-brand {
     text-decoration: none;
     font-weight: bold;
@@ -25,6 +26,11 @@
     }
 }
 
+/* Index Styles */
+.banner-image {
+    background-image: url('image/toronto.jpg');
+    background-size: cover;
+}
 
 /* not in use */
 .page-container {
