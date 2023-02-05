@@ -1,3 +1,13 @@
 # References
 * toronto.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapercave.com%2Ftoronto-city-4k-hd-wallpapers&psig=AOvVaw1HIXjgTuK_hYy7-wIiQk3q&ust=1675637646750000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCOCvk-j6_PwCFQAAAAAdAAAAABAE
-* bell.svg from bootstrap
+* all svg images come from bootstrap
+* place1.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.architecturaldigest.com%2Fgallery%2Fmost-beautiful-airbnb-in-every-state&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCPCwitLG_fwCFQAAAAAdAAAAABA9
+* place2.jpg https://www.livelikeitstheweekend.com/coolest-airbnbs-in-the-united-states/
+* place3.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.airbnb.ca%2Fbritish-columbia-canada%2Fstays&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCPCwitLG_fwCFQAAAAAdAAAAABDKAQ
+* place4.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cntraveler.com%2Fgallery%2Fbest-airbnbs-in-los-angeles&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCPCwitLG_fwCFQAAAAAdAAAAABDmAQ
+* place5.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.insider.com%2Fguides%2Ftravel%2Fbest-airbnb-tiny-homes&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCPCwitLG_fwCFQAAAAAdAAAAABD3Aw
+* place6.png https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.theurbanlist.com%2Fperth%2Fa-list%2Fbest-airbnbs-wa&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCPCwitLG_fwCFQAAAAAdAAAAABDxBA
+* place7.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.insider.com%2Fguides%2Ftravel%2Fbest-airbnbs-california&psig=AOvVaw3XN2rJoosKE5jyb_CY0TBg&ust=1675658349273000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCLC98_fH_fwCFQAAAAAdAAAAABBY
+* place8.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.blogto.com%2Freal-estate-toronto%2F2021%2F02%2Ftoronto-airbnb-hosts-earned-since-pandemic-hit%2F&psig=AOvVaw3XN2rJoosKE5jyb_CY0TBg&ust=1675658349273000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCLC98_fH_fwCFQAAAAAdAAAAABCXAg
+* place9.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thewesthavengroup.com%2Fwhich-buildings-allow-airbnb-vrbo-in-vancouver%2F&psig=AOvVaw3XN2rJoosKE5jyb_CY0TBg&ust=1675658349273000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCLC98_fH_fwCFQAAAAAdAAAAABDPAw
+* place10.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Favenueone.sg%2Ftravel%2Fbest-seoul-airbnb-hotel%2F&psig=AOvVaw3XN2rJoosKE5jyb_CY0TBg&ust=1675658349273000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCLC98_fH_fwCFQAAAAAdAAAAABDrBA
