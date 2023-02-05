@@ -4,31 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restify</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <div>
-      <img class="bg-image" src="image/toronto.jpg" alt="background image Toronto">
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><span class="navbrand-before">Restify</span></a>
-            <form class="col-12 col-lg-auto justify-content-center mb-3 mb-lg-0 me-lg-3 ">
-              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link" href="reservation.html">My Rental Units</a></li>
-              <li class="nav-item"><a class="nav-link" href="notification.html"><img src="image/bell.svg"></a></li>
-              <li class="nav-item"><a class="nav-link" href="signin.html">Sign Up</a></li>
-              <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="profile.html">MyProfile</a></li>
+    <div class="page-container">
+      <nav class="navbar navbar-light bg-white fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand px-2">Restify</a>
+          <form class="d-flex">
+            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" style="border-radius: 30px; width: 40vw; position: center;">
+          </form>
+          <div class="d-flex align-items-center">
+            <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+              <li><a href="signup.html" class="nav-link px-2 link-dark">Sign Up</a></li>
+              <li><a href="login.html" class="nav-link px-4 link-dark">Log In</a></li>
             </ul>
           </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
+      <main>
+        <h1>Hello, world!</h1>  
+      </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
