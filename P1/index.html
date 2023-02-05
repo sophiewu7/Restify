@@ -13,24 +13,18 @@
         <div class="container-fluid">
           <a class="navbar-brand">Restify</a>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 30px; width: 40vw;">
-            <button class="btn btn-outline-success" type="submit"><img src="image/search.svg"></button>
+            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" style="border-radius: 30px; width: 40vw; position: center;">
           </form>
-          <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
-            <li><a href="#" class="nav-link link-dark">My Rental Units </a></li>
-            <li><a href="#" class="nav-link link-dark"><img src="image/bell.svg"></a></li>
-            <li><a href="#" class="nav-link link-dark"><img src="image/profile.jpg" alt="profile pic" width="26" height="26" class="rounded-circle"></a></li>
-          </ul>
           <div class="d-flex align-items-center">
-            <form class="w-100 me-3">
-              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-    
-            <div class="flex-shrink-0 dropdown">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+              <li><a href="#" class="nav-link px-0 link-dark">My Rental Units </a></li>
+              <li><a href="#" class="nav-link px-4 link-dark"><img src="image/bell.svg"></a></li>
+            </ul>
+            <div class="flex-shrink-0 dropdown-menu-right">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownprofile" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="image/profile.jpg" alt="profile pic" width="32" height="32" class="rounded-circle">
               </a>
-              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+              <ul class="dropdown-menu text-small dropdown-menu-lg-end" aria-labelledby="dropdownprofile">
                 <li><a class="dropdown-item" href="#">New project...</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
