@@ -1,20 +1,40 @@
-.bg-image {
-    width: 100vw;
-    height: 80vh;
-    object-fit: cover;
-    position: absolute;
-    margin: 0;
-    z-index: -1;
-    filter: brightness(0.6);
+.page-container {
+    position: relative;
+    min-height: 100vh;
 }
 
-.navbrand-before{
-    color: #0F8FEE;
+.navbar-brand {
+    text-decoration: none;
     font-weight: bold;
+    color: #0F8FEE;
 }
-/* 
-.navbar-scrolled {
-    background-color: white;
-    box-shadow: 0 3px 10px rbga(0, 0, 0, 0.15);
-} */
 
+/* not in use */
+
+.nav-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    margin: 0;
+    padding: 0 2rem;
+}
+
+.container-header {
+    display: flex;
+}
+
+.seach-form {
+    display: flex;
+    justify-content: center;
+}
+
+
+main {
+    background-color: black;
+    height: 4000px;
+}
