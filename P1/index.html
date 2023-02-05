@@ -11,25 +11,32 @@
     <div class="page-container">
       <nav class="navbar navbar-light bg-white fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand">Restify</a>
+          <a class="navbar-brand px-2">Restify</a>
           <form class="d-flex">
             <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" style="border-radius: 30px; width: 40vw; position: center;">
           </form>
           <div class="d-flex align-items-center">
             <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
-              <li><a href="#" class="nav-link px-0 link-dark">My Rental Units </a></li>
-              <li><a href="#" class="nav-link px-4 link-dark"><img src="image/bell.svg"></a></li>
+              <li><a href="#" class="nav-link px-1 link-dark">My Rental Units </a></li>
             </ul>
-            <div class="flex-shrink-0 dropdown-menu-right">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownprofile" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="flex-shrink-0 dropdown-menu-right px-4">
+              <a href="#" class="d-block link-dark text-decoration-none" id="dropdownprofile" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="image/bell.svg" alt="notification" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small dropdown-menu-lg-end" aria-labelledby="dropdownprofile">
+                <li><p class="dropdown-item">To be completed</p></li>
+              </ul>
+            </div>
+            <div class="flex-shrink-0 dropdown-menu-right px-2">
+              <a href="#" class="d-block link-dark text-decoration-none" id="dropdownprofile" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="image/profile.jpg" alt="profile pic" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small dropdown-menu-lg-end" aria-labelledby="dropdownprofile">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="help.html">Help</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
               </ul>
             </div>
           </div>
