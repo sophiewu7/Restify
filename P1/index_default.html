@@ -28,10 +28,10 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <!-- My Rental Units -->
                     <li class="nav-item">
-                        <a href="signup.html" class="nav-link link-dark">Sign Up</a>
+                        <a href="signup.html" class="nav-link link-light" id="signupnav">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link link-dark">Log In</a>
+                        <a href="login.html" class="nav-link link-light" id="loginnav">Log In</a>
                     </li>
                 </ul>
             </div>
@@ -159,15 +159,25 @@
         // navE1 learned from https://www.youtube.com/watch?v=z70GTU3p72I
         const navE1 = document.querySelector('.navbar');
         const navE2 = document.querySelector('.navbar-brand');
+        const navE3 = document.getElementById('signupnav');
+        const navE4 = document.getElementById('loginnav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY >= 56){
+            if (window.scrollY >= 52){
                 navE1.classList.add('navbar-scrolled');
                 navE1.classList.add('border-bottom');
                 navE2.classList.remove('text-white');
-            } else if (window.scrollY < 56){
+                navE3.classList.remove('link-light');
+                navE3.classList.add('link-dark');
+                navE4.classList.remove('link-light');
+                navE4.classList.add('link-dark');
+            } else if (window.scrollY < 52){
                 navE1.classList.remove('navbar-scrolled');
                 navE1.classList.remove('border-bottom');
                 navE2.classList.add('text-white');
+                navE3.classList.remove('link-dark');
+                navE3.classList.add('link-light');
+                navE4.classList.remove('link-dark');
+                navE4.classList.add('link-light');
             }
         });
     </script> 
