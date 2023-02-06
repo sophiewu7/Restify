@@ -27,11 +27,32 @@
 }
 
 /* Index Styles */
-.banner-image {
-    background-image: url('image/toronto.jpg');
-    background-size: cover;
+.index-brand {
+    color: white;
 }
 
+.navbar-scrolled {
+    background-color: white;
+}
+
+.narbar {
+    transition: all 0.5s;
+}
+
+.background-img-index {
+    background-image: url('image/toronto.jpg');
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.8); 
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+  
 /* not in use */
 .page-container {
     position: relative;

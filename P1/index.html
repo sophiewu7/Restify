@@ -10,12 +10,12 @@
   </head>
   <body>
     <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
+    <nav class="navbar navbar-expand-lg navbar-white fixed-top" aria-label="narbar">
         <div class="container-fluid">
             <!-- Company Brand -->
-            <a class="navbar-brand px-2" href="index.html">Restify</a>
+            <a class="navbar-brand px-2 index-brand" href="index.html">Restify</a>
             <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation" id="collapse-btn">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsList">
@@ -77,10 +77,29 @@
     </nav>
     <!-- main contents -->
     <!-- banner image -->
-    <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
-        <div class="content text-center">
-            <h1>Restify</h1>
-        </div>
+    <div class="container-fluid px-0">
+        <img class="background-img-index">
     </div>
+    <script>
+        // navE1 learned from https://www.youtube.com/watch?v=z70GTU3p72I
+        const navE1 = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 56){
+                navE1.classList.add('navbar-scrolled');
+                navE1.classList.add('border-bottom');
+            } else if (window.scrollY < 56){
+                navE1.classList.remove('navbar-scrolled');
+                navE1.classList.remove('border-bottom');
+            }
+        });
+        const navE2 = document.querySelector('.navbar-brand');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 56){
+                navE2.classList.remove('index-brand');
+            } else if (window.scrollY < 56){
+                navE2.classList.add('index-brand');
+            }
+        });
+    </script> 
   </body>
 </html>
