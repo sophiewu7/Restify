@@ -102,6 +102,8 @@
     flex: 1;
 }
 
+/* this is the end of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
+
 .search-box label {
     font-weight: bold;
 }
@@ -114,4 +116,12 @@
     margin-left: -1rem;
 }
 
-/* this is the end of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
+.index-cards {
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.card-index-intro {
+    margin-bottom: 3rem;
+}
