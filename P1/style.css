@@ -38,6 +38,7 @@
 footer {
     bottom: 0;
     width: 100%;
+    height: 45px;
 }
 
 footer p {
@@ -138,3 +139,13 @@ footer p {
 }
 
 /* styles for signup */
+.signup-container {
+    padding-top: 56px;
+    min-height: 100%
+}
+
+.sign-in-form {
+    margin-top: 2rem;
+    position: relative;
+    height: 80%;
+}

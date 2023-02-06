@@ -17,3 +17,6 @@
 * syndey.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wallpapers13.com%2Fsydney-australia-opera-house-hd-wallpaper-download-for-mobile%2F&psig=AOvVaw21Wu40zP-ZwTS5RxFK1ozj&ust=1675745540659000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCJj_zN-MgP0CFQAAAAAdAAAAABBI
 * paris.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpaperbat.com%2Fparis-hd-wallpapers&psig=AOvVaw1dDr1247bT6aCA4rr8eaG5&ust=1675745606414000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCPj35P6MgP0CFQAAAAAdAAAAABAt
 * egypt.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dw.com%2Fen%2F10-reasons-to-visit-egypt%2Fg-60878071&psig=AOvVaw3dOkO8VhyRVTyAf35RFn2-&ust=1675745717775000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCKC377ONgP0CFQAAAAAdAAAAABAe
+* signup.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTravel_photography&psig=AOvVaw0BexYvuQRyD3pgEULZTsRk&ust=1675799902112000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCMCm9KDXgf0CFQAAAAAdAAAAABAE
+
+* signup-clipart.jpg "https://www.freepik.com/free-vector/travel-destination-choosing-accommodation-booking-system_11669365.htm#query=trip%20planning&position=5&from_view=keyword
