@@ -36,13 +36,15 @@
 
 /* Footer Styles */
 footer {
-    margin-top: 4rem;
-    margin-bottom: 1rem;
     bottom: 0;
-    height: 3.5rem;
     width: 100%;
 }
 
+footer p {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 0;
+}
 /* Index Styles */
 .navbar-scrolled {
     background-color: white;
@@ -134,3 +136,5 @@ footer {
 .card-index-intro {
     margin-bottom: 3rem;
 }
+
+/* styles for signup */
