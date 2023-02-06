@@ -10,6 +10,14 @@
     height: 28px;
 }
 
+.default-white {
+    color: white;
+}
+
+.default-white.dropdown-toggle::after {
+    color: white;
+}
+
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {  
     #searchBar {
@@ -34,17 +42,10 @@ footer {
     height: 3.5rem;
     width: 100%;
 }
-/* Index Styles */
-.index-brand {
-    color: white;
-}
 
+/* Index Styles */
 .navbar-scrolled {
     background-color: white;
-}
-
-.narbar {
-    transition: all 0.5s;
 }
 
 .bg-image {

@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-white fixed-top" aria-label="narbar">
         <div class="container-fluid">
             <!-- Company Brand -->
-            <a class="navbar-brand px-2 index-brand" href="index.html">Restify</a>
+            <a class="navbar-brand px-2 text-white" href="index.html">Restify</a>
             <!-- Collapse -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation" id="collapse-btn">
                 <span class="navbar-toggler-icon"></span>
@@ -28,28 +28,28 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <!-- My Rental Units -->
                     <li class="nav-item">
-                        <a href="reservation.html" class="nav-link link-dark">My Rental Units </a>
+                        <a href="reservation.html" class="nav-link link-light" id="MRU">My Rental Units </a>
                     </li>
                     <!-- Notification Drop Down -->
                     <li class="nav-item dropdown  d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-bell"></i>
+                        <a class="nav-link dropdown-toggle text-white link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-bell text-white" id="bellsvg"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
                             <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Notifications</span>
+                        <a class="nav-link dropdown-toggle text-white link-dark" href="notification.html" id="notiftext" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="text-white" id="notiftextspan">Notifications</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                          <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
                             <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
                         </ul>
                     </li>
                     <!-- Profile Drop Down -->
                     <li class="nav-item dropdown d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="image/profile.jpg" alt="profile picture" class="rounded-circle profile-img">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
@@ -61,8 +61,8 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Accounts</span>
+                        <a class="nav-link dropdown-toggle text-white link-dark" href="profile.html" id="profiletext" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-white" id="profiletextspan">Accounts</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
                             <li><a class="dropdown-item" href="settings.html">Settings</a></li>
@@ -197,21 +197,56 @@
     <script>
         // navE1 learned from https://www.youtube.com/watch?v=z70GTU3p72I
         const navE1 = document.querySelector('.navbar');
+        const navE2 = document.querySelector('.navbar-brand');
+        const navE3 = document.getElementById('MRU');
+        const navE4 = document.getElementById('bellsvg');
+        const navE5 = document.getElementById('notifbell');
+        const navE6 = document.getElementById('notiftext');
+        const navE7 = document.getElementById('notiftextspan');
+        const navE8 = document.getElementById('profile');
+        const navE9 = document.getElementById('profiletext');
+        const navE10 = document.getElementById('profiletextspan');
         window.addEventListener('scroll', () => {
-            if (window.scrollY >= 56){
+            if (window.scrollY >= 52){
                 navE1.classList.add('navbar-scrolled');
                 navE1.classList.add('border-bottom');
-            } else if (window.scrollY < 56){
+                navE2.classList.remove('text-white');
+                navE3.classList.remove('link-light');
+                navE3.classList.add('link-dark');
+                navE4.classList.remove('text-white');
+                navE4.classList.add('text-dark');
+                navE5.classList.remove('text-white');
+                navE5.classList.add('text-dark');
+                navE6.classList.remove('text-white');
+                navE6.classList.add('text-dark');
+                navE7.classList.remove('text-white');
+                navE7.classList.add('text-dark');
+                navE8.classList.remove('text-white');
+                navE8.classList.add('text-dark');
+                navE9.classList.remove('text-white');
+                navE9.classList.add('text-dark');
+                navE10.classList.remove('text-white');
+                navE10.classList.add('text-dark');
+            } else if (window.scrollY < 52){
                 navE1.classList.remove('navbar-scrolled');
                 navE1.classList.remove('border-bottom');
-            }
-        });
-        const navE2 = document.querySelector('.navbar-brand');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY >= 56){
-                navE2.classList.remove('index-brand');
-            } else if (window.scrollY < 56){
-                navE2.classList.add('index-brand');
+                navE2.classList.add('text-white');
+                navE3.classList.remove('link-dark');
+                navE3.classList.add('link-light');
+                navE4.classList.remove('text-dark');
+                navE4.classList.add('text-white');
+                navE5.classList.remove('text-dark');
+                navE5.classList.add('text-white');
+                navE6.classList.remove('text-dark');
+                navE6.classList.add('text-white');
+                navE7.classList.remove('text-dark');
+                navE7.classList.add('text-white');
+                navE8.classList.remove('text-dark');
+                navE8.classList.add('text-white');
+                navE9.classList.remove('text-dark');
+                navE9.classList.add('text-white');
+                navE10.classList.remove('text-dark');
+                navE10.classList.add('text-white');
             }
         });
     </script> 

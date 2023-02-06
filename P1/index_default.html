@@ -11,10 +11,10 @@
   </head>
   <body>
     <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
+    <nav class="navbar navbar-expand-lg navbar-white fixed-top" aria-label="narbar">
         <div class="container-fluid">
             <!-- Company Brand -->
-            <a class="navbar-brand px-2" href="index.html">Restify</a>
+            <a class="navbar-brand px-2 text-white" href="index.html">Restify</a>
             <!-- Collapse -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,139 @@
             </div>
         </div>
     </nav>
+    <!-- main contents -->
+    <div class="bg-image">
+        <div class="container">
+            <div class="row">
+                <div class="position-absolute start-50 translate-middle text-center justify-content-center search-intro rounded">
+                    <h1 class="mt-4 search-intro-text">Book unique homes, vacation rentals, and more on Restify</h1>
+                    <!-- the start of the codes that are based on https://www.youtube.com/watch?v=WuWbunhmDsE -->
+                    <form class="text-center bg-white search-box mx-auto">
+                        <div class="local-input-search">
+                            <label class="mb-1">Location</label>
+                            <input type="text" placeholder="Where are you going?">
+                        </div>
+                        <div class="other-search">
+                            <label class="mb-1">Check In</label>
+                            <input type="date" placeholder="dd-mm-yyyy" name="checkin"/>
+                        </div>
+                        <div class="other-search">
+                            <label class="mb-1">Check Out</label>
+                            <input type="date" placeholder="dd-mm-yyyy" name="checkout" />
+                        </div>
+                        <div class="other-search">
+                            <label>Guest</label>
+                            <select class="form-select form-select-sm" aria-label="select guest">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="rounded-circle">
+                                <i class="bi bi-search search-icon"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cards based on https://mdbootstrap.com/docs/standard/extended/card-deck/ -->
+    <div class="index-cards">
+        <h2 class="text-center card-index-intro">Inspiration for your next trip</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100">
+                <img src="image/thailand.jpg" class="card-img-top" alt="Bangkok" />
+                <div class="card-body">
+                  <h5 class="card-title">Bangkok</h5>
+                  <p class="card-text">
+                    Come to enjoy sunshine and beaches.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <img src="image/london.jpg" class="card-img-top" alt="London" />
+                <div class="card-body">
+                  <h5 class="card-title">London</h5>
+                  <p class="card-text">
+                    Home to a veritable plethora of landmarks.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <img src="image/egypt.jpg" class="card-img-top"
+                  alt="Egypt" />
+                <div class="card-body">
+                  <h5 class="card-title">Giza</h5>
+                  <p class="card-text">One of the world's earliest and greatest civilizations.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <img src="image/paris.jpg" class="card-img-top"
+                  alt="Paris" />
+                <div class="card-body">
+                  <h5 class="card-title">Paris</h5>
+                  <p class="card-text">
+                    The center of fashion, cuisine, art and architecture.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                  <img src="image/beijing.jpg" class="card-img-top"
+                    alt="Beijing" />
+                  <div class="card-body">
+                    <h5 class="card-title">Beijing</h5>
+                    <p class="card-text">
+                        A sense of China's history.
+                    </p>
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                  <img src="image/Sydney.jpg" class="card-img-top"
+                    alt="Sydney" />
+                  <div class="card-body">
+                    <h5 class="card-title">Sydney</h5>
+                    <p class="card-text">
+                        A stunning and vibrant city built around one of the most beautiful bays in the world with sparkling beaches and easy access to the heart of the city.
+                    </p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="text-center p-4 border-top">
         <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
     </footer>
+    <script>
+        // navE1 learned from https://www.youtube.com/watch?v=z70GTU3p72I
+        const navE1 = document.querySelector('.navbar');
+        const navE2 = document.querySelector('.navbar-brand');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 56){
+                navE1.classList.add('navbar-scrolled');
+                navE1.classList.add('border-bottom');
+                navE2.classList.remove('text-white');
+            } else if (window.scrollY < 56){
+                navE1.classList.remove('navbar-scrolled');
+                navE1.classList.remove('border-bottom');
+                navE2.classList.add('text-white');
+            }
+        });
+    </script> 
   </body>
 </html>
