@@ -47,6 +47,49 @@
     background-position: center;
 }
 
+.search-intro {
+    top: 40%;
+}
+
+.search-intro-text {
+    color: white;
+    font-weight: bold;
+}
+
+/* this is the start of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
 .search-box{
     width: 75vw;
+    margin: 30px auto;
+    padding: 6px 10px 6px 30px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
 }
+
+.search-box input{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box label{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box button{
+    background: #0F8FEE;
+}
+
+.search-icon {
+    color: white !important;
+}
+/* this is the end of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */

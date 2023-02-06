@@ -1,6 +1,6 @@
 # References
-* toronto.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapercave.com%2Ftoronto-city-4k-hd-wallpapers&psig=AOvVaw1HIXjgTuK_hYy7-wIiQk3q&ust=1675637646750000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCOCvk-j6_PwCFQAAAAAdAAAAABAE
 * all svg images come from bootstrap
+* toronto.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapercave.com%2Ftoronto-city-4k-hd-wallpapers&psig=AOvVaw1HIXjgTuK_hYy7-wIiQk3q&ust=1675637646750000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCOCvk-j6_PwCFQAAAAAdAAAAABAE
 * place1.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.architecturaldigest.com%2Fgallery%2Fmost-beautiful-airbnb-in-every-state&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCPCwitLG_fwCFQAAAAAdAAAAABA9
 * place2.jpg https://www.livelikeitstheweekend.com/coolest-airbnbs-in-the-united-states/
 * place3.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.airbnb.ca%2Fbritish-columbia-canada%2Fstays&psig=AOvVaw3aGzsveZmCYXkCcitKvoEC&ust=1675658001573000&source=images&cd=vfe&ved=0CBEQjhxqGAoTCPCwitLG_fwCFQAAAAAdAAAAABDKAQ
