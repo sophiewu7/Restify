@@ -39,27 +39,14 @@
     transition: all 0.5s;
 }
 
-.background-img-index {
-    background-image: url('image/toronto.jpg');
-    height: 80vh;
-    width: 100%;
-    object-fit: cover;
-    filter: brightness(0.8); 
-    background-size: cover;
+.bg-image {
+    position: relative;
+    background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(image/toronto.jpg);
+    min-height: 80vh;
+    background-size:cover;
     background-position: center;
 }
 
-
-
-
-  
-/* not in use */
-.page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
-main {
-    background-color: black;
-    height: 4000px;
+.search-box{
+    width: 75vw;
 }
