@@ -87,9 +87,31 @@
 
 .search-box button{
     background: #0F8FEE;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
 }
 
 .search-icon {
     color: white !important;
 }
+
+.local-input-search {
+    flex: 1;
+}
+
+.search-box label {
+    font-weight: bold;
+}
+
+.other-search {
+    margin-right: 2rem;
+}
+
+::-webkit-calendar-picker-indicator{
+    margin-left: -1rem;
+}
+
 /* this is the end of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */

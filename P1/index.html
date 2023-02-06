@@ -82,27 +82,36 @@
             <div class="row">
                 <div class="position-absolute start-50 translate-middle text-center justify-content-center search-intro rounded">
                     <h1 class="mt-4 search-intro-text">Book unique homes, vacation rentals, and more on Restify</h1>
-                    <!-- the search bar code are based on https://www.youtube.com/watch?v=WuWbunhmDsE -->
+                    <!-- the start of the codes that are based on https://www.youtube.com/watch?v=WuWbunhmDsE -->
                     <form class="text-center bg-white search-box mx-auto">
-                        <div>
-                            <label>Location</label>
+                        <div class="local-input-search">
+                            <label class="mb-1">Location</label>
                             <input type="text" placeholder="Where are you going?">
                         </div>
-                        <div>
-                            <label>Check In</label>
-                            <input type="text" placeholder="Add Date">
+                        <div class="other-search">
+                            <label class="mb-1">Check In</label>
+                            <input type="date" placeholder="dd-mm-yyyy" name="checkin"/>
                         </div>
-                        <div>
-                            <label>Check Out</label>
-                            <input type="text" placeholder="Add Date">
+                        <div class="other-search">
+                            <label class="mb-1">Check Out</label>
+                            <input type="date" placeholder="dd-mm-yyyy" name="checkout" />
                         </div>
-                        <div>
+                        <div class="other-search">
                             <label>Guest</label>
-                            <input type="text" placeholder="Add Guest">
+                            <select class="form-select form-select-sm" aria-label="select guest">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
-                        <button type="submit">
-                            <i class="bi bi-search search-icon"></i>
-                        </button>
+                        <div>
+                            <button type="submit" class="rounded-circle">
+                                <i class="bi bi-search search-icon"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
                 
