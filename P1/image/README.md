@@ -18,7 +18,5 @@
 * paris.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpaperbat.com%2Fparis-hd-wallpapers&psig=AOvVaw1dDr1247bT6aCA4rr8eaG5&ust=1675745606414000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCPj35P6MgP0CFQAAAAAdAAAAABAt
 * egypt.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dw.com%2Fen%2F10-reasons-to-visit-egypt%2Fg-60878071&psig=AOvVaw3dOkO8VhyRVTyAf35RFn2-&ust=1675745717775000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCKC377ONgP0CFQAAAAAdAAAAABAe
 * signup.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTravel_photography&psig=AOvVaw0BexYvuQRyD3pgEULZTsRk&ust=1675799902112000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCMCm9KDXgf0CFQAAAAAdAAAAABAE
-
 * signup-clipart.jpg "https://www.freepik.com/free-vector/travel-destination-choosing-accommodation-booking-system_11669365.htm#query=trip%20planning&position=5&from_view=keyword
-
 * property_details1-10.jpg https://www.airbnb.ca/rooms/26747763?adults=6&category_tag=Tag%3A677&check_in=2023-06-06&check_out=2023-06-10&source_impression_id=p3_1675664000_DosuJo9bIEaei6em&modal=PHOTO_TOUR_SCROLLABLE 
