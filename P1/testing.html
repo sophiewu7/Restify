@@ -1,84 +1,12 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Restify</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
-        <div class="container-fluid">
-            <!-- Company Brand -->
-            <a class="navbar-brand px-2" href="index.html">Restify</a>
-            <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsList">
-                <!-- Search Box -->
-                <form class="ms-auto">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchBar">
-                </form>
-                <!-- Links -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- My Rental Units -->
-                    <li class="nav-item">
-                        <a href="signup.html" class="nav-link link-dark" id="signupnav">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.html" class="nav-link link-dark" id="loginnav">Log In</a>
-                    </li>
-                </ul>
-            </div>
+<div class="accordion-item"> 
+    <h2 class="accordion-header" id="flush-headingFour"> 
+        <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"> 
+            How do I create a listing on Restify?
+        </button> 
+    </h2>
+    <div id="flush-collapseFour" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingFour" data-bs-parent="#myAccordion"> 
+        <div class="accordion-body p-0"> <ul class="list-unstyled m-0"> 
+            <p class="px-4 py-4">To create a listing on Restify, you will need to create an account and provide information about your property, such as its location, type, and amenities. You will also need to upload photos and set a price for your listing.</p>
         </div>
-    </nav>
-    <!-- the signup page is based on https://mdbootstrap.com/docs/standard/extended/login/ -->
-    <!-- Section: Design Block -->
-    <div class="container rounded mt-5 mb-5 bg-white">
-      <div class="row">
-          <div class="col-md-3 border-right">
-              <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                
-                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-          </div>
-          <div class="col-md-5 border-right">
-              <div class="p-3 py-5">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="text-right">Profile Settings</h4>
-                  </div>
-                  <div class="row mt-2">
-                      <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                      <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                  </div>
-                  <div class="row mt-3">
-                      <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                      <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                      <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                      <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                      <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                      <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                      <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                      <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-                  </div>
-                  <div class="row mt-3">
-                      <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                      <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                  </div>
-                  <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
-  </div>
-    <!-- Section: Design Block -->
-    <footer class="text-center border-top">
-        <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
-    </footer>
-  </body>
-</html>
+    </div> 
+</div>

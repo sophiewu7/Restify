@@ -171,3 +171,13 @@ footer p {
     margin-top: 3rem;
     padding-bottom: 4rem;
 }
+
+/* style for help page */
+.help-container {
+    padding-top: 56px;
+}
+
+.helper-box-container {
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+}
