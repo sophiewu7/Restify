@@ -20,3 +20,5 @@
 * signup.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTravel_photography&psig=AOvVaw0BexYvuQRyD3pgEULZTsRk&ust=1675799902112000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCMCm9KDXgf0CFQAAAAAdAAAAABAE
 
 * signup-clipart.jpg "https://www.freepik.com/free-vector/travel-destination-choosing-accommodation-booking-system_11669365.htm#query=trip%20planning&position=5&from_view=keyword
+
+* property_details1-10.jpg https://www.airbnb.ca/rooms/26747763?adults=6&category_tag=Tag%3A677&check_in=2023-06-06&check_out=2023-06-10&source_impression_id=p3_1675664000_DosuJo9bIEaei6em&modal=PHOTO_TOUR_SCROLLABLE 
