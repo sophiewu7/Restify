@@ -76,6 +76,53 @@
             </div>
         </div>
     </nav>
+    <!-- the profile page is based on https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
+    <div class="container profile-container">
+        <div class="row profile-box-container">
+            <div class="col-md">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5 mb-3" width="150px" src="image/avatar.jpg">
+                    <span class="font-weight-bold">Sophie Wu</span>
+                    <span class="text-black-50">shiying.wu@mail.utoronto.ca</span>
+                    <div class="btn btn-outline-primary btn-rounded mt-4">
+                        <label class="form-label m-1" for="avatar">Upload Avatar</label>
+                        <input type="file" class="form-control d-none" id="avatar" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md me-3">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <h4 class="text-center">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6 mt-2"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="Sophie" value=""></div>
+                    <div class="col-md-6 mt-2"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Wu" value=""></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="(250) 826-8890" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="text" class="form-control" placeholder="shiying.wu@mail.utoronto.ca" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="40 St George St" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="BA1180" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">City</label><input type="text" class="form-control" placeholder="Toronto" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Zip/Postcode</label><input type="text" class="form-control" placeholder="M5S 2E4" value=""></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-6 mt-2"><label class="labels">State/Province</label><input type="text" class="form-control" placeholder="Ontario" value=""></div>
+                    <div class="col-md-6 mt-2"><label class="labels">Country</label><input type="text" class="form-control" placeholder="Canada" value="" ></div>
+                </div>
+                <div class="mt-4 pt-2 pb-2 mb-2 text-center">
+                    <a href="change_password.html" class="text-decoration-none w-100">
+                        <button class="btn btn-outline-primary profile-button w-100" type="button">Change Password</button>
+                    </a>
+                </div>
+                <div class="pt-2 pb-2 mb-2 text-center">
+                    <a href="edit_profile.html" class="text-decoration-none w-100">
+                        <button class="btn btn-primary profile-button w-100" type="button">Save Profile</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="text-center border-top">
         <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
     </footer>
