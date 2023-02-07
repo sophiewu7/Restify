@@ -21,3 +21,4 @@
 * signup-clipart.jpg "https://www.freepik.com/free-vector/travel-destination-choosing-accommodation-booking-system_11669365.htm#query=trip%20planning&position=5&from_view=keyword
 * property_details1-10.jpg https://www.airbnb.ca/rooms/26747763?adults=6&category_tag=Tag%3A677&check_in=2023-06-06&check_out=2023-06-10&source_impression_id=p3_1675664000_DosuJo9bIEaei6em&modal=PHOTO_TOUR_SCROLLABLE 
 * password.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fforgot-password-illustrations&psig=AOvVaw0qit95ARHx7SxuMKUIz6Zk&ust=1675817803732000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCJDd-PiZgv0CFQAAAAAdAAAAABBN
+* avatar.jpg https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fvector-images%2Fdefault-avatar.html&psig=AOvVaw0VAiqaEoQqgfQYJnriBsFI&ust=1675821964717000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCMCYkLmpgv0CFQAAAAAdAAAAABA3

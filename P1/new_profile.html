@@ -76,6 +76,47 @@
             </div>
         </div>
     </nav>
+    <!-- the profile page is based on https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
+    <div class="container profile-container">
+        <div class="row profile-box-container">
+            <div class="col-md">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5 mb-3" width="150px" src="image/avatar.jpg">
+                    <span class="font-weight-bold">Sophie Wu</span>
+                    <span class="text-black-50">shiying.wu@mail.utoronto.ca</span>
+                    <div class="btn btn-outline-primary btn-rounded mt-4">
+                        <label class="form-label m-1" for="avatar">Upload Avatar</label>
+                        <input type="file" class="form-control d-none" id="avatar" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md me-3">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <h4 class="text-center">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6 mt-2"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="First name" value=""></div>
+                    <div class="col-md-6 mt-2"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value=""></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="Enter phone number" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Enter email" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="Enter address line 1" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="Enter address line 2" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">City</label><input type="text" class="form-control" placeholder="City" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Zip/Postcode</label><input type="text" class="form-control" placeholder="Zip/Postcode" value=""></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-6 mt-2"><label class="labels">State/Province</label><input type="text" class="form-control" placeholder="State/Province" value=""></div>
+                    <div class="col-md-6 mt-2"><label class="labels">Country</label><input type="text" class="form-control" placeholder="Country" value="" ></div>
+                </div>
+                <div class="mt-4 pt-2 pb-2 mb-2 text-center">
+                    <a href="edit_profile.html">
+                        <button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    </a>
+            </div>
+        </div>
+    </div>
     <footer class="text-center border-top">
         <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
     </footer>
