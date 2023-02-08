@@ -116,10 +116,25 @@ footer p {
     cursor: pointer;
     outline: none;
     border: 0;
+    border-style: solid;
+}
+
+.search-box button:hover{
+    background: white;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #0F8FEE;
 }
 
 .search-icon {
     color: white !important;
+}
+
+.search-box button:hover .search-icon{
+    color: #0F8FEE !important;
 }
 
 .local-input-search {
@@ -178,6 +193,17 @@ footer p {
 }
 
 .helper-box-container {
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+/* style for search-result page */
+.search-result-container {
+    padding-top: 56px;
+    min-height: 100vh;
+}
+
+.search-result-box-container {
     margin-top: 3rem;
     padding-bottom: 4rem;
 }
