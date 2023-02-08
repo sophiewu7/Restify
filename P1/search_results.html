@@ -75,37 +75,38 @@
         </div>
     </nav>
     <div class="container-fluid bg-light search-result-container">
-        <div class="container search-result-box-container rounded">
-            <!-- same as index.html search, inherit reference from index.html -->
-            <form class="text-center bg-white search-box-search mx-auto">
-                <div class="local-input-search">
-                    <label class="mb-1">Location</label>
-                    <input type="text" placeholder="Grace">
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <form class="w-100 d-flex justify-content-center align-items-center my-2" action="search_results.html">
+              <div class="row my-4 p-2 bg-white w-100 search-box justify-content-between align-items-center">
+                <div class="col-auto my-2 mx-2">
+                  <label class="mb-1">Location</label>
+                  <input type="text" placeholder="Grace">
                 </div>
-                <div class="other-search">
-                    <label class="mb-1">Check In</label>
-                    <input type="date" value="2023-02-13" name="checkin"/>
+                <div class="col-auto my-2 mx-2">
+                  <label class="mb-1">Check In</label>
+                  <input type="date" name="checkin" value="2023-02-13"/>
                 </div>
-                <div class="other-search">
-                    <label class="mb-1">Check Out</label>
-                    <input type="date" value="2023-02-17" name="checkout" />
+                <div class="col-auto my-2 mx-2">
+                  <label class="mb-1">Check Out</label>
+                  <input type="date" name="checkout" value="2023-02-17"/>
                 </div>
-                <div class="other-search">
-                    <label>Guest</label>
-                    <select class="form-select form-select-sm" aria-label="select guest">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4" selected>4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                <div class="col-auto my-2 mx-2">
+                  <label>Guest</label>
+                  <select class="form-select form-select-sm" aria-label="select guest">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4" selected>4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                  </select>
                 </div>
-                <div>
-                    <button type="submit" class="rounded-circle shadow-none">
-                        <i class="bi bi-search search-icon"></i>
-                    </button>
+                <div class="col-auto my-2 mx-2">
+                  <button type="submit" class="rounded-circle">
+                    <i class="bi bi-search search-icon"></i>
+                  </button>
                 </div>
+              </div> 
             </form>
         </div>
         <!-- the search result page is based on https://www.bootdey.com/snippets/view/Filter-search-result-page -->
@@ -143,10 +144,10 @@
                                     </div>
                                     <h6 class="mt-2">Price Range:</h6>
                                     <div class="row">
-                                        <div class="col-lg-6 mb-2 pe-1">
+                                        <div class="col-lg-6 mb-2 pe-md-1">
                                             <input type="text" class="form-control" placeholder="Min">
                                         </div>
-                                        <div class="col-lg-6 mb-2 ps-1">
+                                        <div class="col-lg-6 mb-2 ps-md-1">
                                             <input type="text" class="form-control" placeholder="Max">
                                         </div>
                                     </div>
