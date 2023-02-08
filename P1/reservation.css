@@ -5,11 +5,21 @@ body {
 }
 
 .my-stays {
-    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 70%;
 }
 
-.my-stays-title {
+.card {
+    display: inline-block;
+    margin-right: 35px;
+    margin-bottom: 50px;
+    width: 19rem;
+}
 
+
+.my-stays-title {
     margin-bottom: 2rem;
     text-decoration: underline;
 }
@@ -18,11 +28,6 @@ body {
     margin-bottom: 10px;
 }
 
-.card {
-    margin-right: 35px;
-    margin-bottom: 50px;
-    width: 19rem;
-}
 
 .card-text {
     font-size: 15px;
@@ -38,5 +43,5 @@ body {
 }
 
 .list-group {
-    width: 800px;
+    width: 50rem;
 }
