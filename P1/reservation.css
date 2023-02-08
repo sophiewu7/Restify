@@ -1,0 +1,42 @@
+body {
+    margin-top: 5rem;
+    margin-left: 3rem;
+    margin-bottom: 100px;
+}
+
+.my-stays {
+    display: flex;
+}
+
+.my-stays-title {
+
+    margin-bottom: 2rem;
+    text-decoration: underline;
+}
+
+.progress {
+    margin-bottom: 10px;
+}
+
+.card {
+    margin-right: 35px;
+    margin-bottom: 50px;
+    width: 19rem;
+}
+
+.card-text {
+    font-size: 15px;
+}
+
+.btn-primary {
+    background: #0F8FEE;
+}
+
+.comment-btn {
+    background: gray;
+    border-color: gray;
+}
+
+.list-group {
+    width: 800px;
+}

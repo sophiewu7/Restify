@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="reservation.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -76,8 +77,221 @@
             </div>
         </div>
     </nav>
-    <footer class="text-center border-top">
-        <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
-    </footer>
+
+
+    <h1 class="my-stays-title">My stays</h1>
+
+    <div class="my-stays">
+
+        <div class="card">
+            <img src="./image/beijing.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Beijing</h5>
+                <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-success" style="width: 25%"></div>
+                </div>
+                    <p class="card-text"><span class="badge text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Active</span> Feb 6th ~ Feb 10th </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./image/beijing.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Beijing</h5>
+                <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
+                </div>
+                <p class="card-text"><span class="badge text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Pending</span> Jan 6th ~ Jan 10th </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                
+                    <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Comment
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Leave a comment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        to-do...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" >
+            <img src="./image/beijing.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Beijing</h5>
+                <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
+                </div>
+                <p class="card-text"><span class="badge text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-2">Completed</span> Dec 6th ~ Dec 10th 2022 </p>
+                <a href="#" class="btn btn-primary">Details</a>
+            
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Comment
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Leave a comment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            to-do...
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="my-stays-title">My hostings</h1>
+
+    <div class="my-stays">
+
+        <div class="card">
+            <img src="./image/paris.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Paris</h5>
+                <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-success" style="width: 0%"></div>
+                </div>
+                    <p class="card-text"><span class="badge text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Upcoming</span> Feb 6th ~ Feb 10th </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                    <a href="#" class="btn btn-danger">Cancle</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./image/paris.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Paris</h5>
+                <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
+                </div>
+                <p class="card-text"><span class="badge text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-2">Completed</span> Jan 6th ~ Jan 10th </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                
+                    <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Comment
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Leave a comment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        to-do...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" >
+            <img src="./image/paris.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Paris</h5>
+                <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
+                </div>
+                <p class="card-text"><span class="badge text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-2">Completed</span> Dec 6th ~ Dec 10th 2022 </p>
+                <a href="#" class="btn btn-primary">Details</a>
+            
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Comment
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Leave a comment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            to-do...
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="my-stays-title">Requsts</h1>
+    <div class="my-stays">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Requst for your Paris place</h5>
+                <small>1 days ago</small>
+              </div>
+              <p class="mb-1">Duration: Feb 20-25th</p>
+              <small>Group of 5</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Requst for your Paris place</h5>
+                <small class="text-muted">3 days ago</small>
+              </div>
+              <p class="mb-1">Duration: Feb 17-21th</p>
+              <small class="text-muted">Group of 2</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Requst for your Paris place</h5>
+                <small class="text-muted">3 days ago</small>
+              </div>
+              <p class="mb-1">Duration: Feb 19-21th</p>
+              <small class="text-muted">Group of 3</small>
+            </a>
+          </div>
+    </div>
   </body>
+
+  <!-- <footer class="text-center border-top">
+    <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
+</footer> -->
 </html>
