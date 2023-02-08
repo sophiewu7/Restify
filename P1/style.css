@@ -82,15 +82,7 @@ footer p {
 
 /* this is the start of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
 .search-box{
-    width: 75vw;
-    margin: 30px auto;
-    padding: 6px 10px 6px 30px;
     border-radius: 40px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    text-align: left;
 }
 
 .search-box input{
