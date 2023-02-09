@@ -13,67 +13,65 @@
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
         <div class="container-fluid">
-            <!-- Company Brand -->
-            <a class="navbar-brand px-2" href="index.html">Restify</a>
-            <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsList">
-                <!-- Search Box -->
-                <form class="ms-auto">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchBar">
-                </form>
-                <!-- Links -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- My Rental Units -->
-                    <li class="nav-item">
-                        <a href="reservation.html" class="nav-link link-dark">My Rental Units </a>
-                    </li>
-                    <!-- Notification Drop Down -->
-                    <li class="nav-item dropdown  d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-bell"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                            <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Notifications</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                            <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
-                        </ul>
-                    </li>
-                    <!-- Profile Drop Down -->
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="image/profile.jpg" alt="profile picture" class="rounded-circle profile-img">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                            <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="help.html">Help</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Accounts</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                            <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="help.html">Help</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+          <!-- Brand Name: Jump to index page when clicked -->
+          <a class="navbar-brand px-2" href="index_default.html">Restify</a>
+          <!-- Collapse the following elements when screen size is smaller -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="narbar toggle" id="navbar-collapse-btn">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarList">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <!-- Clickable Search Box -->
+              <li class="nav-item pb-0">
+                <div class="dropdown me-2 pe-2 w-100 mt-3 mt-lg-0">
+                  <form action="search_results.html">
+                    <button class="form-control" data-bs-toggle="dropdown" aria-expanded="false">
+                      Search
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end py-2 px-3 search-dropdown">
+                      <div class="my-2">
+                        <label class="mb-1">Location:</label>
+                        <input type="text" placeholder="Where?" class="form-control">
+                      </div>
+                      <div class="my-2">
+                        <label class="mb-1">Check In</label>
+                        <input type="date" name="checkin" class="form-control"/>
+                      </div>
+                      <div class="my-2">
+                        <label class="mb-1">Check Out</label>
+                        <input type="date" name="checkout" class="form-control"/>
+                      </div>
+                      <div class="my-2">
+                        <label class="mb-1">Guest</label>
+                        <select class="form-select form-select-sm" aria-label="select guest">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                      </div>
+                      <div class="mb-2 mt-3">
+                        <button type="submit" class="form-control">
+                          Search
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>   
+              <!-- My Rental Units -->
+              <li class="nav-item">
+                  <a href="signup.html" class="nav-link link-dark"">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                  <a href="login.html" class="nav-link link-dark"">Log In</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
     <!-- the profile page is based on https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
     <div class="container profile-container">
         <div class="row profile-box-container">
