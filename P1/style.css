@@ -621,9 +621,6 @@ search-box-search label {
 }
 
 
-
-
-
 /* create_property */
 
 .property-container {
@@ -636,4 +633,14 @@ search-box-search label {
     margin-top: 3rem;
     padding-bottom: 4rem;
     background-color: #fff;
+}
+
+/* message style */
+.chatroom {
+    padding-top: 56px;
+    padding-bottom: 5rem;
+}
+
+.chat-avatar {
+    width: 60px;
 }
