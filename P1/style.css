@@ -619,3 +619,36 @@ search-box-search label {
     color: #0F8FEE;
     font-size:medium;
 }
+
+
+/* create_property */
+
+.property-container {
+    padding-top: 56px;
+    height: 100%;
+    padding-bottom: 2rem;
+    background-color: #0F8FEE;
+}
+
+.property-box-container {
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #fff;
+}
+
+/* message style */
+.chatroom {
+    padding-top: 56px;
+    padding-bottom: 5rem;
+}
+
+.chat-avatar {
+    width: 60px;
+}
+
+/* edit property style */
+.edit_image {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
