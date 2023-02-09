@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a54bad848a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
+        <div class="container-fluid">
+            <!-- Company Brand -->
+            <a class="navbar-brand px-2" href="index.html">Restify</a>
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsList" aria-controls="navbarsList" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsList">
+                <!-- Search Box -->
+                <form class="ms-auto">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchBar">
+                </form>
+                <!-- Links -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- My Rental Units -->
+                    <li class="nav-item">
+                        <a href="reservation.html" class="nav-link link-dark">My Rental Units </a>
+                    </li>
+                    <!-- Notification Drop Down -->
+                    <li class="nav-item dropdown  d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-bell"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                            <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown d-lg-none">
+                        <a class="nav-link dropdown-toggle link-dark" href="notification.html" id="notifbell" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>Notifications</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                            <li><a class="dropdown-item" href="notification.html">To Be Completed</a></li>
+                        </ul>
+                    </li>
+                    <!-- Profile Drop Down -->
+                    <li class="nav-item dropdown d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="image/profile.jpg" alt="profile picture" class="rounded-circle profile-img">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                            <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="help.html">Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown d-lg-none">
+                        <a class="nav-link dropdown-toggle link-dark" href="profile.html" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>Accounts</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                            <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="help.html">Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- the profile page is based on https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
+    <div class="container-fluid property-container">
+        <div class="row property-box-container m-4">
+
+            <div class="col-md border-1">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5 ">
+                    <i class="bi bi-images fa-10x" ></i>             
+                    <span class="font-weight-bold">Upload some property images</span>
+                    <div class="btn btn-outline-primary btn-rounded mt-4">
+                        <label class="form-label m-1" for="avatar">Upload Avatar</label>
+                        <input type="file" class="form-control d-none" id="avatar" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md me-3">
+                <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
+                    <h4 class="text-center">Property information</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12 mt-2"><label class="labels">Property Name</label><input type="text" class="form-control" placeholder="Luxury villa Ninemia 1 Paros" value=""></div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-2"><label class="labels">Country</label><input type="text" class="form-control" placeholder="Greece" value=""></div>
+                    <div class="col-md-6 mt-2"><label class="labels">City</label><input type="text" class="form-control" placeholder="Aliki" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Detailed Address</label><input type="text" class="form-control" placeholder="40 St George St" value=""></div>        
+                    <div class="col-md-12 mt-2"><label class="labels">Zip/Postcode</label><input type="text" class="form-control" placeholder="M5S 2E4" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="(XXX) XXX-XXXX" value=""></div>
+                    <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="text" class="form-control" placeholder="abcd.efg@mail.abcdefg.ca" value=""></div>
+                    
+                    
+                    <div class="col-md-12 mt-2"><label class="labels">Which type of property</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected>Property Type</option>
+                            <option value="1">House</option>
+                            <option value="2">Apartment</option>
+                            <option value="3">Cabin</option>
+                            <option value="4">Villa</option>
+                            <option value="5">Barn</option>
+                            <option value="6">Hotel</option>
+                            <option value="7">Tree House</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2"><label class="labels">How many bedrooms</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected># Bedrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2"><label class="labels">How many washrooms</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected># Washrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 mt-2"><label class="labels">How many livingrooms</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected># Livingrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 mt-2"><label class="labels">What type of place will guest have?</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected>Place Type</option>
+                            <option value="1">An entire place</option>
+                            <option value="2">A private room</option>
+                            <option value="3">A shared room</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 mt-2"><label class="labels">How many guests</label>
+                        <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                            <option selected># Guests</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="6">7</option>
+                            <option value="6">8+</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="col-md-12 mt-2 mb-2">
+                        <form>
+                            <h6>Available Amentities:</h6>
+                            <div >
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wifi pe-2"></i>WIFI</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-tv pe-2"></i>TV</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-bath pe-2"></i>Bath tub</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-car pe-2"></i>Free Parking</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wind pe-2"></i>Air Condition</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-water-ladder pe-2"></i>Pool</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-dumbbell pe-2"></i>Exercise Equipment</label>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-fire-extinguisher pe-2"></i>Fire-extinguisher</label>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+        
+            </div>
+
+            <div class="col-md me-3">
+                <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
+                    <h4 class="text-center">Property Discription</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12 mt-2"><label class="labels">Discribe your property</label><textarea class="form-control" placeholder="Share what makes your place special." style="height: 350px;"></textarea></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12 mt-5 h5"><label class="labels">Setting Price</label></div>
+                    <div class="col-md-12 mt-2"><label class="labels">General Price:</label><input type="text" class="form-control" placeholder="200$/day" value=""></div> 
+                    <div class="col-md-12 mt-3"><label class="labels">Special Price for specific month:</label></div>
+                    
+                <!-- based on https://bootstrapious.com/p/jquery-add-rows-to-table -->
+                    
+                    <div class="col-md-12 mt-2 mb-3">
+                        <div class="card rounded-0 border-0 shadow">
+                            <div class="card-body p-3">
+                                
+                                <!--  Bootstrap table-->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Month</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Default Month</td>
+                                                <td>200$/day</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+            
+                                <!-- Add rows button-->
+                                <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new row</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+        
+                </div>
+
+
+
+                <div class="pt-2 pb-2 mb-2 text-center">
+                    <a href="profile.html" class="text-decoration-none w-100">
+                        <button class="btn btn-primary profile-button w-100" type="button">Save Profile</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center border-top">
+        <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
+    </footer>
+
+    <script>
+        // Start counting from the third row, based on https://bootstrapious.com/p/jquery-add-rows-to-table
+        $(function () {
+            var counter = 2;
+
+        $("#insertRow").on("click", function (event) {
+            event.preventDefault();
+
+            var newRow = $("<tr>");
+            var cols = '';
+
+            // Table columns
+            cols += '<th scrope="row">' + counter + '</th>';
+            cols += '<td><input class="form-control rounded-0" type="text" name="month" placeholder="Month"></td>';
+            cols += '<td><input class="form-control rounded-0" type="text" name="price" placeholder="Price"></td>';
+            cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
+
+            // Insert the columns inside a row
+            newRow.append(cols);
+
+            // Insert the row inside a table
+            $("table").append(newRow);
+
+            // Increase counter after each row insertion
+            counter++;
+        });
+
+        // Remove row when delete btn is clicked
+        $("table").on("click", "#deleteRow", function (event) {
+            $(this).closest("tr").remove();
+            counter -= 1
+        });
+        });
+    </script>
+  </body>
+</html>

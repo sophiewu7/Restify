@@ -619,3 +619,21 @@ search-box-search label {
     color: #0F8FEE;
     font-size:medium;
 }
+
+
+
+
+
+/* create_property */
+
+.property-container {
+    padding-top: 56px;
+    height: 100%;
+    background-color: #0F8FEE;
+}
+
+.property-box-container {
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+    background-color: #fff;
+}
