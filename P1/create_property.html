@@ -16,303 +16,303 @@
   <body>
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom fixed-top" aria-label="narbar">
-        <div class="container-fluid">
-          <!-- Brand Name: Jump to index page when clicked -->
-          <a class="navbar-brand px-2" href="index.html">Restify</a>
-          <!-- Collapse the following elements when screen size is smaller -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="narbar toggle" id="navbar-collapse-btn">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarList">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <!-- Clickable Search Box -->
-              <li class="nav-item pb-0">
-                <div class="dropdown me-2 pe-2 w-100 mt-3 mt-lg-0">
-                  <form action="search_results.html">
-                    <button class="form-control" data-bs-toggle="dropdown" aria-expanded="false">
-                      Search
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg-end py-2 px-3 search-dropdown">
-                      <div class="my-2">
-                        <label class="mb-1">Location:</label>
-                        <input type="text" placeholder="Where?" class="form-control">
-                      </div>
-                      <div class="my-2">
-                        <label class="mb-1">Check In</label>
-                        <input type="date" name="checkin" class="form-control"/>
-                      </div>
-                      <div class="my-2">
-                        <label class="mb-1">Check Out</label>
-                        <input type="date" name="checkout" class="form-control"/>
-                      </div>
-                      <div class="my-2">
-                        <label class="mb-1">Guest</label>
-                        <select class="form-select form-select-sm" aria-label="select guest">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                      </div>
-                      <div class="mb-2 mt-3">
-                        <button type="submit" class="form-control">
-                          Search
-                        </button>
-                      </div>
+      <div class="container-fluid">
+        <!-- Brand Name: Jump to index page when clicked -->
+        <a class="navbar-brand px-2" href="index.html">Restify</a>
+        <!-- Collapse the following elements when screen size is smaller -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="narbar toggle" id="navbar-collapse-btn">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarList">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- Clickable Search Box -->
+            <li class="nav-item pb-0">
+              <div class="dropdown me-2 pe-2 w-100 mt-3 mt-lg-0">
+                <form action="search_results.html">
+                  <button class="form-control" data-bs-toggle="dropdown" aria-expanded="false">
+                    Search
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-lg-end py-2 px-3 search-dropdown">
+                    <div class="my-2">
+                      <label class="mb-1">Location:</label>
+                      <input type="text" placeholder="Where?" class="form-control">
                     </div>
-                  </form>
-                </div>
-              </li>   
-              <!-- My Rental Units -->
-              <li class="nav-item mt-2 mt-lg-0">
-                <a href="reservation.html" class="nav-link link-dark">My Rental Units</a>
-              </li>
-              <!-- Notification Drop Down -->
-              <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-bell"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                  <li><a class="dropdown-item" href="message.html">New Messages</a></li>
-                  <li><a class="dropdown-item" href="reservation.html">New Comments</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown d-lg-none">
-                <a class="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>Notifications</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                  <li><a class="dropdown-item py-1" href="message.html">New Messages</a></li>
-                  <li><a class="dropdown-item py-1" href="reservation.html">New Messages</a></li>
-                </ul>
-              </li>
-              <!-- Profile Drop Down -->
-              <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="image/profile.jpg" alt="profile picture" class="rounded-circle profile-img">
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                  <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
-                  <li><a class="dropdown-item" href="help.html">Help</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown d-lg-none">
-                <a class="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>Accounts</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
-                    <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="help.html">Help</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
-    <!-- reference: https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
-    <div class="container-fluid property-container">
-        <div class="row property-box-container rounded m-4">
-            <div class="col-md border-1">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <i class="bi bi-images fa-10x"></i>             
-                    <span class="font-weight-bold">Upload property images:</span>
-                    <div class="btn btn-outline-primary btn-rounded mt-4">
-                        <label class="form-label m-1" for="images">Upload</label>
-                        <input type="file" class="form-control d-none" id="images"/>
+                    <div class="my-2">
+                      <label class="mb-1">Check In</label>
+                      <input type="date" name="checkin" class="form-control"/>
                     </div>
-                </div>
-            </div>
-            <div class="col-md me-3">
-                <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
-                    <h4 class="text-center mt-2">Property Information</h4>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Property Name</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mt-2">
-                      <label class="labels">Country</label>
-                      <input type="text" class="form-control" placeholder="" value="">
+                    <div class="my-2">
+                      <label class="mb-1">Check Out</label>
+                      <input type="date" name="checkout" class="form-control"/>
                     </div>
-                    <div class="col-md-6 mt-2">
-                      <label class="labels">City</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Detailed Address</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>        
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Zip/Postcode</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Phone Number</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Email</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">Which type of property</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                        <option selected>Property Type</option>
-                        <option value="1">House</option>
-                        <option value="2">Apartment</option>
-                        <option value="3">Cabin</option>
-                        <option value="4">Villa</option>
-                        <option value="5">Barn</option>
-                        <option value="6">Hotel</option>
-                        <option value="7">Tree House</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">How many bedrooms</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                          <option selected># Bedrooms</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6+</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">How many washrooms</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                          <option selected># Washrooms</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6+</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">How many livingrooms</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                          <option selected># Livingrooms</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3+</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">What type of place will guest have?</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                          <option selected>Place Type</option>
-                          <option value="1">The entire place</option>
-                          <option value="2">A private room</option>
-                          <option value="3">A shared room</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                      <label class="labels">How many guests</label>
-                      <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
-                          <option selected># Guests</option>
+                    <div class="my-2">
+                      <label class="mb-1">Guest</label>
+                      <select class="form-select form-select-sm" aria-label="select guest">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8+</option>
                       </select>
                     </div>
-                    <div class="col-md-12 mt-2 mb-2">
-                      <form>
-                        <h6>Available Amentities:</h6>
-                        <div >
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wifi pe-2"></i>WIFI</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-tv pe-2"></i>TV</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-bath pe-2"></i>Bath tub</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-car pe-2"></i>Free Parking</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wind pe-2"></i>Air Condition</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-water-ladder pe-2"></i>Pool</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-dumbbell pe-2"></i>Exercise Equipment</label>
-                        </div>
-                        <div>
-                            <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-fire-extinguisher pe-2"></i>Fire-extinguisher</label>
-                        </div>
-                      </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md me-3">
-              <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
-                <h4 class="text-center mt-2">Property Description</h4>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-12 mt-2"><label class="labels">Describe your property</label><textarea class="form-control" placeholder="Share what makes your place special." style="height: 350px;"></textarea></div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-md-12 mt-5 h5"><label class="labels">Setting Price</label></div>
-                <div class="col-md-12 mt-2"><label class="labels">General Price:</label><input type="text" class="form-control" placeholder="200$/day" value=""></div> 
-                <div class="col-md-12 mt-3"><label class="labels">Customize your listing price:</label></div>
-                    
-                <!-- reference: https://bootstrapious.com/p/jquery-add-rows-to-table -->
-                <div class="col-md-12 mt-2 mb-3">
-                  <div class="card rounded-0 border-0 shadow">
-                    <div class="card-body p-3">
-                      <!--  Bootstrap table-->
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead>
-                                  <tr>
-                                      <th scope="col">#</th>
-                                      <th scope="col">Month</th>
-                                      <th scope="col">Price</th>
-                                      <th scope="col"></th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <th scope="row">1</th>
-                                      <td>Default Price</td>
-                                      <td>200$/day</td>
-                                      <td></td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                      <!-- Add rows button-->
-                      <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new row</a>
+                    <div class="mb-2 mt-3">
+                      <button type="submit" class="form-control">
+                        Search
+                      </button>
                     </div>
                   </div>
+                </form>
+              </div>
+            </li>   
+            <!-- My Rental Units -->
+            <li class="nav-item mt-2 mt-lg-0">
+              <a href="reservation.html" class="nav-link link-dark">My Rental Units</a>
+            </li>
+            <!-- Notification Drop Down -->
+            <li class="nav-item dropdown d-none d-lg-block">
+              <a class="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a class="dropdown-item" href="message.html">New Messages</a></li>
+                <li><a class="dropdown-item" href="reservation.html">New Comments</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown d-lg-none">
+              <a class="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Notifications</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a class="dropdown-item py-1" href="message.html">New Messages</a></li>
+                <li><a class="dropdown-item py-1" href="reservation.html">New Messages</a></li>
+              </ul>
+            </li>
+            <!-- Profile Drop Down -->
+            <li class="nav-item dropdown d-none d-lg-block">
+              <a class="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="image/profile.jpg" alt="profile picture" class="rounded-circle profile-img">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="help.html">Help</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown d-lg-none">
+              <a class="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Accounts</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                  <li><a class="dropdown-item" href="profile.html">Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="help.html">Help</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="index_default.html">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- reference: https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
+    <div class="container-fluid property-container">
+      <div class="row property-box-container rounded m-4">
+        <div class="col-md border-1">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <i class="bi bi-images fa-10x"></i>             
+            <span class="font-weight-bold">Upload property images:</span>
+            <div class="btn btn-outline-primary btn-rounded mt-4">
+              <label class="form-label m-1" for="images">Upload</label>
+              <input type="file" class="form-control d-none" id="images"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md me-3">
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
+            <h4 class="text-center mt-2">Property Information</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12 mt-2">
+              <label class="labels">Property Name</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>  
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <label class="labels">Country</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>
+            <div class="col-md-6 mt-2">
+              <label class="labels">City</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">Detailed Address</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>        
+            <div class="col-md-12 mt-2">
+              <label class="labels">Zip/Postcode</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">Phone Number</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">Email</label>
+              <input type="text" class="form-control" placeholder="" value="">
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">Which type of property</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected>Property Type</option>
+                <option value="1">House</option>
+                <option value="2">Apartment</option>
+                <option value="3">Cabin</option>
+                <option value="4">Villa</option>
+                <option value="5">Barn</option>
+                <option value="6">Hotel</option>
+                <option value="7">Tree House</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">How many bedrooms</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected># Bedrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6+</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">How many washrooms</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected># Washrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6+</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">How many livingrooms</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected># Livingrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">What type of place will guest have?</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected>Place Type</option>
+                <option value="1">The entire place</option>
+                <option value="2">A private room</option>
+                <option value="3">A shared room</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2">
+              <label class="labels">How many guests</label>
+              <select class="form-select form-select-md bg-transparent border-1" aria-label=".form-select-lg example">
+                <option selected># Guests</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8+</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-2 mb-2">
+              <form>
+                <h6>Available Amentities:</h6>
+                <div >
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wifi pe-2"></i>WIFI</label>
                 </div>
-              </div> 
-              <div class="pt-2 pb-2 mb-2 text-center">
-                <a href="reservation.html" class="text-decoration-none w-100">
-                  <button class="btn btn-primary profile-button w-100" type="button">Save Profile</button>
-                </a>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-tv pe-2"></i>TV</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-bath pe-2"></i>Bath tub</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-car pe-2"></i>Free Parking</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-wind pe-2"></i>Air Condition</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-water-ladder pe-2"></i>Pool</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-dumbbell pe-2"></i>Exercise Equipment</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" class="form-check-input me-2"><i class="fa-solid fa-fire-extinguisher pe-2"></i>Fire-extinguisher</label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md me-3">
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
+            <h4 class="text-center mt-2">Property Description</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12 mt-2"><label class="labels">Describe your property</label><textarea class="form-control" placeholder="Share what makes your place special." style="height: 350px;"></textarea></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-12 mt-5 h5"><label class="labels">Setting Price</label></div>
+            <div class="col-md-12 mt-2"><label class="labels">General Price:</label><input type="text" class="form-control" placeholder="200$/day" value=""></div> 
+            <div class="col-md-12 mt-3"><label class="labels">Customize your listing price:</label></div>
+                
+            <!-- reference: https://bootstrapious.com/p/jquery-add-rows-to-table -->
+            <div class="col-md-12 mt-2 mb-3">
+              <div class="card rounded-0 border-0 shadow">
+                <div class="card-body p-3">
+                  <!--  Bootstrap table-->
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Month</th>
+                          <th scope="col">Price</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Default Price</td>
+                          <td>200$/day</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- Add rows button-->
+                  <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new row</a>
+                </div>
               </div>
             </div>
+          </div> 
+          <div class="pt-2 pb-2 mb-2 text-center">
+            <a href="reservation.html" class="text-decoration-none w-100">
+              <button class="btn btn-primary profile-button w-100" type="button">Save Profile</button>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
     <footer class="text-center border-top">
         <p>© Copyright 2023 by group1886 University of Toronto CSC309.</p>
