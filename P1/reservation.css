@@ -12,6 +12,12 @@ body {
     margin-right: 3rem;
 }
 
+.comments {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
 .card {
     display: inline-block;
     margin-right: 35px;
@@ -51,6 +57,15 @@ body {
 
 .list-group {
     width: 50rem;
+}
+
+.usercomment-group {
+    width: 25rem;
+}
+
+.comment-modal-body {
+    display: flex;
+    justify-content: center;
 }
 
 .star-rating {
