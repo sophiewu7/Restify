@@ -248,7 +248,7 @@ footer p {
     height: 2px;
     background: rgb(81, 81, 81);
     width: 100%;
-    max-width: 800px;
+    max-width: 60vw;
     margin: 30px 0 40px;
 }
 

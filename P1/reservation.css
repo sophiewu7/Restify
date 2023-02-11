@@ -27,14 +27,15 @@ body {
 
 
 .my-stays-title {
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     font-size: xx-large;
     /* text-decoration: underline; */
 }
 
 .new_hosting {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .progress {
