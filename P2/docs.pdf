@@ -1,0 +1,2 @@
+• To setup all environment required for this project, you MUST run startup.sh using source in the terminal:
+    source ./startup.sh
