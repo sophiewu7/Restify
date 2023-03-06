@@ -12,6 +12,7 @@ pip install pillow
 pip install pyyaml
 pip install requests
 pip install django-cors-headers
-cd ./restify/restify
+cd ./restify
 python ./manage.py makemigrations
 python ./manage.py migrate
+cd ..
