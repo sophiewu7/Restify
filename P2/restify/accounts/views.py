@@ -12,7 +12,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .serializers import SignUpSerializer, ChangePasswordSerializer
+from .serializers import SignUpSerializer, ChangePasswordSerializer, ProfileSerializer
 
 
 class SignUpAPIView(CreateAPIView):
@@ -70,8 +70,8 @@ class LogoutAPIView(APIView):
                 return Response({'message': 'You are not logged in.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class ChangePasswordAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
     def get(self, request, *args, **kwargs):
         message = "Please enter you current password, new password and confirm your new password to change your password:"
@@ -93,3 +93,12 @@ class ChangePasswordAPIView(APIView):
         update_last_login(None, user)
 
         return Response({'status': 'Password changed successfully'})
+    
+class ViewProfileAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        user = request.user
+        serializer = ProfileSerializer(user)
+        return Response(serializer.data)

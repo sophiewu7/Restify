@@ -63,3 +63,21 @@ class ChangePasswordSerializer(serializers.Serializer):
         if password != confirm_password:
             raise serializers.ValidationError({'new_password': 'The two password fields didn\'t match'})
         return super().validate(data)
+    
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username', 
+            'first_name', 
+            'last_name', 
+            'email', 
+            'phone_number', 
+            'address_1', 
+            'address_2', 
+            'city', 
+            'zip_postcode', 
+            'state_province', 
+            'country', 
+            'avatar',
+        ]
