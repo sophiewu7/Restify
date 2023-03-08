@@ -1,3 +1,42 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.core.validators import MinLengthValidator
 
-# Create your models here.
+class CustomUserManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        """
+        Creates and saves a User with the given email and password.
+        """
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(username, email, password, **extra_fields)
+
+class User(AbstractUser):
+    phone_number = models.CharField(max_length=15, validators=[MinLengthValidator(8)])
+    address_1 = models.CharField(max_length=128)
+    address_2 = models.CharField(max_length=128, blank=True, null=True)
+    city = models.CharField(max_length=50)
+    zip_postcode = models.CharField(max_length=10)
+    state_province = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone_number']
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.username
