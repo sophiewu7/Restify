@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -39,7 +40,10 @@ class LoginAPIView(TokenObtainPairView):
         return Response({'message': message})
 
 class LogoutAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        return Response({'message': 'You have been logged out.'})
+        response = Response({'message': 'You have been logged out.'})
+        response.delete_cookie(key='access_token')
+        return response
