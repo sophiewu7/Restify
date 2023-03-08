@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import SignUpSerializer
 
@@ -23,3 +24,12 @@ class SignUpAPIView(CreateAPIView):
 
     def get(self, request, *args, **kwargs):
         return Response({'message': 'This is the signup page'})
+    
+class LoginAPIView(TokenObtainPairView):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        return response
+
+    def get(self, request, *args, **kwargs):
+        message = "Please login using your username and password:"
+        return Response({'message': message})
