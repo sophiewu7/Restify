@@ -1,7 +1,11 @@
 from rest_framework import status
+from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
+
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 from .serializers import SignUpSerializer
 
@@ -33,3 +37,9 @@ class LoginAPIView(TokenObtainPairView):
     def get(self, request, *args, **kwargs):
         message = "Please login using your username and password:"
         return Response({'message': message})
+
+class LogoutAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        return Response({'message': 'You have been logged out.'})
