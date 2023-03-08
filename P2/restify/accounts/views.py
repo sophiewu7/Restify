@@ -1,14 +1,18 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import update_last_login
+
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import AuthenticationFailed
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .serializers import SignUpSerializer
+from .serializers import SignUpSerializer, ChangePasswordSerializer
 
 
 class SignUpAPIView(CreateAPIView):
@@ -25,7 +29,7 @@ class SignUpAPIView(CreateAPIView):
                 'Message': "User created successfully",
                 'User': user_data},
                 status=status.HTTP_201_CREATED)
-        return Response({'Errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, *args, **kwargs):
         return Response({'message': 'This is the signup page'})
@@ -39,10 +43,16 @@ class LoginAPIView(TokenObtainPairView):
         refresh_token = RefreshToken(token_pair['refresh'])
         response.set_cookie(key='access_token', value=str(token_pair['access']), httponly=True, max_age=3600, expires=refresh_token['exp'])
         return response
-
+    
     def get(self, request, *args, **kwargs):
         message = "Please login using your username and password:"
         return Response({'message': message})
+        
+    def handle_exception(self, exc):
+        if isinstance(exc, AuthenticationFailed):
+            if 'No active account found with the given credentials' in str(exc):
+                return Response({'error': 'Incorrect username or password.'}, status=400)
+        return super().handle_exception(exc)
 
 class LogoutAPIView(APIView):
     # permission_classes = [IsAuthenticated]
@@ -58,3 +68,25 @@ class LogoutAPIView(APIView):
             auth_header = request.headers.get('Authorization')
             if auth_header is None or not auth_header.startswith('Bearer '):
                 return Response({'message': 'You are not logged in.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+class ChangePasswordAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = ChangePasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = authenticate(request=request, username=request.user.username, password=serializer.validated_data['password'])
+        if not user:
+            return Response({'current_password': 'Invalid password'}, status=status.HTTP_400_BAD_REQUEST)
+        print(serializer.validated_data)
+        if serializer.validated_data['new_password'] != serializer.validated_data['confirm_password']:
+            return Response({'error': 'New password and confirm password must match'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user.set_password(serializer.validated_data['new_password'])
+        user.save()
+
+        update_last_login(None, user)
+
+        return Response({'status': 'Password changed successfully'})

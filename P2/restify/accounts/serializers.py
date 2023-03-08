@@ -44,3 +44,22 @@ class SignUpSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+class ChangePasswordSerializer(serializers.Serializer):
+    password = serializers.CharField(max_length=120, min_length=8, style={'input_type': 'password'})
+    new_password = serializers.CharField(max_length=120, min_length=8, style={'input_type': 'password'})
+    confirm_password = serializers.CharField(
+        write_only=True,
+        required=True,
+        error_messages={
+            'required': 'Please confirm your password',
+        },
+        style={'input_type': 'password'}
+    )
+
+    def validate(self, data):
+        password = data.get('new_password')
+        confirm_password = data.get('confirm_password')
+        if password != confirm_password:
+            raise serializers.ValidationError({'new_password': 'The two password fields didn\'t match'})
+        return super().validate(data)
