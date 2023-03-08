@@ -73,6 +73,10 @@ class ChangePasswordAPIView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
+    def get(self, request, *args, **kwargs):
+        message = "Please enter you current password, new password and confirm your new password to change your password:"
+        return Response({'message': message})
+    
     def post(self, request):
         serializer = ChangePasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -80,7 +84,6 @@ class ChangePasswordAPIView(APIView):
         user = authenticate(request=request, username=request.user.username, password=serializer.validated_data['password'])
         if not user:
             return Response({'current_password': 'Invalid password'}, status=status.HTTP_400_BAD_REQUEST)
-        print(serializer.validated_data)
         if serializer.validated_data['new_password'] != serializer.validated_data['confirm_password']:
             return Response({'error': 'New password and confirm password must match'}, status=status.HTTP_400_BAD_REQUEST)
 
