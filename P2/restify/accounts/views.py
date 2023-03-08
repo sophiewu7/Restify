@@ -67,7 +67,7 @@ class LogoutAPIView(APIView):
         else:
             auth_header = request.headers.get('Authorization')
             if auth_header is None or not auth_header.startswith('Bearer '):
-                return Response({'message': 'You are not logged in.'}, status=status.HTTP_401_UNAUTHORIZED)
+                return Response({'message': 'You have not logged in.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class ChangePasswordAPIView(APIView):
     permission_classes = [IsAuthenticated]
