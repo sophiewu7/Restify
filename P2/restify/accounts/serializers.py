@@ -81,3 +81,29 @@ class ProfileSerializer(serializers.ModelSerializer):
             'country', 
             'avatar',
         ]
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username', 
+            'first_name', 
+            'last_name', 
+            'email', 
+            'phone_number', 
+            'address_1', 
+            'address_2', 
+            'city', 
+            'zip_postcode', 
+            'state_province', 
+            'country', 
+            'avatar',
+        ]
+        read_only_fields = ['username']
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if value != '':
+                setattr(instance, attr, value)
+        instance.save()
+        return instance
