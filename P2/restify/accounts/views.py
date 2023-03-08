@@ -40,10 +40,16 @@ class LoginAPIView(TokenObtainPairView):
         return Response({'message': message})
 
 class LogoutAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        response = Response({'message': 'You have been logged out.'})
-        response.delete_cookie(key='access_token')
-        return response
+        if request.user.is_authenticated:
+            username = request.user.username
+            response = Response({'message': f'{username.capitalize()}, you have been logged out.'})
+            response.delete_cookie(key='access_token')
+            return response
+        else:
+            auth_header = request.headers.get('Authorization')
+            if auth_header is None or not auth_header.startswith('Bearer '):
+                return Response({'message': 'You are not logged in.'}, status=status.HTTP_401_UNAUTHORIZED)
