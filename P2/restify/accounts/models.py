@@ -24,6 +24,9 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class User(AbstractUser):
+    email = models.EmailField(blank=False, null=False, error_messages={'invalid': 'Enter a valid email address'})
+    first_name = models.CharField(max_length=128, blank=False, null=False)
+    last_name = models.CharField(max_length=128, blank=False, null=False)
     phone_number = models.CharField(max_length=15, validators=[MinLengthValidator(8)])
     address_1 = models.CharField(max_length=128)
     address_2 = models.CharField(max_length=128, blank=True, null=True)
@@ -32,9 +35,6 @@ class User(AbstractUser):
     state_province = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
-
-    USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone_number']
 
     objects = CustomUserManager()
 

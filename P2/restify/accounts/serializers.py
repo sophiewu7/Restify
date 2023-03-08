@@ -1,22 +1,29 @@
 from rest_framework import serializers
-from rest_framework.widgets import PasswordInput
 
 from .models import User
 
 class SignUpSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(max_length=120, min_length=8, style={'input_type': 'password'})
     confirm_password = serializers.CharField(
-                        write_only=True,
-                        required=True,
-                        error_messages={
-                            'required': 'Please confirm your password',
-                        },
-                        widget=PasswordInput(render_value=True)
-                    )
+        write_only=True,
+        required=True,
+        error_messages={
+            'required': 'Please confirm your password',
+        },
+        style={'input_type': 'password'}
+    )
 
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 
                   'phone_number', 'password', 'confirm_password']
+        extra_kwargs = {'first_name': {'required': True, 'allow_blank': False},
+                        'last_name': {'required': True, 'allow_blank': False},
+                        'email': {'required': True, 'allow_blank': False},
+                        'phone_number': {'required': True, 'allow_blank': False},
+                        'password': {'required': True, 'allow_blank': False},
+                        'confirm_password': {'required': True, 'allow_blank': False}
+                        }
 
     def validate(self, data):
         username = data.get('username')
