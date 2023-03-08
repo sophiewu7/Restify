@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import SignUpSerializer
 
@@ -33,6 +33,11 @@ class SignUpAPIView(CreateAPIView):
 class LoginAPIView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        token_pair = serializer.validated_data
+        refresh_token = RefreshToken(token_pair['refresh'])
+        response.set_cookie(key='access_token', value=str(token_pair['access']), httponly=True, max_age=3600, expires=refresh_token['exp'])
         return response
 
     def get(self, request, *args, **kwargs):
