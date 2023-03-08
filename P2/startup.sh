@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get install -y python3 python3-pip
+sudo apt-get install -y python python3-pip
 pip install virtualenv
 python -m venv venv
 source venv/bin/activate
@@ -12,6 +12,7 @@ pip install pillow
 pip install pyyaml
 pip install requests
 pip install django-cors-headers
+pip install exc
 cd ./restify
 python ./manage.py makemigrations
 python ./manage.py migrate
