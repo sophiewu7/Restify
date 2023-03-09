@@ -24,6 +24,10 @@ class PropertyListCreateView(generics.ListCreateAPIView):
     serializer_class = PropertySerializer
 
     def perform_create(self, serializer):
+        if not serializer.validated_data.get('email'):
+            serializer.validated_data['email'] = self.request.user.email
+        if not serializer.validated_data.get('phone_number'):
+            serializer.validated_data['phone_number'] = self.request.user.phone_number
         serializer.save(owner=self.request.user)
 
 class PropertyListView(generics.ListAPIView):
