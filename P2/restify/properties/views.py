@@ -20,12 +20,14 @@ class PropertyListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
-    queryset = Property.objects.all()
     serializer_class = PropertySerializer
 
-    def get(self, request, *args, **kwargs):
-        message = "Please enter information about your property to create a new listing:"
-        return Response({'message': message})
+    def get_queryset(self):
+        return Property.objects.filter(owner=self.request.user)
+    
+    # def get(self, request, *args, **kwargs):
+    #     message = "Please enter information about your property to create a new listing:"
+    #     return Response({'message': message})
 
     def perform_create(self, serializer):
         if not serializer.validated_data.get('email'):
