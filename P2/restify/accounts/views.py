@@ -12,7 +12,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .serializers import SignUpSerializer, ChangePasswordSerializer, ProfileSerializer
+from .serializers import SignUpSerializer, ChangePasswordSerializer, ProfileSerializer, UpdateUserSerializer
 
 
 class SignUpAPIView(CreateAPIView):
@@ -102,3 +102,19 @@ class ViewProfileAPIView(APIView):
         user = request.user
         serializer = ProfileSerializer(user)
         return Response(serializer.data)
+    
+class EditProfileAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        user = request.user
+        serializer = UpdateUserSerializer(user)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = UpdateUserSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
