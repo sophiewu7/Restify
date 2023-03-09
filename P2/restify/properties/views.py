@@ -49,9 +49,8 @@ class PropertyListView(generics.ListAPIView):
 
 
 class PropertyDetailView(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [JWTAuthentication]
-
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
     lookup_field = 'id'
@@ -66,6 +65,12 @@ class PropertyDestroyView(generics.DestroyAPIView):
     serializer_class = PropertySerializer
     lookup_field = 'id'
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        message = "Property deleted."
+        return Response({'message': message}, status=status.HTTP_200_OK)
+    
     def perform_destroy(self, instance):
         # instance 
         super().perform_destroy(instance)
