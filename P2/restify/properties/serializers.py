@@ -28,13 +28,15 @@ class PropertySerializer(serializers.ModelSerializer):
             'property_description',
             'last_modified',
             'swimpool',
-            'WIFI',
-            'TV',
-            'Gym',
-            'Fire_extinguisher',
+            'wifi',
+            'tv',
+            'gym',
+            'fire_extinguisher',
             'aircondition',
             'parking',
-            'Bathtub',
+            'bathtub',
+            'status',
+            'price',
             'image1',
             'image2',
             'image3',
@@ -45,6 +47,12 @@ class PropertySerializer(serializers.ModelSerializer):
             'image8'
         ]
         read_only_fields = ['last_modified']
+
+    def validate(self, data):
+        price = data.get('price')
+        if price and price < 0:
+            raise serializers.ValidationError({'price': 'Price cannot negative.'})
+        return super().validate(data)
 
 class AvailabilitySerializer(serializers.ModelSerializer):
     property_id = serializers.ReadOnlyField(source='property.id')
