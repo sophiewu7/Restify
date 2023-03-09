@@ -5,6 +5,7 @@ from .models import Property, Availability
 
 class PropertySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Property
         fields = [
@@ -42,6 +43,7 @@ class PropertySerializer(serializers.ModelSerializer):
             'image7',
             'image8'
         ]
+        read_only_fields = ['last_modified']
 
 class AvailabilitySerializer(serializers.ModelSerializer):
     property_id = serializers.ReadOnlyField(source='property.id')
