@@ -12,7 +12,8 @@
             "is_staff": true,
             "is_active": true,
             "date_joined": "2023-03-09T00:00:00Z",
-            "phone_number": "123-456-7890"
+            "phone_number": "123-456-7890",
+            "avatar": "avatars/avatar.jpg"
         }
     },
     {
@@ -24,7 +25,6 @@
             "last_name": "Doe",
             "email": "johndoe@example.com",
             "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
-            "is_staff": false,
             "date_joined": "2023-03-09T00:00:00Z",
             "phone_number": "555-123-4567"
         }
@@ -38,8 +38,7 @@
             "last_name": "Smith",
             "email": "janesmith@example.com",
             "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
-            "is_staff": false,
-            "date_joined": "2023-03-10T00:00:00Z",
+            "date_joined": "2023-03-09T00:00:00Z",
             "phone_number": "123-555-6789"
         }
     },
@@ -52,8 +51,7 @@
             "last_name": "Chan",
             "email": "jackiechan@example.com",
             "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
-            "is_staff": false,
-            "date_joined": "2023-03-11T00:00:00Z",
+            "date_joined": "2023-03-09T00:00:00Z",
             "phone_number": "999-888-7777"
         }
     },
@@ -66,8 +64,7 @@
             "last_name": "Smith",
             "email": "alicesmith@example.com",
             "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
-            "is_staff": false,
-            "date_joined": "2023-03-11T00:00:00Z",
+            "date_joined": "2023-03-09T00:00:00Z",
             "phone_number": "234-223-5566"
         }
     },
@@ -98,7 +95,7 @@
             "aircondition": true,
             "parking": false,
             "Bathtub": false,
-            "image1": "",
+            "image1": "property_image/place1.jpg",
             "image2": "",
             "image3": "",
             "image4": "",
@@ -124,7 +121,7 @@
         "pk": 2,
         "fields": {
             "start_date": "2023-04-16",
-            "end_date": "2023-04-30",
+            "end_date": "2024-04-30",
             "price": 125,
             "property": 1
         }
