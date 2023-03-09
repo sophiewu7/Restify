@@ -23,12 +23,17 @@ class PropertyListCreateView(generics.ListCreateAPIView):
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
 
+    def get(self, request, *args, **kwargs):
+        message = "Please enter information about your property to create a new listing:"
+        return Response({'message': message})
+
     def perform_create(self, serializer):
         if not serializer.validated_data.get('email'):
             serializer.validated_data['email'] = self.request.user.email
         if not serializer.validated_data.get('phone_number'):
             serializer.validated_data['phone_number'] = self.request.user.phone_number
         serializer.save(owner=self.request.user)
+
 
 class PropertyListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
@@ -63,6 +68,7 @@ class PropertyDestroyView(generics.DestroyAPIView):
         # instance 
         super().perform_destroy(instance)
 
+
 class PropertyUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated, IsPropertyOwner]
     authentication_classes = [JWTAuthentication]
@@ -71,12 +77,17 @@ class PropertyUpdateView(generics.UpdateAPIView):
     serializer_class = PropertySerializer
     lookup_field = 'id'
 
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        serializer = self.get_serializer(obj)
+        return Response(serializer.data)
+    
+    def get_serializer(self, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().get_serializer(*args, **kwargs)
+
     def perform_update(self, serializer):
-        # instance 
         super().perform_update(serializer)
-
-
-
 
 
 class AvailListCreateView(generics.CreateAPIView):
