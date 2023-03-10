@@ -1,0 +1,129 @@
+[
+    {
+        "model": "accounts.user",
+        "pk": 1,
+        "fields": {
+            "username": "admin",
+            "first_name": "Admin",
+            "last_name": "User",
+            "email": "admin@example.com",
+            "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-03-09T00:00:00Z",
+            "phone_number": "123-456-7890",
+            "avatar": "avatars/avatar.jpg"
+        }
+    },
+    {
+        "model": "accounts.user",
+        "pk": 2,
+        "fields": {
+            "username": "john_doe",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "johndoe@example.com",
+            "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
+            "date_joined": "2023-03-09T00:00:00Z",
+            "phone_number": "555-123-4567"
+        }
+    },
+    {
+        "model": "accounts.user",
+        "pk": 3,
+        "fields": {
+            "username": "jane_smith",
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "email": "janesmith@example.com",
+            "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
+            "date_joined": "2023-03-09T00:00:00Z",
+            "phone_number": "123-555-6789"
+        }
+    },
+    {
+        "model": "accounts.user",
+        "pk": 4,
+        "fields": {
+            "username": "jackie_chan",
+            "first_name": "Jackie",
+            "last_name": "Chan",
+            "email": "jackiechan@example.com",
+            "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
+            "date_joined": "2023-03-09T00:00:00Z",
+            "phone_number": "999-888-7777"
+        }
+    },
+    {
+        "model": "accounts.user",
+        "pk": 5,
+        "fields": {
+            "username": "alice_smith",
+            "first_name": "Alice",
+            "last_name": "Smith",
+            "email": "alicesmith@example.com",
+            "password": "pbkdf2_sha256$320000$E2xIVq5LfmfpzEopkUGboB$3/Dp9mBOrfkeqFNwsxz+T42XSRJpOZc/WVLcyB/CO5k=",
+            "date_joined": "2023-03-09T00:00:00Z",
+            "phone_number": "234-223-5566"
+        }
+    },
+    {
+        "model": "properties.property",
+        "pk": 1,
+        "fields": {
+            "owner": 2,
+            "property_name": "Cozy apartment",
+            "country": "USA",
+            "city": "New York",
+            "detailed_address": "123 Main St",
+            "zip_postcode": "10001",
+            "phone_number": "123-456-7890",
+            "email": "cozyapartment@example.com",
+            "property_type": "Apartment",
+            "bedrooms": 2,
+            "washrooms": 1,
+            "livingrooms": 1,
+            "guests": 4,
+            "place_type": "Entire place",
+            "property_description": "A cozy apartment in the heart of New York City.",
+            "swimpool": false,
+            "WIFI": true,
+            "TV": true,
+            "Gym": false,
+            "Fire_extinguisher": true,
+            "aircondition": true,
+            "parking": false,
+            "Bathtub": false,
+            "image1": "property_image/place1.jpg",
+            "image2": "",
+            "image3": "",
+            "image4": "",
+            "image5": "",
+            "image6": "",
+            "image7": "",
+            "image8": "",
+            "last_modified": "2023-03-09T00:00:00Z"
+        }
+    },
+    {
+        "model": "properties.availability",
+        "pk": 1,
+        "fields": {
+            "start_date": "2023-04-01",
+            "end_date": "2023-04-15",
+            "price": 150,
+            "property": 1
+        }
+    },
+    {
+        "model": "properties.availability",
+        "pk": 2,
+        "fields": {
+            "start_date": "2023-04-16",
+            "end_date": "2024-04-30",
+            "price": 125,
+            "property": 1
+        }
+    }
+]
