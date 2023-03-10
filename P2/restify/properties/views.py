@@ -195,7 +195,7 @@ class PropertySearchView(generics.ListAPIView):
 
         reserved_property_ids = Reservation.objects.filter(
                                 Q(status=Reservation.APPROVED) &
-                                Q(check_in__lte=check_out, check_out__gte=check_in)
+                                Q(check_in__lt=check_out, check_out__gt=check_in)
                                ).values_list('reserve_property_id')
                                 
         queryset = queryset.exclude(id__in=reserved_property_ids)
@@ -207,7 +207,7 @@ class PropertySearchView(generics.ListAPIView):
                 if min_price < 0:
                     raise ValidationError('Minimum price cannot be negative.')
                 cheap_property_ids = Pricetag.objects.filter(
-                                        Q(start_date__lte=check_out, end_date__gte=check_in) &
+                                        Q(start_date__lt=check_out, end_date__gt=check_in) &
                                         Q(price__lte=float(min_price))
                                       ).values_list('property_id')
                 queryset = queryset.exclude(id__in=cheap_property_ids)
@@ -224,7 +224,7 @@ class PropertySearchView(generics.ListAPIView):
                 if min_price is not None and max_price < min_price:
                     raise ValidationError('Maximum price cannot be less than minimum price.')
                 expansive_property_ids = Pricetag.objects.filter(
-                                        Q(start_date__lte=check_out, end_date__gte=check_in) &
+                                        Q(start_date__lt=check_out, end_date__gt=check_in) &
                                         Q(price__gte=float(max_price))
                                       ).values_list('property_id')
                 queryset = queryset.exclude(id__in=expansive_property_ids)
