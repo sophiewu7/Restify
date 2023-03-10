@@ -12,7 +12,7 @@ from . import views
 
 app_name="comments"
 urlpatterns = [ 
-    path('property/<int:property_id>/', views.PropertyComment.as_view(), name='property_comment'),
-    path('property/<int:property_id>/<int: comment_id>/', views.PropertyReply.as_view(), name='property_reply'),
+    path('property/<int:property_id>/', views.PropertyComments.as_view(), name='property_comment'),
+    path('property/<int:property_id>/<int:comment_id>/', views.PropertyReply.as_view(), name='property_reply'),
     path('user/<int:user_id>/', views.UserComment.as_view(), name='user_comment'),
 ]

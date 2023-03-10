@@ -24,9 +24,15 @@ from .models import PropertyComment, UserComment
 class PropertyCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PropertyComment
-        fields = ["text", "property", "parent_comment"]
+        fields = ["text", "property", "parent_comment", "user"]
+        extra_kwargs = {
+                        'property': {'required': False, 'allow_null': True},
+                        'parent_comment': {'required': False, 'allow_null': True},
+                        'user': {'required': False, 'allow_null': True}
+                        }
 
 class UserCommentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PropertyComment
+        model = UserComment
         fields = ["text", "host", "user"]
+        

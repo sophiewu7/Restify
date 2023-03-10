@@ -24,6 +24,8 @@ urlpatterns = [
     path('', index),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('properties/', include('properties.urls', namespace='properties')),
+    path('comments/', include('comments.urls', namespace='comments')),
+
 ] + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
