@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.db.models import Q
 from datetime import datetime, date
+from django.utils import timezone
+from rest_framework.exceptions import ValidationError
 
 # Create your views here.
 from .models import Property, Pricetag
@@ -163,6 +165,46 @@ class PropertySearchView(generics.ListAPIView):
         if search_keyword is not None:
             # Filter by location
             queryset = queryset.filter(Q(city__icontains=search_keyword) | Q(country__icontains=search_keyword) | Q(detailed_address__icontains=search_keyword) | Q(zip_postcode__icontains=search_keyword))
+
+        check_in_str = self.request.query_params.get('check_in', None)
+        if check_in_str is not None:
+            try:
+                check_in = datetime.strptime(check_in_str, '%Y-%m-%d').date()
+                if check_in < timezone.now().date():
+                    raise ValidationError('Check-in date cannot be in the past.')
+            except ValueError:
+                raise ValidationError('Check-in date must be in the format YYYY-MM-DD.')
+        
+        check_out_str = self.request.query_params.get('check_out', None)
+        if check_out_str is not None:
+            try:
+                check_out = datetime.strptime(check_out_str, '%Y-%m-%d').date()
+                if check_out < timezone.now().date():
+                    raise ValidationError('Check-out date cannot be in the past.')
+                if check_out < check_in:
+                    raise ValidationError('Check-out date cannot be prior to check-in date.')
+            except ValueError:
+                raise ValidationError('Check-out date must be in the format YYYY-MM-DD.')
+
+        min_price_str = self.request.query_params.get('min_price', None)
+        if min_price_str is not None:
+            try:
+                min_price = int(min_price_str)
+                if min_price < 0:
+                    raise ValidationError('Minimum price cannot be negative.')
+            except ValueError:
+                raise ValidationError('Minimum price must be a positive integer.')
+
+        max_price_str = self.request.query_params.get('max_price', None)
+        if max_price_str is not None:
+            try:
+                max_price = int(max_price_str)
+                if max_price < 0:
+                    raise ValidationError('Maximum price cannot be negative.')
+                if min_price is not None and max_price < min_price:
+                    raise ValidationError('Maximum price cannot be less than minimum price.')
+            except ValueError:
+                raise ValidationError('Maximum price must be a positive integer.')
 
         guests = self.request.query_params.get('guests', None)
         if guests is not None:
