@@ -200,24 +200,35 @@ class PropertySearchView(generics.ListAPIView):
                                 
         queryset = queryset.exclude(id__in=reserved_property_ids)
 
-
         min_price_str = self.request.query_params.get('min_price', None)
         if min_price_str is not None:
             try:
-                min_price = int(min_price_str)
+                min_price = float(min_price_str)
                 if min_price < 0:
                     raise ValidationError('Minimum price cannot be negative.')
+                cheap_property_ids = Pricetag.objects.filter(
+                                        Q(start_date__lte=check_out, end_date__gte=check_in) &
+                                        Q(price__lte=float(min_price))
+                                      ).values_list('property_id')
+                queryset = queryset.exclude(id__in=cheap_property_ids)
+                queryset = queryset.filter(price__gte=float(min_price))
             except ValueError:
                 raise ValidationError('Minimum price must be a positive integer.')
 
         max_price_str = self.request.query_params.get('max_price', None)
         if max_price_str is not None:
             try:
-                max_price = int(max_price_str)
+                max_price = float(max_price_str)
                 if max_price < 0:
                     raise ValidationError('Maximum price cannot be negative.')
                 if min_price is not None and max_price < min_price:
                     raise ValidationError('Maximum price cannot be less than minimum price.')
+                expansive_property_ids = Pricetag.objects.filter(
+                                        Q(start_date__lte=check_out, end_date__gte=check_in) &
+                                        Q(price__gte=float(max_price))
+                                      ).values_list('property_id')
+                queryset = queryset.exclude(id__in=expansive_property_ids)
+                queryset = queryset.filter(price__lte=float(max_price))
             except ValueError:
                 raise ValidationError('Maximum price must be a positive integer.')
 
