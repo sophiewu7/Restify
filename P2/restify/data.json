@@ -923,5 +923,86 @@
           "status": "canceled",
           "last_modified": "2023-03-09T00:00:00Z"
       }
-    }
+    },
+    {
+      "model": "properties.pricetag",
+      "pk": 1,
+      "fields": {
+          "property": 2,
+          "start_date": "2023-04-01",
+          "end_date": "2023-04-05",
+          "price": 150.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 2,
+      "fields": {
+          "property": 2,
+          "start_date": "2023-06-01",
+          "end_date": "2023-06-30",
+          "price": 200.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 3,
+      "fields": {
+          "property": 2,
+          "start_date": "2023-09-01",
+          "end_date": "2023-09-30",
+          "price": 250.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 4,
+      "fields": {
+          "property": 3,
+          "start_date": "2023-05-01",
+          "end_date": "2023-05-05",
+          "price": 120.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 5,
+      "fields": {
+          "property": 4,
+          "start_date": "2023-06-15",
+          "end_date": "2023-06-30",
+          "price": 180.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 6,
+      "fields": {
+          "property": 5,
+          "start_date": "2023-07-01",
+          "end_date": "2023-07-31",
+          "price": 200.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 7,
+      "fields": {
+          "property": 11,
+          "start_date": "2023-08-01",
+          "end_date": "2023-08-31",
+          "price": 150.0
+      }
+  },
+  {
+      "model": "properties.pricetag",
+      "pk": 8,
+      "fields": {
+          "property": 14,
+          "start_date": "2023-09-01",
+          "end_date": "2023-09-30",
+          "price": 175.0
+      }
+  }
+  
 ]
