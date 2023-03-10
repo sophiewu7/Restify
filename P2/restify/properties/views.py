@@ -173,6 +173,39 @@ class PropertySearchView(generics.ListAPIView):
         if washrooms is not None:
             queryset = queryset.filter(washrooms__gte=int(washrooms))
 
+        # Filter by amenities
+        swimpool = self.request.query_params.get('swimpool', None)
+        if swimpool is not None:
+            queryset = queryset.filter(swimpool=bool(swimpool))
+
+        wifi = self.request.query_params.get('wifi', None)
+        if wifi is not None:
+            queryset = queryset.filter(wifi=bool(wifi))
+
+        tv = self.request.query_params.get('tv', None)
+        if tv is not None:
+            queryset = queryset.filter(tv=bool(tv))
+
+        gym = self.request.query_params.get('gym', None)
+        if gym is not None:
+            queryset = queryset.filter(gym=bool(gym))
+
+        fire_extinguisher = self.request.query_params.get('fire_extinguisher', None)
+        if fire_extinguisher is not None:
+            queryset = queryset.filter(fire_extinguisher=bool(fire_extinguisher))
+
+        aircondition = self.request.query_params.get('aircondition', None)
+        if aircondition is not None:
+            queryset = queryset.filter(aircondition=bool(aircondition))
+
+        parking = self.request.query_params.get('parking', None)
+        if parking is not None:
+            queryset = queryset.filter(parking=bool(parking))
+
+        bathtub = self.request.query_params.get('bathtub', None)
+        if bathtub is not None:
+            queryset = queryset.filter(bathtub=bool(bathtub))
+
         order_by = self.request.query_params.get('order_by', None)
         if order_by == 'highest_price':
             queryset = queryset.order_by('-price')
