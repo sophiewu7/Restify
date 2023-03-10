@@ -64,7 +64,7 @@ class Property(models.Model):
 
 
 
-class Availability(models.Model):
+class Pricetag(models.Model):
     start_date = models.DateField(blank=False, null=False)
     end_date = models.DateField(blank=False, null=False)
     price = models.FloatField(blank=False, null=False, default=100)

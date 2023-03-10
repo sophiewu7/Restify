@@ -4,7 +4,7 @@ from django.db.models import Q
 from datetime import datetime, date
 
 # Create your views here.
-from .models import Property, Availability
+from .models import Property, Pricetag
 from .serializers import PropertySerializer, AvailabilitySerializer
 # , SearchSerializer
 
@@ -123,13 +123,13 @@ class AvailabilityListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
-    queryset = Availability.objects.all()
+    queryset = Pricetag.objects.all()
     serializer_class = AvailabilitySerializer
 
     def get_queryset(self):
         property_id = self.kwargs['id']
         item = get_object_or_404(Property, id=property_id)
-        return Availability.objects.filter(property=item)
+        return Pricetag.objects.filter(property=item)
 
 
 class IsAvailabilityOwner(BasePermission):
@@ -141,7 +141,7 @@ class AvailabilityDestroyView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated, IsAvailabilityOwner]
     authentication_classes = [JWTAuthentication]
 
-    queryset = Availability.objects.all()
+    queryset = Pricetag.objects.all()
     serializer_class = AvailabilitySerializer
     lookup_field = 'id'
 

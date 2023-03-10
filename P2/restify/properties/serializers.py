@@ -1,5 +1,5 @@
 
-from .models import Property, Availability
+from .models import Property, Pricetag
 from rest_framework import serializers
 from datetime import date, datetime
 
@@ -57,7 +57,7 @@ class PropertySerializer(serializers.ModelSerializer):
 class AvailabilitySerializer(serializers.ModelSerializer):
     property_id = serializers.ReadOnlyField(source='property.id')
     class Meta:
-        model = Availability
+        model = Pricetag
         fields = [
             'id',
             'start_date',
