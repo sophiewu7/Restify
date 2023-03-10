@@ -806,5 +806,122 @@
         "image1": "property_image/place5.jpg",
         "image2": ""
       }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 1,
+      "fields": {
+          "reserve_guest": 3,
+          "reserve_host": 2,
+          "reserve_property": 2,
+          "check_in": "2023-07-01",
+          "check_out": "2023-07-05",
+          "status": "pending",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 2,
+      "fields": {
+          "reserve_guest": 4,
+          "reserve_host": 2,
+          "reserve_property": 2,
+          "check_in": "2023-07-05",
+          "check_out": "2023-07-08",
+          "status": "pending",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 3,
+      "fields": {
+          "reserve_guest": 5,
+          "reserve_host": 2,
+          "reserve_property": 3,
+          "check_in": "2023-08-20",
+          "check_out": "2023-08-22",
+          "status": "approved",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 4,
+      "fields": {
+          "reserve_guest": 2,
+          "reserve_host": 3,
+          "reserve_property": 11,
+          "check_in": "2023-05-01",
+          "check_out": "2023-05-03",
+          "status": "pending",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 5,
+      "fields": {
+          "reserve_guest": 2,
+          "reserve_host": 4,
+          "reserve_property": 14,
+          "check_in": "2023-05-03",
+          "check_out": "2023-05-05",
+          "status": "pending",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 6,
+      "fields": {
+          "reserve_guest": 5,
+          "reserve_host": 2,
+          "reserve_property": 3,
+          "check_in": "2023-03-23",
+          "check_out": "2023-03-24",
+          "status": "terminated",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 7,
+      "fields": {
+          "reserve_guest": 4,
+          "reserve_host": 2,
+          "reserve_property": 4,
+          "check_in": "2023-05-23",
+          "check_out": "2023-05-24",
+          "status": "denied",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 8,
+      "fields": {
+          "reserve_guest": 3,
+          "reserve_host": 2,
+          "reserve_property": 5,
+          "check_in": "2023-02-15",
+          "check_out": "2023-02-17",
+          "status": "completed",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
+    },
+    {
+      "model": "reservations.reservation",
+      "pk": 9,
+      "fields": {
+          "reserve_guest": 4,
+          "reserve_host": 2,
+          "reserve_property": 5,
+          "check_in": "2023-02-15",
+          "check_out": "2023-02-17",
+          "status": "canceled",
+          "last_modified": "2023-03-09T00:00:00Z"
+      }
     }
 ]
