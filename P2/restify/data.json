@@ -95,7 +95,7 @@
             "aircondition": true,
             "parking": false,
             "bathtub": false,
-            "status": true,
+            "status": false,
             "price": 100,
             "image1": "property_image/property_details1.jpg",
             "image2": "property_image/property_details2.jpg",
@@ -136,7 +136,7 @@
         "parking": false,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 120,
         "image1": "property_image/place2.jpg",
         "image2": "",
         "last_modified": "2023-03-09T00:00:00Z"
@@ -169,7 +169,7 @@
       "parking": true,
       "bathtub": false,
       "status": true,
-      "price": 100,
+      "price": 300,
       "image1": "property_image/place3.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -203,75 +203,7 @@
       "parking": true,
       "bathtub": false,
       "status": true,
-      "price": 100,
-      "image1": "property_image/place4.jpg",
-      "image2": "",
-      "last_modified": "2023-03-09T00:00:00Z"
-    }
-  },
-  {
-    "model": "properties.property",
-    "pk": 3,
-    "fields": {
-      "owner": 2,
-      "property_name": "Cozy House",
-      "country": "United States",
-      "city": "Los Angeles",
-      "detailed_address": "5678 Sunset Blvd",
-      "zip_postcode": "90027",
-      "phone_number": "555-123-4567",
-      "email": "johndoe@example.com",
-      "property_type": "House",
-      "bedrooms": 6,
-      "washrooms": 6,
-      "livingrooms": 2,
-      "guests": 12,
-      "place_type": "",
-      "property_description": "A cozy and charming house located in the heart of Los Angeles.",
-      "swimpool": true,
-      "wifi": true,
-      "tv": true,
-      "gym": true,
-      "fire_extinguisher": true,
-      "aircondition": true,
-      "parking": true,
-      "bathtub": false,
-      "status": true,
-      "price": 100,
-      "image1": "property_image/place3.jpg",
-      "image2": "",
-      "last_modified": "2023-03-09T00:00:00Z"
-    }
-  },
-  {
-    "model": "properties.property",
-    "pk": 4,
-    "fields": {
-      "owner": 2,
-      "property_name": "Stylish Townhouse",
-      "country": "United States",
-      "city": "Los Angeles",
-      "detailed_address": "9876 Melrose Ave",
-      "zip_postcode": "90069",
-      "phone_number": "555-123-4567",
-      "email": "johndoe@example.com",
-      "property_type": "Townhouse",
-      "bedrooms": 4,
-      "washrooms": 3,
-      "livingrooms": 1,
-      "guests": 8,
-      "place_type": "",
-      "property_description": "A stylish and elegant townhouse in the heart of Los Angeles.",
-      "swimpool": false,
-      "wifi": true,
-      "tv": true,
-      "gym": true,
-      "fire_extinguisher": true,
-      "aircondition": true,
-      "parking": true,
-      "bathtub": false,
-      "status": true,
-      "price": 100,
+      "price": 180,
       "image1": "property_image/place4.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -305,7 +237,7 @@
       "parking": true,
       "bathtub": false,
       "status": true,
-      "price": 100,
+      "price": 150,
       "image1": "property_image/place5.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -339,7 +271,7 @@
       "parking": true,
       "bathtub": true,
       "status": true,
-      "price": 100,
+      "price": 320,
       "image1": "property_image/place6.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -373,7 +305,7 @@
       "parking": true,
       "bathtub": false,
       "status": true,
-      "price": 100,
+      "price": 175,
       "image1": "property_image/place7.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -407,7 +339,7 @@
       "parking": false,
       "bathtub": false,
       "status": true,
-      "price": 100,
+      "price": 225,
       "image1": "property_image/place8.jpg",
       "image2": "",
       "last_modified": "2023-03-09T00:00:00Z"
@@ -441,7 +373,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 400,
         "image1": "property_image/place9.jpg",
         "image2": ""
     }
@@ -474,7 +406,7 @@
         "parking": true,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 250,
         "image1": "property_image/place1.jpg",
         "image2": ""
     }
@@ -507,7 +439,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 200,
         "image1": "property_image/place2.jpg",
         "image2": ""
         }
@@ -540,7 +472,7 @@
         "parking": false,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 150,
         "image1": "property_image/place3.jpg",
         "image2": ""
       }
@@ -573,7 +505,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 175,
         "image1": "property_image/place4.jpg",
         "image2": ""
       }
@@ -606,7 +538,7 @@
         "parking": true,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 200,
         "image1": "property_image/place5.jpg",
         "image2": ""
       }
@@ -639,7 +571,7 @@
         "parking": true,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 275,
         "image1": "property_image/place6.jpg",
         "image2": ""
       }
@@ -672,7 +604,7 @@
         "parking": true,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 150,
         "image1": "property_image/place7.jpg",
         "image2": ""
       }
@@ -705,7 +637,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 400,
         "image1": "property_image/place8.jpg",
         "image2": ""
       }
@@ -738,7 +670,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 700,
         "image1": "property_image/place9.jpg",
         "image2": ""
       }
@@ -771,7 +703,7 @@
         "parking": false,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 500,
         "image1": "property_image/place2.jpg",
         "image2": ""
       }
@@ -804,7 +736,7 @@
         "parking": true,
         "bathtub": true,
         "status": true,
-        "price": 100,
+        "price": 600,
         "image1": "property_image/place3.jpg",
         "image2": ""
       }
@@ -837,7 +769,7 @@
         "parking": false,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 450,
         "image1": "property_image/place4.jpg",
         "image2": ""
       }
@@ -870,7 +802,7 @@
         "parking": true,
         "bathtub": false,
         "status": true,
-        "price": 100,
+        "price": 580,
         "image1": "property_image/place5.jpg",
         "image2": ""
       }
