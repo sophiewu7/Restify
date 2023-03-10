@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from .models import PropertyComment, UserComment
-# from ..accounts.models import User
 from properties import models
 from .serializers import PropertyCommentSerializer, UserCommentSerializer
 from django.shortcuts import get_object_or_404
@@ -86,14 +85,14 @@ class PropertyReply(APIView):
 
 # /comments/user/<user_id>/ [get]: To view comments on a user
 # /comments/user/<user_id>/ [post]: For host to add a comment on a user
-from accounts import models
 
 class UserComment(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     
     def get(self, request, *args, **kwargs):
-        user_id = self.kwargs.get('user_id')        
+        user_id = self.kwargs.get('user_id')    
+        from accounts import models    
         user_object = get_object_or_404(models.User, pk=user_id)
         comments = user_object.host_comment.all()
 
@@ -101,7 +100,8 @@ class UserComment(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
-        user_id = self.kwargs.get('user_id')        
+        user_id = self.kwargs.get('user_id')    
+        from accounts import models    
         user_object = get_object_or_404(models.User, pk=user_id)
         
         data = {
