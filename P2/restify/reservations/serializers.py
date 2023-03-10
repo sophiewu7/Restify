@@ -1,6 +1,8 @@
 from .models import Reservation
 from rest_framework import serializers
 from datetime import date, datetime
+from properties.models import Property
+from django.shortcuts import render, get_object_or_404
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -26,11 +28,8 @@ class ReservationSerializer(serializers.ModelSerializer):
     def validate(self, data):
         start_date = data.get('start_date')
         end_date = data.get('end_date')
-        status = data.get('status')
         today = date.today()
         if start_date > end_date or start_date < today:
             raise serializers.ValidationError({'start_date': 'Start date cannot be in the past.'})
-        if status is False:
-            raise serializers.ValidationError({'status': 'Cannot book, this property is currently unavailable.'})
         return super().validate(data)
 

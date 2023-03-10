@@ -22,7 +22,8 @@ class ReservationCreateView(generics.CreateAPIView):
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
+        if reserve_property.status is False:
+            return Response({'error': 'Cannot book, this property is currently unavailable.'})
         reservation = serializer.save(
             reserve_guest=self.request.user,
             reserve_property=reserve_property,
