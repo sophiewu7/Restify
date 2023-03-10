@@ -12,9 +12,9 @@ urlpatterns = [
     path('<int:id>/delete/',views.PropertyDestroyView.as_view()),
     path('<int:id>/detail/',views.PropertyDetailView.as_view()),
 
-    path('<int:id>/availability/create/', views.AvailListCreateView.as_view()),
-    path('<int:id>/availability/list/', views.AvailabilityListView.as_view()),
-    path('availability/<int:id>/delete/', views.AvailabilityDestroyView.as_view()),
+    path('<int:id>/price/create/', views.PriceListCreateView.as_view()),
+    path('<int:id>/price/list/', views.PriceListView.as_view()),
+    path('price/<int:id>/delete/', views.PriceDestroyView.as_view()),
 
     path('search/', views.PropertySearchView.as_view()),
 

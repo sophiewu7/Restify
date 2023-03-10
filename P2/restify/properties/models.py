@@ -61,12 +61,10 @@ class Property(models.Model):
     image7 = models.ImageField(upload_to='property_image/', blank=True, null=True)
     image8 = models.ImageField(upload_to='property_image/', blank=True, null=True)
 
-
-
-
 class Pricetag(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
     start_date = models.DateField(blank=False, null=False)
     end_date = models.DateField(blank=False, null=False)
     price = models.FloatField(blank=False, null=False, default=100)
-    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+   
 

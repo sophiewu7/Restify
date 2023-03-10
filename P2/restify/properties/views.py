@@ -5,7 +5,7 @@ from datetime import datetime, date
 
 # Create your views here.
 from .models import Property, Pricetag
-from .serializers import PropertySerializer, AvailabilitySerializer, SearchSerializer
+from .serializers import PropertySerializer, PricetagSerializer, SearchSerializer
 
 from rest_framework import generics, status, filters
 from rest_framework.permissions import IsAuthenticated, BasePermission
@@ -99,11 +99,14 @@ class PropertyUpdateView(generics.UpdateAPIView):
         super().perform_update(serializer)
 
 
-class AvailListCreateView(generics.CreateAPIView):
+class PriceListCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
-    serializer_class = AvailabilitySerializer
+    serializer_class = PricetagSerializer
+
+    def get_queryset(self):
+        return Property.objects.filter(owner=self.request.user)
 
     def create(self, request, *args, **kwargs):
         property_id = self.kwargs['id']
@@ -118,12 +121,12 @@ class AvailListCreateView(generics.CreateAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class AvailabilityListView(generics.ListAPIView):
+class PriceListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
     queryset = Pricetag.objects.all()
-    serializer_class = AvailabilitySerializer
+    serializer_class = PricetagSerializer
 
     def get_queryset(self):
         property_id = self.kwargs['id']
@@ -131,17 +134,17 @@ class AvailabilityListView(generics.ListAPIView):
         return Pricetag.objects.filter(property=item)
 
 
-class IsAvailabilityOwner(BasePermission):
+class IsPriceTagOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.property.owner == request.user
 
 
-class AvailabilityDestroyView(generics.DestroyAPIView):
-    permission_classes = [IsAuthenticated, IsAvailabilityOwner]
+class PriceDestroyView(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated, IsPriceTagOwner]
     authentication_classes = [JWTAuthentication]
 
     queryset = Pricetag.objects.all()
-    serializer_class = AvailabilitySerializer
+    serializer_class = PricetagSerializer
     lookup_field = 'id'
 
     def perform_destroy(self, instance):

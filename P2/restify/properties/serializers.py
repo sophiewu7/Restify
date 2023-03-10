@@ -54,7 +54,8 @@ class PropertySerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'price': 'Price cannot negative.'})
         return super().validate(data)
 
-class AvailabilitySerializer(serializers.ModelSerializer):
+
+class PricetagSerializer(serializers.ModelSerializer):
     property_id = serializers.ReadOnlyField(source='property.id')
     class Meta:
         model = Pricetag
@@ -68,7 +69,6 @@ class AvailabilitySerializer(serializers.ModelSerializer):
 
 
 class SearchSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Property
         fields = [
