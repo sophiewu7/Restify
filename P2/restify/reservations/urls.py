@@ -9,4 +9,7 @@ urlpatterns = [
     path('property/<int:id>/book/', views.ReservationCreateView.as_view()),
     path('guest/list/', views.ReservationGuestListView.as_view()),
     path('host/list/', views.ReservationHostListView.as_view()),
+
+    path('guest/<int:id>/', views.ReservationGuestUpdateView.as_view()),
+    path('host/<int:id>/', views.ReservationHostUpdateView.as_view())
 ]
