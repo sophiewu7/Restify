@@ -5,8 +5,7 @@ from datetime import datetime, date
 
 # Create your views here.
 from .models import Property, Pricetag
-from .serializers import PropertySerializer, AvailabilitySerializer
-# , SearchSerializer
+from .serializers import PropertySerializer, AvailabilitySerializer, SearchSerializer
 
 from rest_framework import generics, status, filters
 from rest_framework.permissions import IsAuthenticated, BasePermission
@@ -149,41 +148,40 @@ class AvailabilityDestroyView(generics.DestroyAPIView):
         # instance 
         super().perform_destroy(instance)
 
-# class PropertySearchView(generics.ListAPIView):
-#     serializer_class = PropertySerializer
 
-#     def get_queryset(self):
-#         queryset = Property.objects.all()
+class PropertySearchView(generics.ListAPIView):
+    serializer_class = SearchSerializer
 
-#         search_serializer = SearchSerializer(data=self.request.query_params)
-#         search_serializer.is_valid(raise_exception=True)
-#         search_data = search_serializer.validated_data
+    def get_queryset(self):
+        queryset = Property.objects.filter(status=True)
 
-#         location = search_data.get('location')
-#         check_in = search_data.get('check_in')
-#         check_out = search_data.get('check_out')
-#         guests = search_data.get('guests')
-#         min_price = search_data.get('min_price')
-#         max_price = search_data.get('max_price')
-#         bedrooms = search_data.get('bedrooms')
-#         washrooms = search_data.get('washrooms')
+        # Get search keyword from URL parameters
+        search_keyword = self.request.query_params.get('search', None)
+        if search_keyword is not None:
+            # Filter by location
+            queryset = queryset.filter(Q(city__icontains=search_keyword) | Q(country__icontains=search_keyword) | Q(detailed_address__icontains=search_keyword) | Q(zip_postcode__icontains=search_keyword))
 
-#         if location:
-#             queryset = queryset.filter(Q(city__icontains=location) | Q(country__icontains=location) | Q(detailed_address__icontains=location) | Q(zip_postcode__icontains=location))
+        guests = self.request.query_params.get('guests', None)
+        if guests is not None:
+            queryset = queryset.filter(guests__gte=int(guests))
 
-#         if check_in and check_out:
-#             availability_queryset = Availability.objects.filter(Q(start_date__lte=check_in, end_date__gte=check_out) | Q(start_date__gte=check_in, end_date__lte=check_out) | Q(start_date__lte=check_in, end_date__gte=check_in) | Q(start_date__lte=check_out, end_date__gte=check_out))
-#             if guests:
-#                 availability_queryset = availability_queryset.filter(property__max_guests__gte=guests)
-#             if min_price:
-#                 availability_queryset = availability_queryset.filter(price__gte=min_price)
-#             if max_price:
-#                 availability_queryset = availability_queryset.filter(price__lte=max_price)
-#             if bedrooms:
-#                 availability_queryset = availability_queryset.filter(property__num_bedrooms=bedrooms)
-#             if washrooms:
-#                 availability_queryset = availability_queryset.filter(property__num_washrooms=washrooms)
-#             property_ids = [availability.property.id for availability in availability_queryset]
-#             queryset = queryset.filter(id__in=property_ids)
+        bedrooms = self.request.query_params.get('bedrooms', None)
+        if bedrooms is not None:
+            queryset = queryset.filter(bedrooms__gte=int(bedrooms))
 
-#         return queryset
+        washrooms = self.request.query_params.get('washrooms', None)
+        if washrooms is not None:
+            queryset = queryset.filter(washrooms__gte=int(washrooms))
+
+        order_by = self.request.query_params.get('order_by', None)
+        if order_by == 'highest_price':
+            queryset = queryset.order_by('-price')
+        elif order_by == 'lowest_price':
+            queryset = queryset.order_by('price')
+        elif order_by == 'bedrooms':
+            queryset = queryset.order_by('-bedrooms')
+        elif order_by == 'washrooms':
+            queryset = queryset.order_by('-washrooms')
+
+        return queryset
+

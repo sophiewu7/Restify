@@ -16,6 +16,6 @@ urlpatterns = [
     path('<int:id>/availability/list/', views.AvailabilityListView.as_view()),
     path('availability/<int:id>/delete/', views.AvailabilityDestroyView.as_view()),
 
-    # path('search/', views.PropertySearchView.as_view()),
+    path('search/', views.PropertySearchView.as_view()),
 
 ]
