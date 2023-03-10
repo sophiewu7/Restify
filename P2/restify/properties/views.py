@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 # Create your views here.
 from .models import Property, Pricetag
+from reservations.models import Reservation
 from .serializers import PropertySerializer, PricetagSerializer, SearchSerializer
 
 from rest_framework import generics, status, filters
@@ -167,6 +168,13 @@ class PropertySearchView(generics.ListAPIView):
             queryset = queryset.filter(Q(city__icontains=search_keyword) | Q(country__icontains=search_keyword) | Q(detailed_address__icontains=search_keyword) | Q(zip_postcode__icontains=search_keyword))
 
         check_in_str = self.request.query_params.get('check_in', None)
+        check_out_str = self.request.query_params.get('check_out', None)
+
+        if check_in_str is None:
+            raise ValidationError('Please enter your check in date.')
+        if check_out_str is None:
+            raise ValidationError('Please enter your check out date.')
+        
         if check_in_str is not None:
             try:
                 check_in = datetime.strptime(check_in_str, '%Y-%m-%d').date()
@@ -175,7 +183,6 @@ class PropertySearchView(generics.ListAPIView):
             except ValueError:
                 raise ValidationError('Check-in date must be in the format YYYY-MM-DD.')
         
-        check_out_str = self.request.query_params.get('check_out', None)
         if check_out_str is not None:
             try:
                 check_out = datetime.strptime(check_out_str, '%Y-%m-%d').date()
@@ -185,6 +192,14 @@ class PropertySearchView(generics.ListAPIView):
                     raise ValidationError('Check-out date cannot be prior to check-in date.')
             except ValueError:
                 raise ValidationError('Check-out date must be in the format YYYY-MM-DD.')
+
+        reserved_property_ids = Reservation.objects.filter(
+                                Q(status=Reservation.APPROVED) &
+                                Q(check_in__lte=check_out, check_out__gte=check_in)
+                               ).values_list('reserve_property_id')
+                                
+        queryset = queryset.exclude(id__in=reserved_property_ids)
+
 
         min_price_str = self.request.query_params.get('min_price', None)
         if min_price_str is not None:
