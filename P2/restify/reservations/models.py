@@ -7,8 +7,8 @@ class Reservation(models.Model):
     reserve_guest = models.ForeignKey(User, on_delete=models.CASCADE)
     reserve_host = models.IntegerField(blank=False, null=False)
     reserve_property = models.ForeignKey(Property, on_delete=models.CASCADE)
-    start_date = models.DateField(blank=False, null=False)
-    end_date = models.DateField(blank=False, null=False)
+    check_in = models.DateField(blank=False, null=False)
+    check_out = models.DateField(blank=False, null=False)
     last_modified = models.DateTimeField(auto_now=True)
 
     PENDING = 'pending'

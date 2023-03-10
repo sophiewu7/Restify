@@ -17,8 +17,8 @@ class ReservationSerializer(serializers.ModelSerializer):
             'reserve_guest',
             'reserve_host',
             'reserve_property',
-            'start_date',
-            'end_date',
+            'check_in',
+            'check_out',
             'last_modified',
             'status'
         ]
@@ -26,10 +26,10 @@ class ReservationSerializer(serializers.ModelSerializer):
         read_only_fields = ['last_modified']
 
     def validate(self, data):
-        start_date = data.get('start_date')
-        end_date = data.get('end_date')
+        check_in = data.get('check_in')
+        check_out = data.get('check_out')
         today = date.today()
-        if start_date > end_date or start_date < today:
-            raise serializers.ValidationError({'start_date': 'Start date cannot be in the past.'})
+        if check_in > check_out or check_in < today:
+            raise serializers.ValidationError({'check_in': 'Start date cannot be in the past.'})
         return super().validate(data)
 
