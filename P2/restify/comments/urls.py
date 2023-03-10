@@ -1,6 +1,4 @@
 from django.urls import path
-
-
 from . import views
 
 # /comments/property/<property_id>/ [get]: List all comments of a property.
