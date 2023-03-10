@@ -1,5 +1,7 @@
 #!/bin/bash
 cd ./restify
-python ./manage.py makemigrations
-python ./manage.py migrate
-python ./manage.py runserver
+python3 ./manage.py flush
+python3 ./manage.py loaddata data.json
+python3 ./manage.py makemigrations
+python3 ./manage.py migrate
+python3 ./manage.py runserver
