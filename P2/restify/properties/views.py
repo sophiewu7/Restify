@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.db.models import Q
 from datetime import datetime, date
+from django.utils import timezone
+from rest_framework.exceptions import ValidationError
 
 # Create your views here.
-from .models import Property, Availability
-from .serializers import PropertySerializer, AvailabilitySerializer
-# , SearchSerializer
+from .models import Property, Pricetag
+from reservations.models import Reservation
+from .serializers import PropertySerializer, PricetagSerializer, SearchSerializer
 
 from rest_framework import generics, status, filters
 from rest_framework.permissions import IsAuthenticated, BasePermission
@@ -100,11 +102,14 @@ class PropertyUpdateView(generics.UpdateAPIView):
         super().perform_update(serializer)
 
 
-class AvailListCreateView(generics.CreateAPIView):
+class PriceListCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
-    serializer_class = AvailabilitySerializer
+    serializer_class = PricetagSerializer
+
+    def get_queryset(self):
+        return Property.objects.filter(owner=self.request.user)
 
     def create(self, request, *args, **kwargs):
         property_id = self.kwargs['id']
@@ -119,71 +124,168 @@ class AvailListCreateView(generics.CreateAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class AvailabilityListView(generics.ListAPIView):
+class PriceListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
-    queryset = Availability.objects.all()
-    serializer_class = AvailabilitySerializer
+    queryset = Pricetag.objects.all()
+    serializer_class = PricetagSerializer
 
     def get_queryset(self):
         property_id = self.kwargs['id']
         item = get_object_or_404(Property, id=property_id)
-        return Availability.objects.filter(property=item)
+        return Pricetag.objects.filter(property=item)
 
 
-class IsAvailabilityOwner(BasePermission):
+class IsPriceTagOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.property.owner == request.user
 
 
-class AvailabilityDestroyView(generics.DestroyAPIView):
-    permission_classes = [IsAuthenticated, IsAvailabilityOwner]
+class PriceDestroyView(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated, IsPriceTagOwner]
     authentication_classes = [JWTAuthentication]
 
-    queryset = Availability.objects.all()
-    serializer_class = AvailabilitySerializer
+    queryset = Pricetag.objects.all()
+    serializer_class = PricetagSerializer
     lookup_field = 'id'
 
     def perform_destroy(self, instance):
         # instance 
         super().perform_destroy(instance)
 
-# class PropertySearchView(generics.ListAPIView):
-#     serializer_class = PropertySerializer
 
-#     def get_queryset(self):
-#         queryset = Property.objects.all()
+class PropertySearchView(generics.ListAPIView):
+    serializer_class = SearchSerializer
 
-#         search_serializer = SearchSerializer(data=self.request.query_params)
-#         search_serializer.is_valid(raise_exception=True)
-#         search_data = search_serializer.validated_data
+    def get_queryset(self):
+        queryset = Property.objects.filter(status=True)
 
-#         location = search_data.get('location')
-#         check_in = search_data.get('check_in')
-#         check_out = search_data.get('check_out')
-#         guests = search_data.get('guests')
-#         min_price = search_data.get('min_price')
-#         max_price = search_data.get('max_price')
-#         bedrooms = search_data.get('bedrooms')
-#         washrooms = search_data.get('washrooms')
+        # Get search keyword from URL parameters
+        search_keyword = self.request.query_params.get('search', None)
+        if search_keyword is not None:
+            # Filter by location
+            queryset = queryset.filter(Q(city__icontains=search_keyword) | Q(country__icontains=search_keyword) | Q(detailed_address__icontains=search_keyword) | Q(zip_postcode__icontains=search_keyword))
 
-#         if location:
-#             queryset = queryset.filter(Q(city__icontains=location) | Q(country__icontains=location) | Q(detailed_address__icontains=location) | Q(zip_postcode__icontains=location))
+        check_in_str = self.request.query_params.get('check_in', None)
+        check_out_str = self.request.query_params.get('check_out', None)
 
-#         if check_in and check_out:
-#             availability_queryset = Availability.objects.filter(Q(start_date__lte=check_in, end_date__gte=check_out) | Q(start_date__gte=check_in, end_date__lte=check_out) | Q(start_date__lte=check_in, end_date__gte=check_in) | Q(start_date__lte=check_out, end_date__gte=check_out))
-#             if guests:
-#                 availability_queryset = availability_queryset.filter(property__max_guests__gte=guests)
-#             if min_price:
-#                 availability_queryset = availability_queryset.filter(price__gte=min_price)
-#             if max_price:
-#                 availability_queryset = availability_queryset.filter(price__lte=max_price)
-#             if bedrooms:
-#                 availability_queryset = availability_queryset.filter(property__num_bedrooms=bedrooms)
-#             if washrooms:
-#                 availability_queryset = availability_queryset.filter(property__num_washrooms=washrooms)
-#             property_ids = [availability.property.id for availability in availability_queryset]
-#             queryset = queryset.filter(id__in=property_ids)
+        if check_in_str is None:
+            raise ValidationError('Please enter your check in date.')
+        if check_out_str is None:
+            raise ValidationError('Please enter your check out date.')
+        
+        if check_in_str is not None:
+            try:
+                check_in = datetime.strptime(check_in_str, '%Y-%m-%d').date()
+                if check_in < timezone.now().date():
+                    raise ValidationError('Check-in date cannot be in the past.')
+            except ValueError:
+                raise ValidationError('Check-in date must be in the format YYYY-MM-DD.')
+        
+        if check_out_str is not None:
+            try:
+                check_out = datetime.strptime(check_out_str, '%Y-%m-%d').date()
+                if check_out < timezone.now().date():
+                    raise ValidationError('Check-out date cannot be in the past.')
+                if check_out < check_in:
+                    raise ValidationError('Check-out date cannot be prior to check-in date.')
+            except ValueError:
+                raise ValidationError('Check-out date must be in the format YYYY-MM-DD.')
 
-#         return queryset
+        reserved_property_ids = Reservation.objects.filter(
+                                Q(status=Reservation.APPROVED) &
+                                Q(check_in__lt=check_out, check_out__gt=check_in)
+                               ).values_list('reserve_property_id')
+                                
+        queryset = queryset.exclude(id__in=reserved_property_ids)
+
+        min_price_str = self.request.query_params.get('min_price', None)
+        if min_price_str is not None:
+            try:
+                min_price = float(min_price_str)
+                if min_price < 0:
+                    raise ValidationError('Minimum price cannot be negative.')
+                cheap_property_ids = Pricetag.objects.filter(
+                                        Q(start_date__lt=check_out, end_date__gt=check_in) &
+                                        Q(price__lte=float(min_price))
+                                      ).values_list('property_id')
+                queryset = queryset.exclude(id__in=cheap_property_ids)
+                queryset = queryset.filter(price__gte=float(min_price))
+            except ValueError:
+                raise ValidationError('Minimum price must be a positive integer.')
+
+        max_price_str = self.request.query_params.get('max_price', None)
+        if max_price_str is not None:
+            try:
+                max_price = float(max_price_str)
+                if max_price < 0:
+                    raise ValidationError('Maximum price cannot be negative.')
+                if min_price is not None and max_price < min_price:
+                    raise ValidationError('Maximum price cannot be less than minimum price.')
+                expansive_property_ids = Pricetag.objects.filter(
+                                        Q(start_date__lt=check_out, end_date__gt=check_in) &
+                                        Q(price__gte=float(max_price))
+                                      ).values_list('property_id')
+                queryset = queryset.exclude(id__in=expansive_property_ids)
+                queryset = queryset.filter(price__lte=float(max_price))
+            except ValueError:
+                raise ValidationError('Maximum price must be a positive integer.')
+
+        guests = self.request.query_params.get('guests', None)
+        if guests is not None:
+            queryset = queryset.filter(guests__gte=int(guests))
+
+        bedrooms = self.request.query_params.get('bedrooms', None)
+        if bedrooms is not None:
+            queryset = queryset.filter(bedrooms__gte=int(bedrooms))
+
+        washrooms = self.request.query_params.get('washrooms', None)
+        if washrooms is not None:
+            queryset = queryset.filter(washrooms__gte=int(washrooms))
+
+        # Filter by amenities
+        swimpool = self.request.query_params.get('swimpool', None)
+        if swimpool is not None:
+            queryset = queryset.filter(swimpool=bool(swimpool))
+
+        wifi = self.request.query_params.get('wifi', None)
+        if wifi is not None:
+            queryset = queryset.filter(wifi=bool(wifi))
+
+        tv = self.request.query_params.get('tv', None)
+        if tv is not None:
+            queryset = queryset.filter(tv=bool(tv))
+
+        gym = self.request.query_params.get('gym', None)
+        if gym is not None:
+            queryset = queryset.filter(gym=bool(gym))
+
+        fire_extinguisher = self.request.query_params.get('fire_extinguisher', None)
+        if fire_extinguisher is not None:
+            queryset = queryset.filter(fire_extinguisher=bool(fire_extinguisher))
+
+        aircondition = self.request.query_params.get('aircondition', None)
+        if aircondition is not None:
+            queryset = queryset.filter(aircondition=bool(aircondition))
+
+        parking = self.request.query_params.get('parking', None)
+        if parking is not None:
+            queryset = queryset.filter(parking=bool(parking))
+
+        bathtub = self.request.query_params.get('bathtub', None)
+        if bathtub is not None:
+            queryset = queryset.filter(bathtub=bool(bathtub))
+
+        order_by = self.request.query_params.get('order_by', None)
+        if order_by == 'highest_price':
+            queryset = queryset.order_by('-price')
+        elif order_by == 'lowest_price':
+            queryset = queryset.order_by('price')
+        elif order_by == 'bedrooms':
+            queryset = queryset.order_by('-bedrooms')
+        elif order_by == 'washrooms':
+            queryset = queryset.order_by('-washrooms')
+
+        return queryset
+
