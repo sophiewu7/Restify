@@ -11,6 +11,7 @@ class Reservation(models.Model):
     check_out = models.DateField(blank=False, null=False)
     last_modified = models.DateTimeField(auto_now=True)
 
+
     PENDING = 'pending'
     DENIED = 'denied'
     APPROVED = 'approved'
@@ -18,6 +19,7 @@ class Reservation(models.Model):
     TERMINATED = 'terminated'
     COMPLETED = 'completed'
     EXPIRED = 'expired'
+
 
     STATUS_CHOICES = [
         (PENDING, 'Pending'),
