@@ -19,6 +19,7 @@ class Reservation(models.Model):
     TERMINATED = 'terminated'
     COMPLETED = 'completed'
     EXPIRED = 'expired'
+    PENDING_CANCELED = 'pending_canceld'
 
 
     STATUS_CHOICES = [
@@ -29,6 +30,7 @@ class Reservation(models.Model):
         (TERMINATED, 'Terminated'),
         (COMPLETED, 'Completed'),
         (EXPIRED, 'Expired'),
+        (PENDING_CANCELED, 'Pending_Canceled')
     ]
     status = models.CharField(
         max_length=20,

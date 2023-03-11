@@ -178,7 +178,7 @@ class ReservationGuestUpdateView(generics.UpdateAPIView):
         status_keyword = self.request.query_params.get('status', None)
         if status_keyword == 'cancel':
             instance = self.get_object()
-            instance.status = Reservation.CANCELED
+            instance.status = Reservation.PENDING_CANCELED
             instance.save()
 
             serializer = self.serializer_class(instance)
@@ -206,6 +206,8 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
         status_keyword = self.request.query_params.get('status', None)
         if status_keyword == 'approve':
             instance = self.get_object()
+            if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
+                return Response({'error': 'You can only approve an pending reservation'})
             instance.status = Reservation.APPROVED
             instance.save()
 
@@ -213,6 +215,8 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
             return Response(serializer.data)
         elif status_keyword == 'deny':
             instance = self.get_object()
+            if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
+                return Response({'error': 'You can only deny an pending reservation'})
             instance.status = Reservation.DENIED
             instance.save()
 
