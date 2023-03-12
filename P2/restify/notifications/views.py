@@ -13,6 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import authentication, permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.pagination import PageNumberPagination
 
 # /notifications/ [get]: List bot user and host notifications for a user
 # /notifications/ [post]: create a user or host notification for a user
@@ -21,9 +22,10 @@ class AllNotifications(APIView):
     authentication_classes = [JWTAuthentication]
     
     def get(self, request, *args, **kwargs):
-        notifications = request.user.notifications.all()
+        paginator = PageNumberPagination()
+        notifications = paginator.paginate_queryset(request.user.notifications.all(), request)
         serializer = NotificationSerializer(notifications, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return paginator.get_paginated_response(serializer.data)
     
     def post(self, request, *args, **kwargs):
         data = {
