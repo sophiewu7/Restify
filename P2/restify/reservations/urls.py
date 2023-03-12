@@ -11,5 +11,13 @@ urlpatterns = [
     path('host/list/', views.ReservationHostListView.as_view()),
 
     path('guest/<int:id>/', views.ReservationGuestUpdateView.as_view()),
-    path('host/<int:id>/', views.ReservationHostUpdateView.as_view())
+    path('host/<int:id>/', views.ReservationHostUpdateView.as_view()),
+    path('completed/list/', views.ReservationCompletedListView.as_view()),
+    path('approved/list/', views.ReservationApproveListView.as_view()),
+    path('denied/list/', views.ReservationDenyListView.as_view()),
+    path('pending/list/', views.ReservationPendingListView.as_view()),
+    path('expired/list/', views.ReservationExpiredListView.as_view()),
+    path('terminated/list/', views.ReservationTerminatedListView.as_view()),
+    path('canceled/list/', views.ReservationCancelListView.as_view()),
+
 ]

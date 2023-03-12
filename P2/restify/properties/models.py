@@ -13,29 +13,11 @@ class Property(models.Model):
     phone_number = models.CharField(max_length=20, blank=True, null=True, validators=[MinLengthValidator(8)])
     email = models.EmailField(blank=True, null=True, error_messages={'invalid': 'Enter a valid email address'})
 
-    # PROPERTY_TYPE_CHOICES = [
-    #     ('house', 'House'),
-    #     ('villa', 'Villa'),
-    #     ('apartment', 'Apartment'),
-    #     ('cabin', 'Cabin'),
-    #     ('barn', 'Barn'),
-    #     ('tree house', 'Tree House'),
-    #     ('hotel', 'Hotel')
-    # ]
-
-    # PLACE_TYPE_CHOICES = [
-    #     ('The entire place', 'The entire place'),
-    #     ('A private room', 'A private room'),
-    #     ('A shared room', 'A shared room')
-    # ]
-
-    #property_type = models.CharField(max_length=128, choices=PROPERTY_TYPE_CHOICES)
     property_type = models.CharField(max_length=128, blank=False, null=False)
     bedrooms = models.PositiveIntegerField(blank=False, null=False)
     washrooms = models.PositiveIntegerField(blank=False, null=False)
     livingrooms = models.PositiveIntegerField(blank=False, null=False)
     guests = models.PositiveIntegerField(blank=False, null=False)
-    #place_type = models.CharField(max_length=120, choices=PLACE_TYPE_CHOICES)
     place_type = models.CharField(max_length=120, blank=True, null=True)
     property_description = models.TextField(blank=True, null=True)
     last_modified = models.DateTimeField(auto_now=True)
