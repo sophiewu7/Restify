@@ -19,7 +19,7 @@ class Reservation(models.Model):
     TERMINATED = 'terminated'
     COMPLETED = 'completed'
     EXPIRED = 'expired'
-    PENDING_CANCELED = 'pending_canceld'
+    PENDING_CANCELED = 'pending_canceled'
 
 
     STATUS_CHOICES = [

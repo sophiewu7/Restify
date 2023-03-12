@@ -2,9 +2,9 @@ from django.db import models
 
 CHOICES = (
     ("NEW", "Host: New Reservation"),
-    ("HCANCLE", "Host: Reservation Canceled"),
+    ("HCANCEL", "Host: Reservation Canceled"),
     ("APPROVED", "User: Approved Reservation" ),
-    ("UCANCLE", "User: Requst Canceled")
+    ("UCANCEL", "User: Requst Canceled")
 )
 
 class Notification(models.Model):
