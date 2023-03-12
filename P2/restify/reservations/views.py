@@ -152,6 +152,17 @@ class ReservationExpiredListView(generics.ListAPIView):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.EXPIRED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.EXPIRED) )
 
+class ReservationPendingcancelListView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+
+    def get_queryset(self):
+        return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.PENDING_CANCELED)|
+                                            Q(reserve_guest=self.request.user.id, status=Reservation.PENDING_CANCELED) )
+
 
 class IsReservationGuest(BasePermission):
     def has_object_permission(self, request, view, obj):

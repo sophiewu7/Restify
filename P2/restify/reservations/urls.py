@@ -19,5 +19,6 @@ urlpatterns = [
     path('expired/list/', views.ReservationExpiredListView.as_view()),
     path('terminated/list/', views.ReservationTerminatedListView.as_view()),
     path('canceled/list/', views.ReservationCancelListView.as_view()),
+    path('pendingcanceled/list/', views.ReservationPendingcancelListView.as_view()),
 
 ]
