@@ -16,3 +16,4 @@ pip3 install exc
 
 npm install react
 npm install react-router-dom
+npm install axios redux redux-devtools-extension react-redux redux-thunk
