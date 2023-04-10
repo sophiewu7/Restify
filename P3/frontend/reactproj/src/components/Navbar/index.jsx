@@ -55,6 +55,46 @@ const Navbar = () => {
             {/* My Rental Units */}
             <li className="nav-item mt-2 mt-lg-0">
               <a href="reservation.html" className="nav-link link-dark">My Rental Units</a>
+              </li>
+            <li className="nav-item dropdown d-none d-lg-block">
+              <a className="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <i className="bi bi-bell"></i>
+              </a>
+              <ul className="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a className="dropdown-item" href="message.html">New Messages</a></li>
+                <li><a className="dropdown-item" href="reservation.html">New Comments</a></li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown d-lg-none">
+              <a className="nav-link dropdown-toggle link-dark" href="notification.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Notifications</span>
+              </a>
+              <ul className="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a className="dropdown-item py-1" href="message.html">New Messages</a></li>
+                <li><a className="dropdown-item py-1" href="reservation.html">New Messages</a></li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown d-none d-lg-block">
+              <a className="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="image/profile.jpg" alt="profile picture" className="rounded-circle profile-img" />
+              </a>
+              <ul className="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a className="dropdown-item" href="profile.html">Edit Profile</a></li>
+                <li><a className="dropdown-item" href="help.html">Help</a></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><a className="dropdown-item" href="index_default.html">Log out</a></li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown d-lg-none">
+              <a className="nav-link dropdown-toggle link-dark" href="profile.html" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Accounts</span>
+              </a>
+              <ul className="dropdown-menu dropdown-menu-lg-end" aria-labelledby="notification">
+                <li><a className="dropdown-item" href="profile.html">Edit Profile</a></li>
+                <li><a className="dropdown-item" href="help.html">Help</a></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><a className="dropdown-item" href="index_default.html">Log out</a></li>
+              </ul>
             </li>
           </ul>
         </div>
