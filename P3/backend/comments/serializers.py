@@ -33,7 +33,7 @@ class PropertyCommentSerializer(serializers.ModelSerializer):
     user = UserNameField(read_only=True)  # Set read_only=True to avoid queryset requirement    
     class Meta:
         model = PropertyComment
-        fields = ["text", "property", "parent_comment", "user"]
+        fields = ["text", "property", "parent_comment", "user", "id"]
         extra_kwargs = {
                         'property': {'required': False, 'allow_null': True},
                         'parent_comment': {'required': False, 'allow_null': True},
