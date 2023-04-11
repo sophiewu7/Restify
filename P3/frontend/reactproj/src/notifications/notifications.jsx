@@ -11,7 +11,7 @@ const NotificationPage = () => {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    };
+  };
     
   const CHOICES = new Map([
       ["NEW", "User made a new Reservation"],

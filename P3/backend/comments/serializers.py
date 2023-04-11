@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import PropertyComment, UserComment
 
-
 # class PropertyComment(models.Model):
 #     # the comment 
 #     text = models.TextField()
@@ -20,8 +19,18 @@ from .models import PropertyComment, UserComment
 #     # the comment 
 #     text = models.TextField()
     
+class UserNameField(serializers.StringRelatedField):
+    # Use StringRelatedField instead of RelatedField
+    # to automatically represent the related object as a string
+    # In this case, it will return the user's username as a string
+    # without requiring a queryset
+
+    class Meta:
+        model = 'User'
+        fields = ['first_name']
     
 class PropertyCommentSerializer(serializers.ModelSerializer):
+    user = UserNameField(read_only=True)  # Set read_only=True to avoid queryset requirement    
     class Meta:
         model = PropertyComment
         fields = ["text", "property", "parent_comment", "user"]
