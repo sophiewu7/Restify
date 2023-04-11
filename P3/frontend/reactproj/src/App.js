@@ -6,7 +6,9 @@ import Layout from './hocs/Layout';
 
 import Home from './accounts/Home';
 import Login from './accounts/Login';
-import NotificationPage from './notifications/notifications'
+
+import NotificationPage from './notifications/notifications';
+import CommentSection from './comments/comments';
 import Register from './accounts/Register';
 
 const App = () => (
@@ -17,7 +19,7 @@ const App = () => (
                 <Route exact path='/signup' element={<Register />} />
                 <Route exact path='/login' element={<Login />} />
                 <Route exact path='/notifications' element={<NotificationPage />} />
-
+                <Route exact path='/comments' element={<CommentSection propertyId={1}/>}/>
             </Routes>
         </Layout>
     </Router>
