@@ -6,6 +6,7 @@ import Layout from './hocs/Layout';
 
 import Home from './accounts/Home';
 import Login from './accounts/Login';
+import NotificationPage from './notifications/notifications'
 
 const App = () => (
     <Router>
@@ -13,6 +14,8 @@ const App = () => (
             <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route exact path='/login' element={<Login />} />
+                <Route exact path='/notifications' element={<NotificationPage />} />
+
             </Routes>
         </Layout>
     </Router>
