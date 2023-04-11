@@ -13,23 +13,27 @@ const CommentForm = ({ propertyId, commentId, onCommentSubmit }) => {
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (commentId) {
-        // If commentId is provided, then it's a reply to an existing comment
-        await axios.post(`http://localhost:8000/comments/property/${propertyId}/${commentId}/`, {
-          text: commentText,
-        }, config);
-      } else {
-        // If commentId is not provided, then it's a new comment
-        await axios.post(`http://localhost:8000/comments/property/${propertyId}/`, {
-          text: commentText
-        }, config);
-      }
-      // Reset commentText
-      setCommentText('');
-      // Trigger the onCommentSubmit callback to fetch comments again after successful submission
-      onCommentSubmit();
+        if (commentId) {
+            // If commentId is provided, then it's a reply to an existing comment
+            await axios.post(`http://localhost:8000/comments/property/${propertyId}/${commentId}/`, {
+            text: commentText,
+            }, config).then(response => {
+                onCommentSubmit(response.data); // Update to access the "results" field in the JSON response
+            });
+        } else {
+            // If commentId is not provided, then it's a new comment
+            await axios.post(`http://localhost:8000/comments/property/${propertyId}/`, {
+            text: commentText
+            }, config).then(response => {
+                onCommentSubmit(response.data); // Update to access the "results" field in the JSON response
+            });;
+        }
+        // Reset commentText
+        setCommentText('');
+        // Trigger the onCommentSubmit callback to fetch comments again after successful submission
+        //   onCommentSubmit();
     } catch (error) {
-      console.error('Failed to submit comment:', error);
+        console.error('Failed to submit comment:', error);
     }
   };
 

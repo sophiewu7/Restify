@@ -38,7 +38,7 @@ class PropertyCommentSerializer(serializers.ModelSerializer):
         if self.context['request'].method == 'GET':
             return self.context['request'].user.first_name
         else:
-            return self.context['request'].user.pk  # Return user's primary key for other HTTP methods
+            return self.context['request'].user.first_name  # Return user's primary key for other HTTP methods
         
     class Meta:
         model = PropertyComment

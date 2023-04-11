@@ -26,7 +26,13 @@ const PropertyCommentSection = ({ propertyId }) => {
     fetchComments();
   }, [propertyId]);
 
-
+  // Function to handle comment submission
+  const handleCommentSubmit = (newComment) => {
+    // Append the new comment to the existing comments data
+    console.log(newComment);
+    setComments([...comments, newComment]);
+  };
+  
   const renderComments = (commentId = null, level = 0) => {
     const commentsToRender = comments.filter(comment => comment.parent_comment === commentId);
     if (commentsToRender.length === 0) {
@@ -38,7 +44,7 @@ const PropertyCommentSection = ({ propertyId }) => {
           <h6 className="card-title">{comment.user} {comment.parent_comment ? 'replied:' : 'commented:'}</h6>
           <p className="card-text">{comment.text}</p>
           {renderComments(comment.id, level + 1)}
-          <CommentForm propertyId={propertyId} commentId={comment.id}/>
+          <CommentForm propertyId={propertyId} commentId={comment.id} onCommentSubmit={handleCommentSubmit}/>
         </div>
       </div>
     ));
@@ -48,6 +54,7 @@ const PropertyCommentSection = ({ propertyId }) => {
     <div className="container mt-4">
       <h4 className="mb-4 comments-title">Comments</h4>
       {renderComments()}
+      <CommentForm propertyId={propertyId} onCommentSubmit={handleCommentSubmit}/>
     </div>
   );
 };
