@@ -24,21 +24,30 @@ class UserNameField(serializers.StringRelatedField):
     # to automatically represent the related object as a string
     # In this case, it will return the user's username as a string
     # without requiring a queryset
-
+        
     class Meta:
         model = 'User'
-        fields = ['first_name']
+        # fields = ['pk']
+        # fields = ['first_name']
     
 class PropertyCommentSerializer(serializers.ModelSerializer):
-    user = UserNameField(read_only=True)  # Set read_only=True to avoid queryset requirement    
+    user = serializers.SerializerMethodField()  # Use SerializerMethodField to define custom serialization for user field
+    
+    def get_user(self, obj):
+        # Return only the user's name when performing a GET request
+        if self.context['request'].method == 'GET':
+            return self.context['request'].user.first_name
+        else:
+            return self.context['request'].user.pk  # Return user's primary key for other HTTP methods
+        
     class Meta:
         model = PropertyComment
         fields = ["text", "property", "parent_comment", "user", "id"]
         extra_kwargs = {
-                        'property': {'required': False, 'allow_null': True},
-                        'parent_comment': {'required': False, 'allow_null': True},
-                        'user': {'required': False, 'allow_null': True}
-                        }
+            'property': {'required': False, 'allow_null': True},
+            'parent_comment': {'required': False, 'allow_null': True},
+            'user': {'required': False, 'allow_null': True}
+        }
 
 class UserCommentSerializer(serializers.ModelSerializer):
     class Meta:

@@ -25,22 +25,22 @@ class PropertyComments(APIView):
         property_object = get_object_or_404(models.Property, pk=pk)
         
         comments = paginator.paginate_queryset(property_object.propertycomment_set.all(), request)
-        serializer = PropertyCommentSerializer(comments, many=True)
+        serializer = PropertyCommentSerializer(comments, many=True, context={'request': request})
         return paginator.get_paginated_response(serializer.data)
 
     def post(self, request, *args, **kwargs):
         
         pk = self.kwargs.get('property_id')
         property_object = get_object_or_404(models.Property, pk=pk)
-                
+        
         data = {
             'text': request.data.get('text'), 
             'property': pk,
             'user': request.user.pk
         }
 
-        serializer = PropertyCommentSerializer(data=data)
-        
+        serializer = PropertyCommentSerializer(data=data, context={'request': request})
+
         # also check if the user reserved this property before 
         print(request.user.reservation_set.all())
         if serializer.is_valid(raise_exception=True) and request.user.reservation_set.filter(reserve_property=property_object).exists():
@@ -62,7 +62,7 @@ class PropertyReply(APIView):
         property_object = get_object_or_404(models.Property, pk=property_id)
         comment_object = get_object_or_404(PropertyComment, pk=comment_id)
         
-        serializer = PropertyCommentSerializer(comment_object)
+        serializer = PropertyCommentSerializer(comment_object, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
@@ -70,7 +70,7 @@ class PropertyReply(APIView):
         comment_id = self.kwargs.get('comment_id')
         property_object = get_object_or_404(models.Property, pk=property_id)
         comment_object = get_object_or_404(PropertyComment, pk=comment_id)
-        
+        print("Larry:",request.user.pk)
         data = {
             'text': request.data.get('text'), 
             'property': property_id,
@@ -78,7 +78,7 @@ class PropertyReply(APIView):
             'user': request.user.pk
         }
 
-        serializer = PropertyCommentSerializer(data=data)
+        serializer = PropertyCommentSerializer(data=data, context={'request': request})
         
         if serializer.is_valid(raise_exception=True) and property_object in request.user.property_set.all():
             serializer.save()

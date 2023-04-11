@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css'; // Import the CSS file
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import CommentForm from './comment_form';
 
 const PropertyCommentSection = ({ propertyId }) => {
   const [comments, setComments] = useState([]);
-  const [replyText, setReplyText] = useState('');
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjQ5NTYwLCJpYXQiOjE2ODExNjMxNjAsImp0aSI6IjdhZDZiM2NmYmY2MzQxOTQ4ZGE0MmM2M2Y2ZjVjNjVjIiwidXNlcl9pZCI6MX0.D6VAUeJF8keCugLQHshSFcol4ejygAVUeOI58leO8aU";
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMzM2MjI2LCJpYXQiOjE2ODEyNDk4MjYsImp0aSI6IjdiZWUwOWVmMTlkNzQyYjZhZjRkOWZkNzUxMGQxZjI4IiwidXNlcl9pZCI6MX0.wi1OEzhP_D2mdhjbOQS8QnhP5hObw1g401PsnjqARo4";
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
@@ -26,9 +26,6 @@ const PropertyCommentSection = ({ propertyId }) => {
     fetchComments();
   }, [propertyId]);
 
-  const getReplies = (parentId) => {
-    return comments.filter(comment => comment.parent_comment === parentId);
-  };
 
   const renderComments = (commentId = null, level = 0) => {
     const commentsToRender = comments.filter(comment => comment.parent_comment === commentId);
@@ -41,6 +38,7 @@ const PropertyCommentSection = ({ propertyId }) => {
           <h6 className="card-title">{comment.user} {comment.parent_comment ? 'replied:' : 'commented:'}</h6>
           <p className="card-text">{comment.text}</p>
           {renderComments(comment.id, level + 1)}
+          <CommentForm propertyId={propertyId} commentId={comment.id}/>
         </div>
       </div>
     ));
