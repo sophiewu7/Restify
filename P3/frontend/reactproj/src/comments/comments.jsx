@@ -3,7 +3,7 @@ import axios from 'axios';
 import './styles.css'; // Import the CSS file
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
-const CommentSection = ({ propertyId }) => {
+const PropertyCommentSection = ({ propertyId }) => {
     const [comments, setComments] = useState([]);
     const [replyText, setReplyText] = useState('');
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjQ5NTYwLCJpYXQiOjE2ODExNjMxNjAsImp0aSI6IjdhZDZiM2NmYmY2MzQxOTQ4ZGE0MmM2M2Y2ZjVjNjVjIiwidXNlcl9pZCI6MX0.D6VAUeJF8keCugLQHshSFcol4ejygAVUeOI58leO8aU";
@@ -12,7 +12,7 @@ const CommentSection = ({ propertyId }) => {
             Authorization: `Bearer ${token}`
         }
     };
-    
+
     // Fetch comments from API
     useEffect(() => {
         const fetchComments = async () => {
@@ -53,4 +53,4 @@ const CommentSection = ({ propertyId }) => {
     );
 };
 
-export default CommentSection;
+export default PropertyCommentSection;
