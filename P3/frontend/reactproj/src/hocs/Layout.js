@@ -4,9 +4,9 @@ import Footer from '../components/Footer';
 
 const Layout = (props) => (
     <div>
-        <Navbar />
+        {/* <Navbar /> */}
         { props.children }
-        <Footer />
+        {/* <Footer /> */}
     </div>
 );
 
