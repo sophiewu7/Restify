@@ -1,4 +1,5 @@
 // reference: https://github.com/gitdagray/react_register_form/tree/main/src
+// referece: https://mdbootstrap.com/docs/standard/extended/registration/
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

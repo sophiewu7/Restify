@@ -10,6 +10,7 @@ import Login from './accounts/Login';
 import NotificationPage from './notifications/notifications';
 import CommentSection from './comments/comments';
 import Register from './accounts/Register';
+import UserProfile from './accounts/Profile';
 
 const App = () => (
     <Router>
@@ -18,6 +19,7 @@ const App = () => (
                 <Route exact path='/' element={<Home />} />
                 <Route exact path='/signup' element={<Register />} />
                 <Route exact path='/login' element={<Login />} />
+                <Route exact path='/profile' element={<UserProfile />} />
                 <Route exact path='/notifications' element={<NotificationPage />} />
                 <Route exact path='/comments' element={<CommentSection propertyId={1}/>}/>
             </Routes>
