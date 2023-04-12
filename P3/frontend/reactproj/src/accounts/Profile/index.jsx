@@ -27,7 +27,6 @@ function UserProfile(){
 
     const [uploadedAvatar, setUploadedAvatar] = useState(''); 
     const [error, setError] = useState('');
-    const [authenticated, setAuthenticated] = useState(false);
 
     const navigate = useNavigate();
 
@@ -36,7 +35,6 @@ function UserProfile(){
         if (!token) {
             navigate("/login");
         } else {
-            setAuthenticated(true);
             axios.get(VIEW_URL, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -73,15 +71,27 @@ function UserProfile(){
                 EDIT_URL,
                 formDataToSend,
                 {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
-                },
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "multipart/form-data",
+                    },
                 }
             );
             console.log(response.data);
-        } catch (err) {
-          setError(err.message);
+            setError('');
+        } catch (error) {
+            if (!error?.response) {
+                setError('No Server Response');
+            } else if (error.response?.status === 400) {
+                const errorData = error.response.data;
+                let errorMsg = '';
+                for (const key in formData) {
+                    if (errorData[key]) {
+                    errorMsg += `${key.split("_").join(" ")}: ${errorData[key]}\n`;
+                    }
+                }
+                setError(errorMsg);
+            }
         }
     };
 
@@ -96,10 +106,6 @@ function UserProfile(){
             [event.target.name]: event.target.value,
         });
     };
-
-    if (!authenticated) {
-        return null;
-    }
     
     return (
         <section className='container profile-container'>
@@ -110,7 +116,7 @@ function UserProfile(){
                             <img
                                 className="rounded-circle mt-5 mb-3"
                                 width="150px" height="150px"
-                                src={uploadedAvatar || formData.avatar ? uploadedAvatar || `http://localhost:8000${formData.avatar}` : 'images/avatar.jpg'}
+                                src={ uploadedAvatar || formData.avatar ? uploadedAvatar || `http://localhost:8000${formData.avatar}` : 'images/avatar.jpg'}
                                 alt="User Avatar"
                             />
                             <span className="font-weight-bold">{formData.username}</span>
@@ -130,15 +136,53 @@ function UserProfile(){
                         {error && <div className="alert alert-danger">{error}</div>}
                         <div className="row mt-2">
                             <div className="col-md-6 mt-2">
-                                <label className="labels" htmlFor="first_name">First Name</label>
-                                <input type="text" className="form-control" placeholder="First name" name="first_name" value={formData.first_name} onChange={handleChange} />
+                                <label className="labels">First Name</label>
+                                <input type="text" className="form-control" placeholder="First Name" name="first_name" value={formData?.first_name === "null" ? "" : formData?.first_name || ''} onChange={handleChange} />
                             </div>
                             <div className="col-md-6 mt-2">
-                                <label className="labels" htmlFor="last_name">Last Name</label>
-                                <input type="text" className="form-control" placeholder="Last name" name="last_name" value={formData.last_name} onChange={handleChange} />
+                                <label className="labels">Last Name</label>
+                                <input type="text" className="form-control" placeholder="Last Name" name="last_name" value={formData?.last_name === "null" ? "" : formData?.last_name || ''} onChange={handleChange} />
                             </div>
                         </div>
-                        
+                        <div className="row">
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">Phone Number</label>
+                                <input type="phone" className="form-control" placeholder="Phone Number" name="phone_number" value={formData?.phone_number === "null" ? "" : formData?.phone_number || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">Email</label>
+                                <input type="email" className="form-control" placeholder="Email" name="email" value={formData?.email === "null" ? "" : formData?.email || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">Address Line 1</label>
+                                <input type="text" className="form-control" placeholder="Address Line 1" name="address_1" value={formData?.address_1 === "null" ? "" : formData?.address_1 || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">Address Line 2</label>
+                                <input type="text" className="form-control" placeholder="Address Line 2" name="address_2" value={formData?.address_2 === "null" ? "" : formData?.address_2 || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">City</label>
+                                <input type="text" className="form-control" placeholder="City" name="city" value={formData?.city === "null" ? "" : formData?.city || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-12 mt-2">
+                                <label className="labels">Zip/Postcode</label>
+                                <input type="text" className="form-control" placeholder="Zip/Postcode" name="zip_postcode" value={formData?.zip_postcode === "null" ? "" : formData?.zip_postcode || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-6 mt-2">
+                                <label className="labels">State/Province</label>
+                                <input type="text" className="form-control" placeholder="State/Province" name="state_province" value={formData?.state_province === "null" ? "" : formData?.state_province || ''} onChange={handleChange} />
+                            </div>
+                            <div className="col-md-6 mt-2">
+                                <label className="labels">Country</label>
+                                <input type="text" className="form-control" placeholder="Country" name="country" value={formData?.country === "null" ? "" : formData?.country || ''} onChange={handleChange} />
+                            </div>
+                        </div>
+                        <div className="mt-4 pt-2 pb-2 text-center">
+                            <a href="/reset_password" className="text-decoration-none w-100">
+                                <button className="btn btn-outline-primary profile-button w-100" type="button">Change Password</button>
+                            </a>
+                        </div>
                         <div className="pt-2 pb-2 mb-2 text-center">
                             <button className="btn btn-primary profile-button w-100" type="submit">Save Profile</button>
                         </div>
