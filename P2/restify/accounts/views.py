@@ -55,7 +55,6 @@ class LoginAPIView(TokenObtainPairView):
         return super().handle_exception(exc)
 
 class LogoutAPIView(APIView):
-    # permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
