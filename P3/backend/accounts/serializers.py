@@ -101,6 +101,12 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['username']
 
+    def validate_email(self, value):
+        user = self.instance
+        if User.objects.exclude(pk=user.pk).filter(email=value).exists():
+            raise serializers.ValidationError('This email is already in use.')
+        return value
+    
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():
             if value != '':
