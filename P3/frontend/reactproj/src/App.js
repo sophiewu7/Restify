@@ -26,8 +26,6 @@ const App = () => (
                 <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
                 <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
                 <Route exact path='/add_user_comments' element={<AddUserComment userId={1}/>}/>
-
-
             </Routes>
         </Layout>
     </Router>
