@@ -21,6 +21,7 @@ const Register = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
+        
         event.preventDefault();
 
         const data = {
@@ -34,7 +35,7 @@ const Register = () => {
         };
 
         try {
-            const response = await axios.post(
+            await axios.post(
                 REGISTER_URL,
                 data,
                 {
@@ -83,45 +84,45 @@ const Register = () => {
                                             {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                                             <div className="d-flex flex-row align-items-center mb-2">
                                                 <div className="form-floating flex-fill mb-0">
-                                                    <input type="username" className="form-control" id="username" placeholder='Username' value={username} onChange={(event) => setUsername(event.target.value)} required />
+                                                    <input type="username" className="form-control" name="username" placeholder='Username' value={username} onChange={(event) => setUsername(event.target.value)} required />
                                                     <label htmlFor="username">Username</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-lg-6 mb-2 pe-md-1">
                                                     <div className="form-floating mb-0">
-                                                    <input type="firstname" className="form-control" id="firstname" placeholder="First Name" value={firstName} onChange={(event) => setFirstName(event.target.value)} required />
+                                                    <input type="firstname" className="form-control" name="firstname" placeholder="First Name" value={firstName} onChange={(event) => setFirstName(event.target.value)} required />
                                                     <label htmlFor="firstname">First Name</label>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6 mb-2 ps-md-1">
                                                     <div className="form-floating flex-fill mb-0">
-                                                    <input type="lastname" className="form-control" id="lastname" placeholder="Last Name" value={lastName} onChange={(event) => setLastName(event.target.value)} required />
+                                                    <input type="lastname" className="form-control" name="lastname" placeholder="Last Name" value={lastName} onChange={(event) => setLastName(event.target.value)} required />
                                                     <label htmlFor="lastname">Last Name</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-2">
                                                 <div className="form-floating flex-fill mb-0">
-                                                    <input type="email" className="form-control" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+                                                    <input type="email" className="form-control" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
                                                     <label htmlFor="email">Email</label>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-2">
                                                 <div className="form-floating flex-fill mb-0">
-                                                    <input type="phone" className="form-control" id="phone" placeholder="Phone Number" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} required />
+                                                    <input type="phone" className="form-control" name="phone" placeholder="Phone Number" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} required />
                                                     <label htmlFor="phone">Phone Number</label>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-2">
                                                 <div className="form-floating flex-fill mb-0">
-                                                    <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+                                                    <input type="password" className="form-control" name="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
                                                     <label htmlFor="password">Password</label>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-3">
                                                 <div className="form-floating flex-fill mb-0">
-                                                    <input type="password" className="form-control" id="password-rpt" placeholder="Repeat Your Password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} required />
+                                                    <input type="password" className="form-control" name="password-rpt" placeholder="Repeat Your Password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} required />
                                                     <label htmlFor="password-rpt">Repeat Your Password</label>
                                                 </div>
                                             </div>

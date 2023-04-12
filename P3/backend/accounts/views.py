@@ -50,8 +50,7 @@ class LoginAPIView(TokenObtainPairView):
         
     def handle_exception(self, exc):
         if isinstance(exc, AuthenticationFailed):
-            if 'No active account found with the given credentials' in str(exc):
-                return Response({'error': 'Incorrect username or password.'}, status=400)
+            return Response({'error': 'Incorrect username or password.'}, status=400)
         return super().handle_exception(exc)
 
 class LogoutAPIView(APIView):
