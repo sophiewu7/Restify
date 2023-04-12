@@ -50,7 +50,24 @@ class PropertyCommentSerializer(serializers.ModelSerializer):
         }
 
 class UserCommentSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()  # Use SerializerMethodField to define custom serialization for user field
+    host = serializers.SerializerMethodField()  # Use SerializerMethodField to define custom serialization for user field
+
+    def get_user(self, obj):
+        # Return only the user's name when performing a GET request
+        if self.context['request'].method == 'GET':
+            return self.context['request'].user.first_name
+        else:
+            return self.context['request'].user.first_name  # Return user's primary key for other HTTP methods
+    
+    def get_host(self, obj):
+        # Return only the user's name when performing a GET request
+        if self.context['request'].method == 'GET':
+            return obj.user.first_name
+        else:
+            return obj.user.first_name
+        
     class Meta:
         model = UserComment
-        fields = ["text", "host", "user"]
+        fields = ["text", "host", "user", "id"]
         

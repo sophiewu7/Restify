@@ -99,7 +99,7 @@ class UserComment(APIView):
         from accounts import models    
         user_object = get_object_or_404(models.User, pk=user_id)
         comments = paginator.paginate_queryset(user_object.host_comment.all(), request)
-        serializer = UserCommentSerializer(comments, many=True)
+        serializer = UserCommentSerializer(comments, many=True, context={'request': request})
         return paginator.get_paginated_response(serializer.data)
 
     def post(self, request, *args, **kwargs):
@@ -113,7 +113,7 @@ class UserComment(APIView):
             'host': request.user.pk
         }
 
-        serializer = UserCommentSerializer(data=data)
+        serializer = UserCommentSerializer(data=data, context={'request': request})
         
         if serializer.is_valid(raise_exception=True):
             serializer.save()
