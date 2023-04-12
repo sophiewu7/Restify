@@ -15,21 +15,29 @@ from rest_framework.pagination import PageNumberPagination
 
 # /comments/property/<property_id>/ [get]: List all comments of a property.
 # /comments/property/<property_id>/ [post]: For a user to add a new comment on a property that he or she just stayed at.
+
 class PropertyComments(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     
+    # def get(self, request, *args, **kwargs):
+    #     paginator = PageNumberPagination()
+    #     pk = self.kwargs.get('property_id')
+    #     property_object = get_object_or_404(models.Property, pk=pk)
+        
+    #     comments = paginator.paginate_queryset(property_object.propertycomment_set.all(), request)
+    #     serializer = PropertyCommentSerializer(comments, many=True, context={'request': request})
+    #     return paginator.get_paginated_response(serializer.data)
+    
     def get(self, request, *args, **kwargs):
-        paginator = PageNumberPagination()
         pk = self.kwargs.get('property_id')
         property_object = get_object_or_404(models.Property, pk=pk)
         
-        comments = paginator.paginate_queryset(property_object.propertycomment_set.all(), request)
+        comments = property_object.propertycomment_set.all()
         serializer = PropertyCommentSerializer(comments, many=True, context={'request': request})
-        return paginator.get_paginated_response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
-        
         pk = self.kwargs.get('property_id')
         property_object = get_object_or_404(models.Property, pk=pk)
         
@@ -93,14 +101,22 @@ class UserComment(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     
+    # def get(self, request, *args, **kwargs):
+    #     paginator = PageNumberPagination()
+    #     user_id = self.kwargs.get('user_id')    
+    #     from accounts import models    
+    #     user_object = get_object_or_404(models.User, pk=user_id)
+    #     comments = paginator.paginate_queryset(user_object.host_comment.all(), request)
+    #     serializer = UserCommentSerializer(comments, many=True, context={'request': request})
+    #     return paginator.get_paginated_response(serializer.data)
+    
     def get(self, request, *args, **kwargs):
-        paginator = PageNumberPagination()
         user_id = self.kwargs.get('user_id')    
         from accounts import models    
         user_object = get_object_or_404(models.User, pk=user_id)
-        comments = paginator.paginate_queryset(user_object.host_comment.all(), request)
-        serializer = UserCommentSerializer(comments, many=True)
-        return paginator.get_paginated_response(serializer.data)
+        comments = user_object.host_comment.all()
+        serializer = UserCommentSerializer(comments, many=True, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         user_id = self.kwargs.get('user_id')    
@@ -112,8 +128,8 @@ class UserComment(APIView):
             'user': user_id,
             'host': request.user.pk
         }
-
-        serializer = UserCommentSerializer(data=data)
+        # print(data)
+        serializer = UserCommentSerializer(data=data, context={'request': request, 'user_id': user_id})
         
         if serializer.is_valid(raise_exception=True):
             serializer.save()

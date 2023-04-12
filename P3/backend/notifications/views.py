@@ -21,11 +21,15 @@ class AllNotifications(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     
+    # def get(self, request, *args, **kwargs):
+    #     paginator = PageNumberPagination()
+    #     notifications = paginator.paginate_queryset(request.user.notifications.all(), request)
+    #     serializer = NotificationSerializer(notifications, many=True)
+    #     return paginator.get_paginated_response(serializer.data)
     def get(self, request, *args, **kwargs):
-        paginator = PageNumberPagination()
-        notifications = paginator.paginate_queryset(request.user.notifications.all(), request)
+        notifications = request.user.notifications.all()
         serializer = NotificationSerializer(notifications, many=True)
-        return paginator.get_paginated_response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     def post(self, request, *args, **kwargs):
         data = {

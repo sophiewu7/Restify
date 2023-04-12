@@ -3,5 +3,9 @@
 }
 
 .container{
-    margin-bottom: 5rem;
+    padding-top: 10rem;
+}
+
+.btn-primary{
+    margin-top: 8px;
 }
