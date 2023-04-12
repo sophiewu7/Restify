@@ -1,17 +1,15 @@
 // reference: https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './style.css';
 
 const VIEW_URL = 'http://localhost:8000/accounts/profile/view/';
 const EDIT_URL = 'http://localhost:8000/accounts/profile/edit/';
 
-const UserProfile = () => {
-    const [user, setUser] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
+function UserProfile(){
     const [formData, setFormData] = useState({
-        username: '',
         first_name: '',
         last_name: '',
         email: '',
@@ -26,127 +24,144 @@ const UserProfile = () => {
     });
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState(false);
+    const [authenticated, setAuthenticated] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem("access_token");
         if (!token) {
-            console.log('Access token not found in local storage');
-            return;
-        }
-
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-
-        axios.get(VIEW_URL, config)
-            .then((response) => {
-                setUser(response.data);
+            navigate("/login");
+        } else {
+            setAuthenticated(true);
+            axios.get(VIEW_URL, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             })
-            .catch((error) => {
-                console.log(error);
-                setError('Error loading user profile. Please try again later.');
-            });
-    }, []);
+            .then((response) => {
+                setFormData(response.data);
+            })
+            .catch((err) => setError(err.message));
+        }
+    }, [navigate]);
 
-    const handleEditClick = () => {
-        setIsEditing(true);
-        setFormData({
-            username: user.username,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            email: user.email,
-            phone_number: user.phone_number,
-            address_1: user.address_1,
-            address_2: user.address_2,
-            city: user.city,
-            zip_postcode: user.zip_postcode,
-            state_province: user.state_province,
-            country: user.country,
-            avatar: user.avatar,
-        });
-    };
 
-    const handleCancelClick = () => {
-        setIsEditing(false);
-        setFormData({
-            username: '',
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone_number: '',
-            address_1: '',
-            address_2: '',
-            city: '',
-            zip_postcode: '',
-            state_province: '',
-            country: '',
-            avatar: null,
-        });
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const token = localStorage.getItem('access_token');
+    //     try {
+    //       // Remove empty fields from the form data
+    //       const cleanedFormData = Object.entries(formData).reduce((acc, [key, value]) => {
+    //         if (value !== '' && key !== 'avatar') {
+    //           return { ...acc, [key]: value };
+    //         }
+    //         return acc;
+    //       }, {});
+      
+    //       const response = await axios.post('http://localhost:8000/accounts/profile/edit/', cleanedFormData, {
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //           'Content-Type': 'application/json',
+    //         },
+    //       });
+      
+    //       console.log(response.data);
+    //     } catch (err) {
+    //       setError(err.message);
+    //     }
+    //   };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const token = localStorage.getItem('access_token');
-        const config = {
-            headers: {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem("access_token");
+        try {
+          const cleanedFormData = Object.entries(formData).reduce((acc, [key, value]) => {
+            if (value !== "" && key !== "avatar") {
+              return { ...acc, [key]: value };
+            }
+            return acc;
+          }, {});
+          const formDataToSend = new FormData();
+          formDataToSend.append("avatar", formData.avatar);
+          for (let [key, value] of Object.entries(cleanedFormData)) {
+            formDataToSend.append(key, value);
+          }
+          const response = await axios.post(
+            "http://localhost:8000/accounts/profile/edit/",
+            formDataToSend,
+            {
+              headers: {
                 Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        };
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          console.log(response.data);
+        } catch (err) {
+          setError(err.message);
+        }
+      };
 
-        axios.post(EDIT_URL, formData, config)
-        .then((response) => {
-            setIsEditing(false);
-            setUser(response.data);
-                setFormData({
-                username: '',
-                first_name: '',
-                last_name: '',
-                email: '',
-                phone_number: '',
-                address_1: '',
-                address_2: '',
-                city: '',
-                zip_postcode: '',
-                state_province: '',
-                country: '',
-                avatar: null,
-            });
-            setSuccess(true);
-        })
-        .catch((error) => {
-            setError(error.message);
-        })
-    };
+      const handleAvatarChange = (e) => {
+        setFormData({ ...formData, avatar: e.target.files[0] });
+      };
+      
+    
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      if (!authenticated) {
+        return null; // Or render a loading spinner or a message
+      }
+    
+      return (
+        <div>
+          {error && <div>{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
+    
+            <label htmlFor="first_name">First Name:</label>
+            <input
+              type="text"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+            />
+    
+            <label htmlFor="last_name">Last Name:</label>
+            <input
+              type="text"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+            />
+    
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+    
+            {/* Add other form fields here */}
+            <input type="file" name="avatar" onChange={handleAvatarChange} />
 
-    return (
-        <section className='container profile-container'>
-            <div className='row profile-box-container'>
-                <form>
-                    <div className='col-md'>
-                        <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                            <img
-                                className="rounded-circle mt-5 mb-3"
-                                width="150px"
-                                src={user.avatar ? `http://localhost:8000${user.avatar}` : 'images/avatar.jpg'}
-                                alt="User Avatar"
-                            />
-                            <span className="font-weight-bold">{user.username}</span>
-                            <span className="text-black-50">{user.email}</span>
-                            <div className="btn btn-outline-primary btn-rounded mt-4">
-                                <label className="form-label m-1" htmlFor="avatar">Upload Avatar</label>
-                                <input type="file" className="form-control d-none" id="avatar" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    );
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      );
 }
 
 export default UserProfile;
