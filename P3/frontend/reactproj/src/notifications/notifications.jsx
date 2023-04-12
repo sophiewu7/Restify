@@ -24,7 +24,7 @@ const NotificationPage = () => {
   const fetchNotifications = () => {
     Axios.get('http://localhost:8000/notifications/', config) // Update the endpoint URL
       .then(response => {
-        setNotifications(response.data.results); // Update to access the "results" field in the JSON response
+        setNotifications(response.data); // Update to access the "results" field in the JSON response
       })
       .catch(error => {
         console.error('Failed to fetch notifications:', error);

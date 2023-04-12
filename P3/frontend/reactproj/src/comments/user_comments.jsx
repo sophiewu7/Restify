@@ -25,7 +25,7 @@ class UserComment extends Component {
     axios.get(`http://localhost:8000/comments/user/${userId}/`, config)
       .then(response => {
         this.setState({
-          comments: response.data.results,
+          comments: response.data,
           isLoading: false
         });
 

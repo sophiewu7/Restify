@@ -19,7 +19,7 @@ const PropertyCommentSection = ({ propertyId }) => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/comments/property/${propertyId}/`, config);
-        setComments(response.data.results);
+        setComments(response.data);
       } catch (error) {
         console.error('Failed to fetch comments:', error);
       }
