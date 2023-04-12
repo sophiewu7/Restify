@@ -112,8 +112,8 @@ class UserComment(APIView):
             'user': user_id,
             'host': request.user.pk
         }
-
-        serializer = UserCommentSerializer(data=data, context={'request': request})
+        # print(data)
+        serializer = UserCommentSerializer(data=data, context={'request': request, 'user_id': user_id})
         
         if serializer.is_valid(raise_exception=True):
             serializer.save()
