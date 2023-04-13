@@ -50,7 +50,7 @@ const CommentForm = ({ propertyId, commentId, onCommentSubmit }) => {
           onChange={(e) => setCommentText(e.target.value)}
         ></textarea>
       </div>
-      <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>
+      <button type="submit" className="btn btn-primary comment-btn" style={{ marginTop: '8px' }}>
         Submit
       </button>
     </form>

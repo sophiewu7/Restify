@@ -65,7 +65,7 @@ class AddComment extends Component {
             <label htmlFor="commentText">Add User Comment</label>
             <input type="text" className="form-control" id="commentText" value={commentText} onChange={this.handleInputChange} />
           </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary comment-btn">Submit</button>
         </form>
       </div>
     );
