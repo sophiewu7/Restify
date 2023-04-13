@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 
 from .models import User
 
@@ -58,9 +59,13 @@ class ChangePasswordSerializer(serializers.Serializer):
     )
 
     def validate(self, data):
-        password = data.get('new_password')
+        user = self.context['request'].user
+        password = data.get('password')
+        new_password = data.get('new_password')
         confirm_password = data.get('confirm_password')
-        if password != confirm_password:
+        if not authenticate(username=user.username, password=password):
+            raise serializers.ValidationError({'password': 'Your current password is incorrect'})
+        if new_password != confirm_password:
             raise serializers.ValidationError({'new_password': 'The two password fields didn\'t match'})
         return super().validate(data)
     
