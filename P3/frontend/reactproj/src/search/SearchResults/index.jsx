@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 import './style.css';
 
@@ -35,14 +34,15 @@ function SearchResults() {
         bathtub: searchParams.get('bathtub') || '',
     })
 
-    const [totalObjects, setTotalObjects] = useState(0);
-    const [previous, setPrevious] = useState('');
-    const [next, setNext] = useState('');
+    const [page, setPage] = useState(1);
+    const limit = 5;
+    const [totalCount, setTotalCount] = useState(0);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         if (formSubmitted) {
+            const offset = (page - 1) * limit;
             const params = {
                 search: submittedSearchValues.search,
                 check_in: submittedSearchValues.check_in,
@@ -61,16 +61,14 @@ function SearchResults() {
                 parking: filter.parking !== "" ? filter.parking : undefined,
                 bathtub: filter.bathtub !== "" ? filter.bathtub : undefined,
                 order_by: orderBy,
-                // offset: currentPage * perPage,
-                // limit: perPage,
+                offset: offset,
+                limit: limit,
             };                       
             axios.get('http://localhost:8000/properties/search/', { params })
                 .then((response) => {
                 console.log(response.data);
                 setResults(response.data.results);
-                setTotalObjects(response.data.count);
-                setPrevious(response.data.previous);
-                setNext(response.data.next);
+                setTotalCount(response.data.count);
                 setError('');
                 })
                 .catch((error) => {
@@ -84,7 +82,7 @@ function SearchResults() {
                 });
             setFormSubmitted(false);
         }
-    }, [formSubmitted, submittedSearchValues, orderBy, filter]);
+    }, [formSubmitted, submittedSearchValues, orderBy, filter, page, limit]);
       
 
     const handleSubmit = (e) => {
@@ -124,7 +122,6 @@ function SearchResults() {
         });
     };
       
-
     const handleOrderByChange = (event) => {
         setOrderBy(event.target.value);
         setFormSubmitted(true);
@@ -143,6 +140,20 @@ function SearchResults() {
     };
     
 
+    function handlePageClick(newPage) {
+        setPage(newPage);
+        setFormSubmitted(true);
+    }
+
+    const totalPages = Math.ceil(totalCount / limit);
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(
+        <button key={i} onClick={() => handlePageClick(i)} disabled={i === page}>
+            {i}
+        </button>
+        );
+    }
     return (
         <div>
           <form onSubmit={handleSubmit}>
@@ -198,6 +209,15 @@ function SearchResults() {
               <img src={property.image1} alt={property.property_name} />
             </li>
           ))}
+        <div>
+        <button onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
+          Previous
+        </button>
+        {pageNumbers}
+        <button onClick={() => handlePageClick(page + 1)} disabled={page >= totalPages}>
+          Next
+        </button>
+      </div>
         </div>
       );
 }
