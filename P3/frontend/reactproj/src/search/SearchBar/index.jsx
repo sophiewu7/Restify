@@ -52,7 +52,6 @@ function Search() {
             </form>
         </section>
     );
-
 }
 
 export default Search;
