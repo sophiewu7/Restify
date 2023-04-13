@@ -1,0 +1,52 @@
+/* this is the start of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
+.search-box{
+    border-radius: 40px;
+}
+
+.search-box input{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box label{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box button{
+    background: #0F8FEE;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    border-style: solid;
+}
+
+.search-box button:hover{
+    background: white;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #0F8FEE;
+}
+
+.search-icon {
+    color: white !important;
+}
+
+.search-box button:hover .search-icon{
+    color: #0F8FEE !important;
+}
+
+.local-input-search {
+    flex: 1;
+}
