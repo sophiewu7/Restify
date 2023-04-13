@@ -28,9 +28,9 @@ function PropertyForm() {
     const [parking, setParking] = useState(false);
 
 
-    const [uploadedAvatar, setUploadedAvatar] = useState(''); 
-    const [uploadedAvatar2, setUploadedAvatar2] = useState('');
-    const [uploadedAvatar3, setUploadedAvatar3] = useState('');
+    const [uploadedAvatar1, setUploadedAvatar1] = useState(null); 
+    const [uploadedAvatar2, setUploadedAvatar2] = useState(null);
+    const [uploadedAvatar3, setUploadedAvatar3] = useState(null);
 
     const [error, setError] = useState('');
 
@@ -62,6 +62,21 @@ function PropertyForm() {
     }
   };
 
+  const handleImageChange = (event) => {
+    
+    const image = event.target.files[0];
+    setUploadedAvatar1(image);
+  };
+
+  const handleImageChange2 = (event) => {
+    const image = event.target.files[0];
+    setUploadedAvatar2(image);
+  };
+
+  const handleImageChange3 = (event) => {
+    const image = event.target.files[0];
+    setUploadedAvatar3(image);
+  };
 
 
 
@@ -70,6 +85,8 @@ function PropertyForm() {
     event.preventDefault();
     const token = localStorage.getItem("access_token");
     console.log(token);
+
+
 
     const data = {
       property_name: property_name,
@@ -88,7 +105,9 @@ function PropertyForm() {
       price: parseFloat(price),
       aircondition: aircondition,
       parking: parking,
-
+      image1: uploadedAvatar1,
+      image2: uploadedAvatar2,
+      image3: uploadedAvatar3,
       
     };
     console.log(data);
@@ -101,13 +120,11 @@ function PropertyForm() {
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                 },
             }
         );
 
-
-        // const response = await axios.post("/properties/create/", data, config);
         console.log(response.data);
     } catch (error) {
       console.log(error.response);
@@ -253,17 +270,6 @@ function PropertyForm() {
                     onChange={(e) => setPropertyDescription(e.target.value)}>
                 </textarea>
               </div>
-              {/* <div className="col-md-12 mt-2">
-                <label className="labels">property_discription</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Share what makes your place special."
-                //   value={zip}
-                //   onChange={handleChange}
-                  onChange={(e) => setPropertyDescription(e.target.value)}
-                />
-              </div> */}
 
 
               <div className="col-md-12 mt-2 mb-2">
@@ -313,6 +319,54 @@ function PropertyForm() {
                         <i className="fa-solid fa-car pe-2"></i>Aircondition
                     </label>
                     </div>
+              </div>
+
+              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                <img
+                    className="mt-5 mb-3"
+                    width="150px"
+                    height="150px"
+                    src={uploadedAvatar1 ? URL.createObjectURL(uploadedAvatar1) : '/images/avatar.jpg'}
+                    alt="User Avatar"
+                />
+                <div className="btn btn-outline-primary btn-rounded mt-4">
+                    <label className="form-label m-1">
+                    Upload Image
+                    <input type="file" className="form-control d-none" name="image1" onChange={handleImageChange} />
+                    </label>
+                </div>
+              </div>
+
+              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                <img
+                    className="mt-5 mb-3"
+                    width="150px"
+                    height="150px"
+                    src={uploadedAvatar2 ? URL.createObjectURL(uploadedAvatar2) : '/images/avatar.jpg'}
+                    alt="User Avatar"
+                />
+                <div className="btn btn-outline-primary btn-rounded mt-4">
+                    <label className="form-label m-1">
+                    Upload Image
+                    <input type="file" className="form-control d-none" name="image2" onChange={handleImageChange2} />
+                    </label>
+                </div>
+              </div>
+
+              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                <img
+                    className="mt-5 mb-3"
+                    width="150px"
+                    height="150px"
+                    src={uploadedAvatar3 ? URL.createObjectURL(uploadedAvatar3) : '/images/avatar.jpg'}
+                    alt="User Avatar"
+                />
+                <div className="btn btn-outline-primary btn-rounded mt-4">
+                    <label className="form-label m-1">
+                    Upload Image
+                    <input type="file" className="form-control d-none" name="image3" onChange={handleImageChange3} />
+                    </label>
+                </div>
               </div>
 
 
