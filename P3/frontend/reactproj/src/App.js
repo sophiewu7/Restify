@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,13 +22,6 @@ import AddUserComment from './comments/add_user_comment';
 import Profileform from './properties/create';
 
 const App = () => {
-    // useEffect(() => {
-    //     const accessToken = localStorage.getItem("access_token");
-    //     if (accessToken) {
-    //         localStorage.removeItem("access_token");
-    //     }
-    // }, []);
-
     return (
         <Router>
             <Layout>
