@@ -88,4 +88,5 @@ class SearchSerializer(serializers.ModelSerializer):
             'bathtub',
             'price',
             'image1',
+            'property_description',
         ]

@@ -1,0 +1,71 @@
+/* this is the start of css based on https://www.youtube.com/watch?v=WuWbunhmDsE */
+
+.search-result-container {
+    padding-top: 56px;
+    padding-bottom: 3rem;
+    min-height: 100vh;
+}
+
+.search-result-box-container {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.search-box-search {
+    padding: 6px 10px 6px 30px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.search-box-search input{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box-search label{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+    text-align: left;
+}
+
+.search-box-search button{
+    background: #0F8FEE;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    border-style: solid;
+}
+
+.search-box-search button:hover{
+    background: white;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #0F8FEE;
+}
+
+search-box-search label {
+    font-weight: bold;
+}
+
+.search-box-search button:hover .search-icon{
+    color: #0F8FEE !important;
+}
+
+.rating-star {
+    color: #0F8FEE;
+    font-size:medium;
+}

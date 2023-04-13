@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SearchProperty from '../SearchProperty';
 import './style.css';
 
 function SearchResults() {
@@ -22,8 +23,8 @@ function SearchResults() {
     const [filter, setFilter] = useState({
         min_price: searchParams.get('min_price') || '',
         max_price: searchParams.get('max_price') || '',
-        bedrooms: searchParams.get('bedrooms') || '',
-        washrooms: searchParams.get('washrooms') || '',
+        bedrooms: searchParams.get('bedrooms') || 1,
+        washrooms: searchParams.get('washrooms') || 1,
         swimpool: searchParams.get('swimpool') || '',
         wifi: searchParams.get('wifi') || '',
         tv: searchParams.get('tv') || '',
@@ -149,76 +150,153 @@ function SearchResults() {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(
-        <button key={i} onClick={() => handlePageClick(i)} disabled={i === page}>
+        <button className="page-item page-link" key={i} onClick={() => handlePageClick(i)} disabled={i === page}>
             {i}
         </button>
         );
     }
+
+    const today = new Date().toISOString().split('T')[0];
+
     return (
-        <div>
-          <form onSubmit={handleSubmit}>
-            {error && <div className="alert alert-danger">{error}</div>}
-            <input type="text" name="search" value={searchValues.search} onChange={handleInputChange} />
-            <input type="text" name="check_in" value={searchValues.check_in} onChange={handleInputChange} />
-            <input type="text" name="check_out" value={searchValues.check_out} onChange={handleInputChange} />
-            <input type="text" name="guests" value={searchValues.guests} onChange={handleInputChange} />
-            <button type="submit">Search</button>
-            <select value={orderBy} name="orderBy" onChange={handleOrderByChange}>
-                <option value="">Default</option>
-                <option value="highest_price">Highest Price</option>
-                <option value="lowest_price">Lowest Price</option>
-                <option value="bedrooms">Bedrooms</option>
-                <option value="washrooms">Washrooms</option>
-            </select>
-            <input type="number" name="min_price" value={filter.min_price} onChange={handleFilter} />
-            <input type="number" name="max_price" value={filter.max_price} onChange={handleFilter} />
-            <p>hi</p>
-            <input type="number" name="bedrooms" value={filter.bedrooms} onChange={handleFilter} />
-            <input type="number" name="washrooms" value={filter.washrooms} onChange={handleFilter} />
-            
-            <input type="checkbox" name="swimpool" checked={filter.swimpool} onChange={handleFilter} />
-            <label htmlFor="swimpool">Swimming Pool</label>
-
-            <input type="checkbox" name="wifi" checked={filter.wifi} onChange={handleFilter} />
-            <label htmlFor="wifi">Wifi</label>
-
-            <input type="checkbox" name="tv" checked={filter.tv} onChange={handleFilter} />
-            <label htmlFor="tv">TV</label>
-
-            <input type="checkbox" name="gym" checked={filter.gym} onChange={handleFilter} />
-            <label htmlFor="gym">Gym</label>
-
-            <input type="checkbox" name="fire_extinguisher" checked={filter.fire_extinguisher} onChange={handleFilter} />
-            <label htmlFor="fire_extinguisher">Fire Extinguisher</label>
-
-            <input type="checkbox" name="aircondition" checked={filter.aircondition} onChange={handleFilter} />
-            <label htmlFor="aircondition">Air Conditioning</label>
-
-            <input type="checkbox" name="parking" checked={filter.parking} onChange={handleFilter} />
-            <label htmlFor="parking">Parking</label>
-
-            <input type="checkbox" name="bathtub" checked={filter.bathtub} onChange={handleFilter} />
-            <label htmlFor="bathtub">Bathtub</label>
-
-          </form>
-          {results?.map((property, index) => (
-            <li key={`${property.id}-${index}`}>
-              <h2>{property.property_name}</h2>
-              <p>{property.city}, {property.country}</p>
-              <p>Price: ${property.price}/night</p>
-              <img src={property.image1} alt={property.property_name} />
-            </li>
-          ))}
-        <div>
-        <button onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
-          Previous
-        </button>
-        {pageNumbers}
-        <button onClick={() => handlePageClick(page + 1)} disabled={page >= totalPages}>
-          Next
-        </button>
-      </div>
-        </div>
+        <section className='container-fluid bg-light search-result-container'>
+            <form>
+                <div className='container d-flex justify-content-center align-items-center flex-column'>
+                    <div className='w-100 d-flex justify-content-center align-items-center my-2' onSubmit={handleSubmit}>
+                        <div className='row my-4 p-2 bg-white w-100 search-box justify-content-between align-items-center'>
+                            {error && <div className="alert alert-danger">{error}</div>}
+                            <div className='col-auto my-2 mx-2'>
+                                <label className="mb-1">Location</label>
+                                <input type="text" name="search" value={searchValues.search} placeholder="Where do you like to go?" onChange={handleInputChange} required />
+                            </div>
+                            <div className="col-auto my-2 mx-2">
+                                <label className="mb-1">Check In</label>
+                                <input type="date" name="check_in" value={searchValues.check_in} min={today} onChange={handleInputChange} required />
+                            </div>
+                            <div className="col-auto my-2 mx-2">
+                                <label className="mb-1">Check Out</label>
+                                <input type="date" name="check_out" value={searchValues.check_out} min={today} onChange={handleInputChange} required />
+                            </div>
+                            <div className="col-auto my-2 mx-2">
+                                <label className="mb-1">Guest</label>
+                                <select className="form-select form-select-sm" name="guests" value={searchValues.guests} onChange={handleInputChange} required >
+                                    <option value="1">1 guest</option>
+                                    <option value="2">2 guests</option>
+                                    <option value="3">3 guests</option>
+                                    <option value="4">4 guests</option>
+                                    <option value="5">5 guests</option>
+                                    <option value="6">6 guests</option>
+                                </select>
+                            </div>
+                            <div className="col-auto my-2 mx-2">
+                                <button type="submit" className="rounded-circle">
+                                    <i className="bi bi-search search-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='container'>
+                    <div className='col-md-12'>
+                        <div className='row'>
+                            <div className='col-md-3'>
+                                <h3 className="grid-title">Filters</h3>
+                                <hr />
+                                <h6 className="mt-2">Price Range:</h6>
+                                <div className="row">
+                                    <div className="col-lg-6 mb-2 pe-md-1">
+                                        <input type="number" className="form-control" name="min_price" placeholder="min" value={filter.min_price} onChange={handleFilter} />
+                                    </div>
+                                    <div className="col-lg-6 mb-2 ps-md-1">
+                                        <input type="number" className="form-control" name="max_price" placeholder="max" value={filter.max_price} onChange={handleFilter} />
+                                    </div>
+                                </div>
+                                <div className="col-auto">
+                                    <h6 className="mt-2"># Bedrooms </h6>
+                                    <select className="form-select form-select-md bg-transparent border-0" name="bedrooms" value={filter.bedrooms} onChange={handleFilter}>
+                                        <option value="1">1+</option>
+                                        <option value="2">2+</option>
+                                        <option value="3">3+</option>
+                                        <option value="4">4+</option>
+                                        <option value="5">5+</option>
+                                        <option value="6">6+</option>
+                                    </select>
+                                    </div>
+                                <div className="col-auto">
+                                    <h6 className="mt-2"># Washrooms </h6>
+                                    <select className="form-select form-select-md bg-transparent border-0" name="washrooms" value={filter.washrooms} onChange={handleFilter}>
+                                        <option value="1">1+</option>
+                                        <option value="2">2+</option>
+                                        <option value="3">3+</option>
+                                        <option value="4">4+</option>
+                                        <option value="5">5+</option>
+                                        <option value="6">6+</option>
+                                    </select>
+                                </div>
+                                <div className="col-auto">
+                                    <h6 className="mt-2"> Amenities </h6>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="swimpool" checked={filter.swimpool} onChange={handleFilter} />
+                                        <label htmlFor="swimpool">Swimming Pool</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="wifi" checked={filter.wifi} onChange={handleFilter} />
+                                        <label htmlFor="wifi">Wifi</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="tv" checked={filter.tv} onChange={handleFilter} />
+                                        <label htmlFor="tv">TV</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="gym" checked={filter.gym} onChange={handleFilter} />
+                                        <label htmlFor="gym">Gym</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="fire_extinguisher" checked={filter.fire_extinguisher} onChange={handleFilter} />
+                                        <label htmlFor="fire_extinguisher">Fire Extinguisher</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="aircondition" checked={filter.aircondition} onChange={handleFilter} />
+                                        <label htmlFor="aircondition">Air Conditioning</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="parking" checked={filter.parking} onChange={handleFilter} />
+                                        <label htmlFor="parking">Parking</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" className="form-check-input me-2" name="bathtub" checked={filter.bathtub} onChange={handleFilter} />
+                                        <label htmlFor="bathtub">Bathtub</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-9">
+                                <h3 className="grid-title">Results</h3>
+                                <hr />
+                                <div class="col-auto">
+                                    <select className="form-select form-select-md bg-transparent border-0" value={orderBy} name="orderBy" onChange={handleOrderByChange}>
+                                        <option value="">Recommended</option>
+                                        <option value="highest_price">Highest Price</option>
+                                        <option value="lowest_price">Lowest Price</option>
+                                        <option value="bedrooms">Bedrooms</option>
+                                        <option value="washrooms">Washrooms</option>
+                                    </select>
+                                </div>
+                                <SearchProperty results={results} />
+                                <div className='pagination justify-content-center'>
+                                    <button className={`page-item page-link${page <= 1 ? ' disabled' : ''}`} onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
+                                        Previous
+                                    </button>
+                                    {pageNumbers}
+                                    <button className={`page-item page-link${page >= totalPages ? ' disabled' : ''}`} onClick={() => handlePageClick(page + 1)} disabled={page >= totalPages}>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
       );
 }
 
