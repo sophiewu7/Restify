@@ -3,7 +3,7 @@ import './style.css'
 
 const Footer = () => {
   return (
-    <footer className="text-center border-top footer p-2">
+    <footer className="text-center border-top footer">
       <p>© 2023 by group1886 University of Toronto CSC309.</p>
     </footer>
   );

@@ -9,7 +9,7 @@ const Layout = (props) => {
     <div key={location.pathname}>
       <Navbar />
       {props.children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
