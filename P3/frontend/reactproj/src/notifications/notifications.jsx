@@ -56,12 +56,12 @@ const NotificationPage = () => {
   }, []);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 notification-container">
       <h4 className="mb-4 notification-title">Notifications</h4>
       <ul className="list-group">
         {notifications.map(notification => (
           <li className="list-group-item" key={notification.id}>
-            <span className="link" onClick={() => handleNotificationClick(notification)}>{CHOICES.get(notification.type)}</span>
+            <span className="link link-notification " onClick={() => handleNotificationClick(notification)}>{CHOICES.get(notification.type)}</span>
           </li>
         ))}
       </ul>

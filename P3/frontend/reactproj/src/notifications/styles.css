@@ -1,15 +1,19 @@
-.notification-title {
+/* .notification-title {
     margin-top: 5rem;
+} */
+
+.notification-container {
+    padding-top: 56px;
 }
 
-.link {
+.link-notification {
     color: #007bff; /* Set link color */
     text-decoration: none; /* Remove default underline */
     transition: color 0.3s; /* Add transition effect for color change */
 }
   
 /* Hover effect for link */
-.link:hover {
+.link-notification:hover {
 color: #0056b3; /* Set hover color */
 text-decoration: underline; /* Add underline on hover */
 }
