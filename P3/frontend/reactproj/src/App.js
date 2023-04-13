@@ -19,6 +19,7 @@ import CommentSection from './comments/comments';
 import UserComment from './comments/user_comments'
 import AddUserComment from './comments/add_user_comment';
 
+import Profileform from './properties/create';
 
 const App = () => {
     useEffect(() => {
@@ -44,6 +45,7 @@ const App = () => {
                     <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
                     <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
                     <Route exact path='/add_user_comments' element={<AddUserComment userId={1}/>}/>
+                    <Route exact path='/createproperty' element={<Profileform />} />
                 </Routes>
             </Layout>
         </Router>
