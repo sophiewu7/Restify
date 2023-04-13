@@ -272,7 +272,7 @@ function SearchResults() {
                             <div className="col-md-9">
                                 <h3 className="grid-title">Results</h3>
                                 <hr />
-                                <div class="col-auto">
+                                <div className="col-auto">
                                     <select className="form-select form-select-md bg-transparent border-0" value={orderBy} name="orderBy" onChange={handleOrderByChange}>
                                         <option value="">Recommended</option>
                                         <option value="highest_price">Highest Price</option>
