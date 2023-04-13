@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Logout from '../../accounts/Logout';
+import SearchButton from '../../search/SearchButton';
 import './style.css';
 
 function Navbar() {
@@ -39,9 +40,12 @@ function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarList">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li className="nav-item pb-0">
+                        <SearchButton />
+                    </li>
                     {isLoggedIn ? (
                         <>
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item mt-2 mt-lg-0">
                                 <a href="/reservations" className="nav-link link-dark">My Rental Units</a>
                             </li>
@@ -54,24 +58,22 @@ function Navbar() {
                             <li className="nav-item mt-2 mt-lg-0">
                                 <Logout onLogout={handleLogout} className="nav-link link-dark" />
                             </li>
-                        </ul>
                         </>
                     ) : (
                         <>
-                            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                <Link to="/signup" className="nav-link link-dark">
-                                    Sign Up
-                                </Link>
-                                </li>
-                                <li className="nav-item">
-                                <Link to="/login" className="nav-link link-dark">
-                                    Log In
-                                </Link>
-                                </li>
-                            </ul>
+                            <li className="nav-item">
+                            <Link to="/signup" className="nav-link link-dark">
+                                Sign Up
+                            </Link>
+                            </li>
+                            <li className="nav-item">
+                            <Link to="/login" className="nav-link link-dark">
+                                Log In
+                            </Link>
+                            </li>
                         </>
                     )}
+                    </ul>
                 </div>
             </div>
         </nav>
