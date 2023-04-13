@@ -221,6 +221,10 @@ class PropertySearchView(generics.ListAPIView):
                 max_price = float(max_price_str)
                 if max_price < 0:
                     raise ValidationError('Maximum price cannot be negative.')
+                if min_price_str is not None:
+                    min_price = float(min_price_str)
+                else:
+                    min_price = None
                 if min_price is not None and max_price < min_price:
                     raise ValidationError('Maximum price cannot be less than minimum price.')
                 expansive_property_ids = Pricetag.objects.filter(
