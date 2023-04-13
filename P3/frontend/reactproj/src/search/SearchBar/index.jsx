@@ -16,6 +16,8 @@ function Search() {
         navigate(`/search_results?search=${location}&check_in=${checkin}&check_out=${checkout}&guests=${guests}`);
     };
 
+    const today = new Date().toISOString().split('T')[0];
+
     return (
         <section className='container d-flex justify-content-center align-items-center flex-column'>
             <form className='w-100 d-flex justify-content-center align-items-center my-2' onSubmit={handleSearch}>
@@ -26,11 +28,11 @@ function Search() {
                     </div>
                     <div className="col-auto my-2 mx-2">
                         <label className="mb-1">Check In</label>
-                        <input type="date" value={checkin} onChange={(e) => setCheckin(e.target.value)} required />
+                        <input type="date" value={checkin} min={today} onChange={(e) => setCheckin(e.target.value)} required />
                     </div>
                     <div className="col-auto my-2 mx-2">
                         <label className="mb-1">Check Out</label>
-                        <input type="date" value={checkout} onChange={(e) => setCheckout(e.target.value)} required />
+                        <input type="date" value={checkout} min={today} onChange={(e) => setCheckout(e.target.value)} required />
                     </div>
                     <div className="col-auto my-2 mx-2">
                         <label className="mb-1">Guest</label>
