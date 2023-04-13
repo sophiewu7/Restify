@@ -22,12 +22,12 @@ import AddUserComment from './comments/add_user_comment';
 // import Profileform from './properties/create';
 
 const App = () => {
-    useEffect(() => {
-        const accessToken = localStorage.getItem("access_token");
-        if (accessToken) {
-            localStorage.removeItem("access_token");
-        }
-    }, []);
+    // useEffect(() => {
+    //     const accessToken = localStorage.getItem("access_token");
+    //     if (accessToken) {
+    //         localStorage.removeItem("access_token");
+    //     }
+    // }, []);
 
     return (
         <Router>
