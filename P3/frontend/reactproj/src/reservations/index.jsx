@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Logout from '../Logout';
 
-function Home() {
+function Reservations() {
     
     return (
         <div style={{ marginTop: "56px" }}>
-            home
+            Reservation
         </div>
     );
         
 }
 
-export default Home;
+export default Reservations;
 

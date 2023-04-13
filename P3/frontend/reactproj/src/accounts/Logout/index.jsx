@@ -31,7 +31,7 @@ function Logout(props) {
             });
     }  
 
-    return <button className="dropdown-item" onClick={handleLogout}>Log out</button>;
+    return <a className={props.className} onClick={handleLogout}>Log out</a>;
 }
 
 export default Logout;
