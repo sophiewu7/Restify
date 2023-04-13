@@ -22,7 +22,7 @@ function Search() {
                 <div className='row my-4 p-2 bg-white w-100 search-box justify-content-between align-items-center'>
                     <div className='col-auto my-2 mx-2'>
                         <label className="mb-1">Location</label>
-                        <input type="text" value={location} placeholder="Location" onChange={(e) => setLocation(e.target.value)} required />
+                        <input type="text" value={location} placeholder="Where do you like to go?" onChange={(e) => setLocation(e.target.value)} required />
                     </div>
                     <div className="col-auto my-2 mx-2">
                         <label className="mb-1">Check In</label>
