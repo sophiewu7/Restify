@@ -59,7 +59,7 @@ class AddComment extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container comment-container">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="commentText">Add User Comment</label>

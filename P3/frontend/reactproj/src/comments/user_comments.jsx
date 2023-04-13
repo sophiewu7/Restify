@@ -52,7 +52,7 @@ class UserComment extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container comment-container">
         <h4>User Comments</h4>
         <div className="row">
           {comments.map(comment => (

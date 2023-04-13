@@ -2,8 +2,12 @@
     margin-top: 5rem;
 }
 
-.container{
+/* .container{
     padding-top: 10rem;
+} */
+
+.comment-container{
+    padding-top: 56px;
 }
 
 .btn-primary{

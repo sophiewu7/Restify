@@ -52,7 +52,7 @@ const PropertyCommentSection = ({ propertyId }) => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 comment-container">
       <h4 className="mb-4 comments-title">Comments</h4>
       {renderComments()}
       <CommentForm propertyId={propertyId} onCommentSubmit={handleCommentSubmit}/>
