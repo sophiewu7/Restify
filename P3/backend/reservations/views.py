@@ -50,6 +50,17 @@ class ReservationCreateView(generics.CreateAPIView):
         reservation.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+class ReservationAllListView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+
+    def get_queryset(self):
+        return Reservation.objects.filter(Q(reserve_host=self.request.user.id)|
+                                          Q(reserve_guest=self.request.user.id))
+
 
 class ReservationGuestListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
@@ -59,7 +70,7 @@ class ReservationGuestListView(generics.ListAPIView):
     serializer_class = ReservationSerializer
 
     def get_queryset(self):
-        return Reservation.objects.filter(reserve_guest=self.request.user)
+        return Reservation.objects.filter(reserve_guest=self.request.user.id)
 
 
 class ReservationHostListView(generics.ListAPIView):
@@ -105,8 +116,6 @@ class ReservationDenyListView(generics.ListAPIView):
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.DENIED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.DENIED) )
-
-
 
 class ReservationPendingListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
