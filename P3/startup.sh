@@ -21,6 +21,8 @@ python3 ./manage.py loaddata data.json
 cd ..
 
 cd frontend/reactproj
+npm outdated
+npm update
 npm install react
 npm install react-router-dom
 npm install axios redux redux-devtools-extension react-redux redux-thunk
