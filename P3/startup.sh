@@ -25,12 +25,7 @@ npm outdated
 npm update
 npm install react
 npm install react-router-dom
-npm install axios redux redux-devtools-extension react-redux redux-thunk
 npm install react-bootstrap bootstrap
-npm i --save @fortawesome/fontawesome-svg-core
-npm i --save @fortawesome/free-solid-svg-icons
-npm i --save @fortawesome/free-regular-svg-icons
-npm i --save @fortawesome/react-fontawesome@latest
 npm install react-bootstrap-icons --save
 npm install react-paginate
 
