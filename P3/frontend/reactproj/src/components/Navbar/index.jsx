@@ -47,9 +47,9 @@ function Navbar() {
                     {isLoggedIn ? (
                         <>
                             <li className="nav-item mt-2 mt-lg-0 dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     My Rental Units
-                                </a>
+                                </div>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a className="dropdown-item" href="/rentals">My Properties</a></li>
                                     <li><a className="dropdown-item" href="/reservation">My Reservations</a></li>

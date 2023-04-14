@@ -31,7 +31,7 @@ function Logout(props) {
             });
     }  
 
-    return <a className={props.className} onClick={handleLogout}>Log out</a>;
+    return <a className={props.className} onClick={handleLogout} href='/'>Log out</a>;
 }
 
 export default Logout;

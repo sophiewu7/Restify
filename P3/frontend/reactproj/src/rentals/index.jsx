@@ -34,7 +34,7 @@ function Rentals() {
                     console.log(error);
                 });
             }
-    }, [page, limit]);
+    }, [page, limit, navigate]);
 
     function handlePageClick(newPage) {
         setPage(newPage);

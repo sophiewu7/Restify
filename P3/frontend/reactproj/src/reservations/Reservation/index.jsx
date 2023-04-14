@@ -41,7 +41,7 @@ function Reservation() {
                 console.log(error);
             });
         }
-    }, [page, limit, filter]);
+    }, [page, limit, filter, navigate]);
 
     function handleFilterChange(event) {
         setFilter(event.target.value);
