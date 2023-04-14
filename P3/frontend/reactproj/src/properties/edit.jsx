@@ -127,7 +127,7 @@ function EditPropertyForm() {
             };
             const response = await axios.delete(`${PRO_DETAIL_URL}${id}/delete/`, config);
             console.log(response.data);
-            navigate('/properties/' + id);
+            navigate('/rentals');
             setError('');
         }catch (error) {
           console.error(error.response);

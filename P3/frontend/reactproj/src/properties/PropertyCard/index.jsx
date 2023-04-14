@@ -36,7 +36,6 @@ function Property({ property }) {
                 </p>
                 <div>
                   <Link to={`/properties/${property.id}/edit`} className="btn btn-primary me-3">Edit</Link>
-                  <Link to={`/properties/${property.id}/delete`} className="btn btn-danger">Delete</Link>
                 </div>
               </div>
             </div>
