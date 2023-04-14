@@ -76,6 +76,7 @@ function Reservation({ reservation }) {
                                 <p className="card-text">City: {reservation.city}</p>
                                 <p className="card-text">Country: {reservation.country}</p>
                                 <p className="card-text">Host: {reservation.reserve_host_firstname} {reservation.reserve_host_lastname}</p>
+                                <p className="card-text">Guest: {reservation.reserve_guest_firstname} {reservation.reserve_guest_lastname}</p>
                                 {error && <div className="alert alert-danger">{error}</div>}
                                 <div>
                                     <button className="btn btn-secondary me-3" value="complet" onClick={() => handleReservationStatusChange(reservation.id, "complete")}>Complete</button>

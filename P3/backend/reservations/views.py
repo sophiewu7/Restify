@@ -59,7 +59,7 @@ class ReservationAllListView(generics.ListAPIView):
 
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id)|
-                                          Q(reserve_guest=self.request.user.id))
+                                          Q(reserve_guest=self.request.user))
 
 
 class ReservationGuestListView(generics.ListAPIView):
