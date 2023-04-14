@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './style.css';
@@ -53,6 +54,13 @@ function Rentals() {
         <section className='container-fluid bg-light rental-container'>
             <div className='container d-flex justify-content-center align-items-center flex-column'>
                 <h2 className='mt-5 mb-3'>My Properties</h2>
+                <div>
+                    <button className='btn btn-primary my-2 mx-2 px-3 py-2'>
+                        <Link to="/createproperty" className="nav-link">
+                            Create New Property
+                        </Link>
+                    </button>
+                </div>
                 <ListProperty results={properties} />
                 <div className='pagination justify-content-center pb-5'>
                     <button className={`page-item page-link${page <= 1 ? ' disabled' : ''}`} onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
