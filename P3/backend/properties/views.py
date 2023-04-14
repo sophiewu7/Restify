@@ -29,10 +29,6 @@ class PropertyListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return Property.objects.filter(owner=self.request.user)
-    
-    # def get(self, request, *args, **kwargs):
-    #     message = "Please enter information about your property to create a new listing:"
-    #     return Response({'message': message})
 
     def perform_create(self, serializer):
         if not serializer.validated_data.get('email'):
@@ -40,6 +36,20 @@ class PropertyListCreateView(generics.ListCreateAPIView):
         if not serializer.validated_data.get('phone_number'):
             serializer.validated_data['phone_number'] = self.request.user.phone_number
         serializer.save(owner=self.request.user)
+    
+    def handle_exception(self, exc):
+        if isinstance(exc, ValidationError):
+            errors = exc.detail
+            message = ""
+            for field, error_list in errors.items():
+                for error in error_list:
+                    message += f"{field}: {error}\n"
+                    response_data = {"error": message}
+                    response = Response(response_data, status=status.HTTP_400_BAD_REQUEST)
+                    return response
+        else:
+            response = super().handle_exception(exc)
+        return response
 
 
 class PropertyListView(generics.ListAPIView):

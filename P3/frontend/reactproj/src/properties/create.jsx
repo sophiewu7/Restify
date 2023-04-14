@@ -14,9 +14,9 @@ function PropertyForm() {
     const [city, setCity] = useState("");
     const [detailed_address, setDetailedAddress] = useState("");
     const [zip_postcode, setZip] = useState("");
-    const [guests, setGuests] = useState("");
-    const [washrooms, setWashrooms] = useState("");
-    const [livingrooms, setLivingrooms] = useState("");
+    const [guests, setGuests] = useState(1);
+    const [washrooms, setWashrooms] = useState(1);
+    const [livingrooms, setLivingrooms] = useState(1);
     const [property_type, setPropertyType] = useState("");
     
     const [property_description, setPropertyDescription ] = useState("");
@@ -123,7 +123,23 @@ function PropertyForm() {
                     'Content-Type': 'multipart/form-data',
                 },
             }
-        );
+        ).then((response) => {
+          setError("");
+          navigate("/rentals");
+        })
+        .catch((error) => {
+            console.error(error.response);
+            if (!error?.response) {
+                setError('No Server Response');
+            } else if (error.response?.status === 400) {
+                if(error.response.data.error){
+                    setError(error.response.data.error);
+                } else {
+                    setError("Failed to create a new property.");
+                }
+                
+            }
+        });
 
         console.log(response.data);
     } catch (error) {
@@ -134,8 +150,6 @@ function PropertyForm() {
     
 
   return (
-
-
     <div className="container pt-5 pb-5">
       <div className="row">
         <div className="col-md me-3">
@@ -143,6 +157,7 @@ function PropertyForm() {
             <h4 className="text-center mt-2">Property Information</h4>
           </div>
           <form onSubmit={handleSubmit}>
+            {error && <div className="alert alert-danger">{error}</div>}
             <div className="row mt-2">
               <div className="col-md-12 mt-2">
                 <label className="labels">Property Name</label>
@@ -188,6 +203,7 @@ function PropertyForm() {
                 //   value={detailedAddress}
                 //   onChange={handleChange}
                   onChange={(e) => setDetailedAddress(e.target.value)}
+                  
                 />
               </div>
               <div className="col-md-12 mt-2">
@@ -199,46 +215,47 @@ function PropertyForm() {
                 //   value={zip}
                 //   onChange={handleChange}
                   onChange={(e) => setZip(e.target.value)}
+                  
                 />
               </div>
               <div className="col-md-12 mt-2">
                 <label className="labels">Bedrooms</label>
-                <select className="form-control" onChange={(e) => setBedrooms(e.target.value)}>
+                <select className="form-control" onChange={(e) => setBedrooms(e.target.value)} >
                     <option value="1">1 Bedroom</option>
                     <option value="2">2 Bedrooms</option>
                     <option value="3">3 Bedrooms</option>
                     <option value="4">4 Bedrooms</option>
-                    <option value="5+">5+ Bedrooms</option>
+                    <option value="5">5+ Bedrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
                 <label className="labels">washrooms</label>
-                <select className="form-control" onChange={(e) => setWashrooms(e.target.value)}>
+                <select className="form-control" onChange={(e) => setWashrooms(e.target.value)} >
                     <option value="1">1 washroom</option>
                     <option value="2">2 washrooms</option>
                     <option value="3">3 washrooms</option>
                     <option value="4">4 washrooms</option>
-                    <option value="5+">5+ washrooms</option>
+                    <option value="5">5+ washrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
                 <label className="labels">livingrooms</label>
-                <select className="form-control" onChange={(e) => setLivingrooms(e.target.value)}>
+                <select className="form-control" onChange={(e) => setLivingrooms(e.target.value)} >
                     <option value="1">1 livingroom</option>
                     <option value="2">2 livingrooms</option>
                     <option value="3">3 livingrooms</option>
                     <option value="4">4 livingrooms</option>
-                    <option value="5+">5+ livingrooms</option>
+                    <option value="5">5+ livingrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
                 <label className="labels">guests</label>
-                <select className="form-control" onChange={(e) => setGuests(e.target.value)}>
+                <select className="form-control" onChange={(e) => setGuests(e.target.value)} >
                     <option value="1">1 guest</option>
                     <option value="2">2 guests</option>
                     <option value="3">3 guests</option>
                     <option value="4">4 guests</option>
-                    <option value="5+">5+ guests</option>
+                    <option value="5">5+ guests</option>
                 </select>
               </div>
               <div className="col-md-12 mt-2">
@@ -250,6 +267,7 @@ function PropertyForm() {
                 //   value={detailedAddress}
                 //   onChange={handleChange}
                   onChange={(e) => setPropertyType(e.target.value)}
+                  
                 />
               </div>
               <div className="col-md-12 mt-2">
@@ -259,6 +277,7 @@ function PropertyForm() {
                   className="form-control"
                   placeholder=""
                   onChange={(e) => setPrice(e.target.value)}
+                  requred
                 />
               </div>
               <div className="col-md-12 mt-2">
@@ -267,7 +286,7 @@ function PropertyForm() {
                     className="form-control" 
                     placeholder="Share what makes your place special." 
                     style={{ height: "200px" }}
-                    onChange={(e) => setPropertyDescription(e.target.value)}>
+                    onChange={(e) => setPropertyDescription(e.target.value)} >
                 </textarea>
               </div>
 
@@ -282,6 +301,7 @@ function PropertyForm() {
                         className="form-check-input me-2"
                         name="swimpool"
                         onChange={(e) => setSwimpool(e.target.value)}
+                        
                         />
                         <i className="fa-solid fa-wifi pe-2"></i>Swimpool
                     </label>
@@ -293,6 +313,7 @@ function PropertyForm() {
                         className="form-check-input me-2"
                         name="wifi"
                         onChange={(e) => setWifi(e.target.value)}
+                        
                         />
                         <i className="fa-solid fa-wifi pe-2"></i>WIFI
                     </label>
@@ -303,7 +324,8 @@ function PropertyForm() {
                         type="checkbox"
                         className="form-check-input me-2"
                         name="parking"
-                        onChange={(e) => setParking(e.target.value)}                        
+                        onChange={(e) => setParking(e.target.value)}
+                                                
                         />
                         <i className="fa-solid fa-car pe-2"></i>Parking
                     </label>
@@ -314,7 +336,8 @@ function PropertyForm() {
                         type="checkbox"
                         className="form-check-input me-2"
                         name="aircondition"
-                        onChange={(e) => setAircondition(e.target.value)}                        
+                        onChange={(e) => setAircondition(e.target.value)}
+                                                
                         />
                         <i className="fa-solid fa-car pe-2"></i>Aircondition
                     </label>
