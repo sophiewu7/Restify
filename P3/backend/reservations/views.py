@@ -184,7 +184,6 @@ class IsReservationHost(BasePermission):
 class ReservationGuestUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated, IsReservationGuest]
     authentication_classes = [JWTAuthentication]
-
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'id'
@@ -254,3 +253,62 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
             return Response(serializer.data)
         else:
             return Response({'error': 'You don\'t have the permission'}, status=400)
+
+class IsReservationGuestOrHost(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.reserve_guest == request.user or obj.reserve_host == request.user.id
+
+class ReservationUpdateView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated, IsReservationGuestOrHost]
+    authentication_classes = [JWTAuthentication]
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+    lookup_field = "id"
+
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        serializer = self.get_serializer(obj)
+        return Response(serializer.data)
+
+    def put(self, request, *args, **kwargs):
+        return Response({"error": "You should use PATCH"}, status=400)
+
+    def patch(self, request, *args, **kwargs):
+        instance = self.get_object()
+        status_keyword = self.request.query_params.get("status", None)
+
+        if instance.reserve_guest == request.user:
+            if status_keyword == "cancel":
+                instance.status = Reservation.PENDING_CANCELED
+                instance.save()
+                serializer = self.serializer_class(instance)
+                return Response(serializer.data)
+            else:
+                return Response({"error": "You don't have the permission"}, status=400)
+
+        if instance.reserve_host == request.user.id:
+            if status_keyword == "approve":
+                if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
+                    return Response({"error": "You can only approve a pending reservation"}, status=400)
+                instance.status = Reservation.APPROVED
+                instance.save()
+                serializer = self.serializer_class(instance)
+                return Response(serializer.data)
+            elif status_keyword == "deny":
+                if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
+                    return Response({"error": "You can only deny a pending reservation"}, status=400)
+                instance.status = Reservation.DENIED
+                instance.save()
+                serializer = self.serializer_class(instance)
+                return Response(serializer.data)
+            elif status_keyword == "terminate":
+                if instance.status != Reservation.APPROVED:
+                    return Response({"error": "You can only terminate an approved reservation"}, status=400)
+                instance.status = Reservation.TERMINATED
+                instance.save()
+                serializer = self.serializer_class(instance)
+                return Response(serializer.data)
+            else:
+                return Response({"error": "You don't have the permission"}, status=400)
+        else:
+            return Response({"error": "You don't have the permission"}, status=400)

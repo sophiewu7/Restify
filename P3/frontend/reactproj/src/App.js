@@ -15,8 +15,7 @@ import Search from './search/SearchBar';
 import SearchResults from './search/SearchResults';
 
 import Rentals from './rentals';
-import ReservationHost from './reservations/Host';
-import ReservationGuest from './reservations/Guest';
+import Reservation from './reservations/Reservation';
 
 import NotificationPage from './notifications/notifications';
 import CommentSection from './comments/comments';
@@ -38,8 +37,7 @@ const App = () => {
                     <Route exact path='/search' element={<Search />} />
                     <Route exact path='/search_results' element={<SearchResults />} />
                     <Route exact path='/rentals' element={<Rentals />} />
-                    <Route exact path='/reservation_host' element={<ReservationHost />} />
-                    <Route exact path='/reservation_guest' element={<ReservationGuest />} />
+                    <Route exact path='/reservation' element={<Reservation />} />
                     <Route exact path='/notifications' element={<NotificationPage />} />
                     <Route exact path='/comments' element={<CommentSection propertyId={1}/>}/>
                     <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>

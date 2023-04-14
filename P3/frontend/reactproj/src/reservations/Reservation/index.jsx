@@ -6,7 +6,7 @@ import ListReservation from '../ReservationCard';
 
 const RESERVATION_URL = 'http://localhost:8000/reservations/all/list/';
 
-function ReservationGuest() {
+function Reservation() {
     const [reservation, setReservation] = useState([]);
     const [page, setPage] = useState(1);
     const limit = 5;
@@ -65,8 +65,8 @@ function ReservationGuest() {
         <section className='container-fluid bg-light rental-container'>
             <div className='container d-flex justify-content-center align-items-center flex-column'>
                 <h2 className='mt-5 mb-3'>My Reservations</h2>
-                <div className="form-group">
-                    <label htmlFor="status-filter">Filter by status:</label>
+                <div className="form-group d-flex flex-row w-50">
+                    <label className='col-form-label col-sm-3 d-flex justify-content-end me-3'>Filter by:</label>
                     <select className="form-control" id="status-filter" value={filter} onChange={handleFilterChange}>
                         <option value="all">All</option>
                         <option value="host">As a Host</option>
@@ -96,4 +96,4 @@ function ReservationGuest() {
     );
 }
 
-export default ReservationGuest;
+export default Reservation;

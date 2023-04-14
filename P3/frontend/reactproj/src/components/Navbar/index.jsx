@@ -52,8 +52,7 @@ function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a className="dropdown-item" href="/rentals">My Properties</a></li>
-                                    <li><a className="dropdown-item" href="/reservation_host">My Reservations as Host</a></li>
-                                    <li><a className="dropdown-item" href="/reservation_guest">My Reservations as Guest</a></li>
+                                    <li><a className="dropdown-item" href="/reservation">My Reservations</a></li>
                                 </ul>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">

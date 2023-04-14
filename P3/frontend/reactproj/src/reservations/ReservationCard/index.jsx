@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const HOST_URL = 'http://localhost:8000/reservations/host/'
-const GUEST_URL = 'http://localhost:8000/reservations/guest/'
+const STATUS_URL = 'http://localhost:8000/reservations/status/'
 
 function Reservation({ reservation }) {
     
@@ -21,7 +20,7 @@ function Reservation({ reservation }) {
                 status: statusValue
             });
             axios.patch(
-                `${GUEST_URL}${reservationId}/?${params.toString()}`,
+                `${STATUS_URL}${reservationId}/?${params.toString()}`,
                 {},
                 {
                     headers: {
@@ -30,7 +29,7 @@ function Reservation({ reservation }) {
                 }
             )              
             .then((response) => {
-                axios.get(`${GUEST_URL}${reservationId}/`, {
+                axios.get(`${STATUS_URL}${reservationId}/`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
