@@ -136,7 +136,7 @@ function PropertyDetails() {
             <input type="date" placeholder="Add date" min={today} name="check_out" onChange={(e) => setCheckOut(e.target.value)} required/>
         </div>
 
-        <button className="guest_div btn-primary comment-btn" type="submit"data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleBook}>Book Now</button>
+        <button className="guest_div btn-primary comment-btn" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleBook}>Book Now</button>
         </form>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

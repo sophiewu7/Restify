@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import './styles.css';
 
 const PRO_DETAIL_URL = 'http://localhost:8000/properties/';
 const PRO_EDIT_URL = 'http://localhost:8000/properties/';
@@ -368,76 +369,97 @@ function EditPropertyForm() {
                     </label>
                     </div>
               </div>
-
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    // src={formData.image1 ? URL.createObjectURL(formData.image1) : null}
-                    src={imagePreview1 || formData.image1 || null}
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image1" onChange={(event) => handleImageChange(event, 1)} />
-                    </label>
+              <div className='d-flex flex-row justify-content-evenly flex-wrap'>
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                    <img
+                        className="mt-5 mb-3"
+                        width="250px"
+                        height="150px"
+                        // src={formData.image1 ? URL.createObjectURL(formData.image1) : null}
+                        src={imagePreview1 || formData.image1 || null}
+                        
+                    />
+                    <div className="btn btn-outline-primary btn-rounded mt-4">
+                        <label className="form-label m-1">
+                        Upload Image
+                        <input type="file" className="form-control d-none" name="image1" onChange={(event) => handleImageChange(event, 1)} />
+                        </label>
+                    </div>
                 </div>
-              </div>
 
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    // src={formData.image2 ? URL.createObjectURL(formData.image2) : null}
-                    // src={formData.image2 ? formData.image2 : null}
-                    src={imagePreview2 || formData.image2 || null}
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                    <img
+                        className="mt-5 mb-3"
+                        width="150px"
+                        height="150px"
+                        // src={formData.image2 ? URL.createObjectURL(formData.image2) : null}
+                        // src={formData.image2 ? formData.image2 : null}
+                        src={imagePreview2 || formData.image2 || null}
 
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image2" onChange={(event) => handleImageChange(event, 2)} />
-                    </label>
+                    />
+                    <div className="btn btn-outline-primary btn-rounded mt-4">
+                        <label className="form-label m-1">
+                        Upload Image
+                        <input type="file" className="form-control d-none" name="image2" onChange={(event) => handleImageChange(event, 2)} />
+                        </label>
+                    </div>
                 </div>
-              </div>
 
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    // src={formData.image3 ? URL.createObjectURL(formData.image3) : null}
-                    // src={formData.image3 ? formData.image3 : null}
-                    src={imagePreview3 || formData.image3 || null}
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image3" onChange={(event) => handleImageChange(event, 3)} />
-                    </label>
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                    <img
+                        className="mt-5 mb-3"
+                        width="150px"
+                        height="150px"
+                        // src={formData.image3 ? formData.image3 : null}
+                        src={imagePreview3 || formData.image3 || null}
+                    /> 
+                    <div className="btn btn-outline-primary btn-rounded mt-4">
+                        <label className="form-label m-1">
+                        Upload Image
+                        <input type="file" className="form-control d-none" name="image3" onChange={(event) => handleImageChange(event, 3)} />
+                        </label>
+                    </div>
                 </div>
-              </div>
+                </div>
 
-
-              <div className="col-md-6 mt-2">
-                <button type="submit" className="btn btn-primary mr-2">
+              <div className="col-md-12 mt-2 w-100 mb-2">
+                <button type="submit" className="btn btn-primary w-100">
                   submit
                 </button>
               </div>
-              <div className="col-md-6 mt-2">
+
+
+              <div className="col-md-12 mt-2 w-100 mb-5">
                 <button
                     type="button"
-                    className="btn btn-danger"
-                    onClick={handleDelete}
+                    className="btn btn-primary w-100 btn-danger"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#warnModal"
+                    
                 >
                     Delete
                 </button>
               </div>
+
+              <div className="modal fade" id="warnModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        Are you sure you want to delete this property?
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleDelete} >YES</button>
+                    </div>
+                    </div>
+                </div>
+              </div>
+
+
             </div>
           </form>
         </div>
