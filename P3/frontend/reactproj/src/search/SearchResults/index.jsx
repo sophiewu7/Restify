@@ -125,6 +125,7 @@ function SearchResults() {
       
     const handleOrderByChange = (event) => {
         setOrderBy(event.target.value);
+        setPage(1);
         setFormSubmitted(true);
     };
 
@@ -137,6 +138,7 @@ function SearchResults() {
           ...filter,
           [name]: value
         });
+        setPage(1);
         setFormSubmitted(true);
     };
     

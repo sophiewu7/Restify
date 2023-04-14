@@ -45,6 +45,7 @@ function Reservation() {
 
     function handleFilterChange(event) {
         setFilter(event.target.value);
+        setPage(1);
     }
 
     function handlePageClick(newPage) {
