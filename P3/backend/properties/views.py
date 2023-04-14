@@ -111,6 +111,20 @@ class PropertyUpdateView(generics.UpdateAPIView):
     def perform_update(self, serializer):
         super().perform_update(serializer)
 
+    def handle_exception(self, exc):
+        if isinstance(exc, ValidationError):
+            errors = exc.detail
+            message = ""
+            for field, error_list in errors.items():
+                for error in error_list:
+                    message += f"{field}: {error}\n"
+                    response_data = {"error": message}
+                    response = Response(response_data, status=status.HTTP_400_BAD_REQUEST)
+                    return response
+        else:
+            response = super().handle_exception(exc)
+        return response
+
 
 class PriceListCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]

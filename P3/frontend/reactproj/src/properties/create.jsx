@@ -10,13 +10,13 @@ function PropertyForm() {
 
     const [property_name, setPropertyName] = useState("");
     const [country, setCountry] = useState("");
-    const [bedrooms, setBedrooms] = useState("");
+    const [bedrooms, setBedrooms] = useState('1');
     const [city, setCity] = useState("");
     const [detailed_address, setDetailedAddress] = useState("");
     const [zip_postcode, setZip] = useState("");
-    const [guests, setGuests] = useState(1);
-    const [washrooms, setWashrooms] = useState(1);
-    const [livingrooms, setLivingrooms] = useState(1);
+    const [guests, setGuests] = useState('1');
+    const [washrooms, setWashrooms] = useState('1');
+    const [livingrooms, setLivingrooms] = useState('1');
     const [property_type, setPropertyType] = useState("");
     
     const [property_description, setPropertyDescription ] = useState("");
