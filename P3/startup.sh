@@ -1,6 +1,7 @@
 #!/bin/bash
 # sudo apt-get update
 # sudo apt-get install -y python3 python3-pip
+cd ./backend
 pip3 install virtualenv
 python3 -m venv venv
 source venv/bin/activate
@@ -13,7 +14,13 @@ pip3 install pyyaml
 pip3 install requests
 pip3 install django-cors-headers
 pip3 install exc
+python3 ./manage.py flush
+python3 ./manage.py loaddata data.json
+python3 ./manage.py makemigrations
+python3 ./manage.py migrate
+cd ..
 
+cd frontend/reactproj
 npm install react
 npm install react-router-dom
 npm install axios redux redux-devtools-extension react-redux redux-thunk
@@ -24,4 +31,6 @@ npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/react-fontawesome@latest
 npm install react-bootstrap-icons --save
 npm install react-paginate
+
+cd ../..
 
