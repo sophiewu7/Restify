@@ -47,7 +47,7 @@ function Navbar() {
                     {isLoggedIn ? (
                         <>
                             <li className="nav-item mt-2 mt-lg-0">
-                                <a href="/reservations" className="nav-link link-dark">My Rental Units</a>
+                                <a href="/rentals" className="nav-link link-dark">My Rental Units</a>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">
                                 <a href="/notifications" className="nav-link link-dark">Notification</a>
