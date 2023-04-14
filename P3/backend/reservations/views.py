@@ -43,9 +43,9 @@ class ReservationCreateView(generics.CreateAPIView):
         reservation = serializer.save(
             reserve_guest=self.request.user,
             reserve_property=reserve_property,
-            reserve_host=reserve_property.owner.id
+            reserve_host=reserve_property.owner.id,
         )
-
+        
         reservation.status = Reservation.PENDING
         reservation.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
