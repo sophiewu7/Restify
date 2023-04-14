@@ -136,7 +136,7 @@ function PropertyForm() {
   return (
 
 
-    <div className="container">
+    <div className="container pt-5 pb-5">
       <div className="row">
         <div className="col-md me-3">
           <div className="d-flex justify-content-center align-items-center mb-3 mt-3">

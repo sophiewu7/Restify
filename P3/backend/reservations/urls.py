@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('guest/<int:id>/', views.ReservationGuestUpdateView.as_view()),
     path('host/<int:id>/', views.ReservationHostUpdateView.as_view()),
+    path('hostguest/<int:id>/', views.ReservationHostUpdateView.as_view()),
     path('completed/list/', views.ReservationCompletedListView.as_view()),
     path('approved/list/', views.ReservationApproveListView.as_view()),
     path('denied/list/', views.ReservationDenyListView.as_view()),

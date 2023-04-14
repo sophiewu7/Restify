@@ -37,11 +37,11 @@ class Property(models.Model):
     image1 = models.ImageField(upload_to='property_image/', blank=True, null=True)
     image2 = models.ImageField(upload_to='property_image/', blank=True, null=True)
     image3 = models.ImageField(upload_to='property_image/', blank=True, null=True)
-    image4 = models.ImageField(upload_to='property_image/', blank=True, null=True)
-    image5 = models.ImageField(upload_to='property_image/', blank=True, null=True)
-    image6 = models.ImageField(upload_to='property_image/', blank=True, null=True)
-    image7 = models.ImageField(upload_to='property_image/', blank=True, null=True)
-    image8 = models.ImageField(upload_to='property_image/', blank=True, null=True)
+    # image4 = models.ImageField(upload_to='property_image/', blank=True, null=True)
+    # image5 = models.ImageField(upload_to='property_image/', blank=True, null=True)
+    # image6 = models.ImageField(upload_to='property_image/', blank=True, null=True)
+    # image7 = models.ImageField(upload_to='property_image/', blank=True, null=True)
+    # image8 = models.ImageField(upload_to='property_image/', blank=True, null=True)
 
 class Pricetag(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)

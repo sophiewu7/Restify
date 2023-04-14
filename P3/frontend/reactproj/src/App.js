@@ -22,6 +22,8 @@ import UserComment from './comments/user_comments'
 import AddUserComment from './comments/add_user_comment';
 
 import Profileform from './properties/create';
+import EditPropertyForm from './properties/edit';
+import PropertyDetails from './properties/details';
 
 const App = () => {
     return (
@@ -42,6 +44,8 @@ const App = () => {
                     <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
                     <Route exact path='/add_user_comments' element={<AddUserComment userId={1}/>}/>
                     <Route exact path='/createproperty' element={<Profileform />} />
+                    <Route exact path='/properties/:id/edit' element={<EditPropertyForm />} />
+                    <Route exact path='/properties/:id/detail' element={<PropertyDetails />} />
                 </Routes>
             </Layout>
         </Router>
