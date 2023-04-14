@@ -7,14 +7,15 @@ from django.shortcuts import render, get_object_or_404
 
 class ReservationSerializer(serializers.ModelSerializer):
     reserve_guest = serializers.ReadOnlyField(source='reserve_guest.username')
-    reserve_guest_firstname = serializers.ReadOnlyField(source='reserve_guest.first_name')
-    reserve_guest_lastname = serializers.ReadOnlyField(source='reserve_guest.last_name')
+    reserve_guest_firstname = serializers.ReadOnlyField(source='reserve_guest.owner.first_name')
+    reserve_guest_lastname = serializers.ReadOnlyField(source='reserve_guest.owner.last_name')
     reserve_property = serializers.ReadOnlyField(source='reserve_property.property_name')
     reserve_host = serializers.ReadOnlyField(source='reserve_property.owner.username')
     reserve_host_firstname = serializers.ReadOnlyField(source='reserve_property.owner.first_name')
     reserve_host_lastname = serializers.ReadOnlyField(source='reserve_property.owner.last_name')
     city = serializers.ReadOnlyField(source='reserve_property.city')
     country = serializers.ReadOnlyField(source='reserve_property.country')
+    current_user = serializers.SerializerMethodField()
 
     class Meta:
         model = Reservation
@@ -32,10 +33,18 @@ class ReservationSerializer(serializers.ModelSerializer):
             'check_in',
             'check_out',
             'last_modified',
-            'status'
+            'status',
+            'current_user',
         ]
 
         read_only_fields = ['last_modified']
+
+    def get_current_user(self, obj):
+        return self.context['request'].user.id
+
+    def create(self, validated_data):
+        validated_data['current_user'] = self.context['request'].user
+        return super().create(validated_data)
 
     def validate(self, data):
         check_in = data.get('check_in')
