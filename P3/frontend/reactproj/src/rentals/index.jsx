@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import './style.css';
 
 import ListProperty from '../properties/PropertyCard';
 
@@ -49,20 +50,21 @@ function Rentals() {
     }
 
     return (
-        <>
-        <div style={{ marginTop: "100px" }}>
-            <ListProperty results={properties} />
-        </div>
-        <div className='pagination justify-content-center pb-5'>
-            <button className={`page-item page-link${page <= 1 ? ' disabled' : ''}`} onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
-                Previous
-            </button>
-            {pageNumbers}
-            <button className={`page-item page-link${page >= totalPages ? ' disabled' : ''}`} onClick={() => handlePageClick(page + 1)} disabled={page >= totalPages}>
-                Next
-            </button>
-        </div>
-        </>
+        <section className='container-fluid bg-light rental-container'>
+            <div className='container d-flex justify-content-center align-items-center flex-column'>
+                <h2 className='mt-5 mb-3'>My Properties</h2>
+                <ListProperty results={properties} />
+                <div className='pagination justify-content-center pb-5'>
+                    <button className={`page-item page-link${page <= 1 ? ' disabled' : ''}`} onClick={() => handlePageClick(page - 1)} disabled={page <= 1}>
+                        Previous
+                    </button>
+                    {pageNumbers}
+                    <button className={`page-item page-link${page >= totalPages ? ' disabled' : ''}`} onClick={() => handlePageClick(page + 1)} disabled={page >= totalPages}>
+                        Next
+                    </button>
+                </div>
+            </div>
+        </section>
     );
 }
 

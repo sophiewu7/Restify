@@ -35,7 +35,7 @@ function Property({ property }) {
                   Regular Price: ${property.price}/night
                 </p>
                 <div>
-                  <Link to={`/properties/${property.id}/edit`} className="btn btn-primary mr-2">Edit</Link>
+                  <Link to={`/properties/${property.id}/edit`} className="btn btn-primary me-3">Edit</Link>
                   <Link to={`/properties/${property.id}/delete`} className="btn btn-danger">Delete</Link>
                 </div>
               </div>
