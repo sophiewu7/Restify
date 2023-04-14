@@ -34,8 +34,22 @@ function EditPropertyForm() {
         })
         .then((response) => {
           setFormData(response.data);
+          setError('');
         })
-        .catch((err) => setError(err.message));
+        .catch((error) => {
+          console.error(error.response);
+          if (!error?.response) {
+              setError('No Server Response');
+          } else if (error.response?.status === 400) {
+              if(error.response.data.error){
+                  setError(error.response.data.error);
+              } else {
+                  setError("Failed to find the property.");
+              }
+          } else {
+              setError("Property doesn't exist.");
+          }
+      });
     }
   }, [navigate, id]);
 
@@ -85,9 +99,19 @@ function EditPropertyForm() {
       });
 
       console.log(response.data);
-      navigate('/properties/' + id);
+      navigate('/rentals');
     } catch (error) {
-      console.log(error.response);
+        console.error(error.response);
+        if (!error?.response) {
+            setError('No Server Response');
+        } else if (error.response?.status === 400) {
+            if(error.response.data.error){
+                setError(error.response.data.error);
+            } else {
+                setError("Failed to edit the property.");
+            }
+            
+        }
     }
   };
 
@@ -104,10 +128,20 @@ function EditPropertyForm() {
             const response = await axios.delete(`${PRO_DETAIL_URL}${id}/delete/`, config);
             console.log(response.data);
             navigate('/properties/' + id);
+            setError('');
         }catch (error) {
-            console.log(error.response);
-        }
-
+          console.error(error.response);
+          if (!error?.response) {
+              setError('No Server Response');
+          } else if (error.response?.status === 400) {
+              if(error.response.data.error){
+                  setError(error.response.data.error);
+              } else {
+                  setError("Failed to delete the property.");
+              }
+              
+          }
+      }
     };
 
   // Render the form with pre-filled values using formData
@@ -122,6 +156,7 @@ function EditPropertyForm() {
             <h4 className="text-center mt-2">Edit Property Information</h4>
           </div>
           <form onSubmit={handleSubmit}>
+            {error && <div className="alert alert-danger">{error}</div>}
             <div className="row mt-2">
               <div className="col-md-12 mt-2">
                 <label className="labels">Property Name</label>
@@ -196,7 +231,7 @@ function EditPropertyForm() {
                     <option value="2">2 Bedrooms</option>
                     <option value="3">3 Bedrooms</option>
                     <option value="4">4 Bedrooms</option>
-                    <option value="5+">5+ Bedrooms</option>
+                    <option value="5">5+ Bedrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
@@ -210,7 +245,7 @@ function EditPropertyForm() {
                     <option value="2">2 washrooms</option>
                     <option value="3">3 washrooms</option>
                     <option value="4">4 washrooms</option>
-                    <option value="5+">5+ washrooms</option>
+                    <option value="5">5+ washrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
@@ -223,7 +258,7 @@ function EditPropertyForm() {
                     <option value="2">2 livingrooms</option>
                     <option value="3">3 livingrooms</option>
                     <option value="4">4 livingrooms</option>
-                    <option value="5+">5+ livingrooms</option>
+                    <option value="5">5+ livingrooms</option>
                 </select>
               </div>  
               <div className="col-md-12 mt-2">
@@ -237,7 +272,7 @@ function EditPropertyForm() {
                     <option value="2">2 guests</option>
                     <option value="3">3 guests</option>
                     <option value="4">4 guests</option>
-                    <option value="5+">5+ guests</option>
+                    <option value="5">5+ guests</option>
                 </select>
               </div>
               <div className="col-md-12 mt-2">
