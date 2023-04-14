@@ -79,14 +79,14 @@ function Reservation({ reservation }) {
                                 <p className="card-text">Guest: {reservation.reserve_guest_firstname} {reservation.reserve_guest_lastname}</p>
                                 {error && <div className="alert alert-danger">{error}</div>}
                                 <div>
-                                    <button className="btn btn-secondary me-3" value="complet" onClick={() => handleReservationStatusChange(reservation.id, "complete")}>Complete</button>
-                                    <button className="btn btn-success me-3" value="approve" onClick={() => handleReservationStatusChange(reservation.id, "approve")}>Approve</button>
-                                    <button className="btn btn-danger me-3" value="deny" onClick={() => handleReservationStatusChange(reservation.id, "deny")}>Deny</button>
-                                    <button className="btn btn-warning me-3" value="pending" onClick={() => handleReservationStatusChange(reservation.id, "pending")}>Pending</button>
-                                    <button className="btn btn-secondary me-3" value="expire" onClick={() => handleReservationStatusChange(reservation.id, "expire")}>Expire</button>
-                                    <button className="btn btn-secondary me-3" value="terminate" onClick={() => handleReservationStatusChange(reservation.id, "terminate")}>Terminate</button>
-                                    <button className="btn btn-danger me-3" value="cancel" onClick={() => handleReservationStatusChange(reservation.id, "cancel")}>Cancel</button>
-                                    <button className="btn btn-warning me-3" value="pendingcancel" onClick={() => handleReservationStatusChange(reservation.id, "pendingcancel")}>Cancel Pending</button>
+                                    <button className="btn btn-secondary me-3 mb-3 mb-sm-0" value="complet" onClick={() => handleReservationStatusChange(reservation.id, "complete")}>Complete</button>
+                                    <button className="btn btn-success me-3 mb-3 mb-sm-0" value="approve" onClick={() => handleReservationStatusChange(reservation.id, "approve")}>Approve</button>
+                                    <button className="btn btn-danger me-3 mb-3 mb-sm-0" value="deny" onClick={() => handleReservationStatusChange(reservation.id, "deny")}>Deny</button>
+                                    <button className="btn btn-warning me-3 mb-3 mb-sm-0" value="pending" onClick={() => handleReservationStatusChange(reservation.id, "pending")}>Pending</button>
+                                    <button className="btn btn-secondary me-3 mb-3 mb-sm-0" value="expire" onClick={() => handleReservationStatusChange(reservation.id, "expire")}>Expire</button>
+                                    <button className="btn btn-secondary me-3 mb-3 mb-sm-0" value="terminate" onClick={() => handleReservationStatusChange(reservation.id, "terminate")}>Terminate</button>
+                                    <button className="btn btn-danger me-3 mb-3 mb-sm-0" value="cancel" onClick={() => handleReservationStatusChange(reservation.id, "cancel")}>Cancel</button>
+                                    <button className="btn btn-warning me-3 mb-3 mb-sm-0" value="pendingcancel" onClick={() => handleReservationStatusChange(reservation.id, "pendingcancel")}>Cancel Pending</button>
                                 </div>
                             </div>  
                         </div>
