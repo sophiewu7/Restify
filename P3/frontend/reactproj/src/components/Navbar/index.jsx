@@ -46,11 +46,17 @@ function Navbar() {
                     </li>
                     {isLoggedIn ? (
                         <>
-                            <li className="nav-item mt-2 mt-lg-0">
-                                <a href="/reservations" className="nav-link link-dark">My Rental Units</a>
+                            <li className="nav-item mt-2 mt-lg-0 dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    My Rental Units
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a className="dropdown-item" href="/rentals">My Properties</a></li>
+                                    <li><a className="dropdown-item" href="/reservation">My Reservations</a></li>
+                                </ul>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">
-                                <a href="/notifications" className="nav-link link-dark">Notification</a>
+                                <a href="/notifications" className="nav-link link-dark">Notifications</a>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">
                                 <a href="/profile" className="nav-link link-dark">My Profile</a>

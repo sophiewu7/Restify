@@ -43,7 +43,7 @@ const Login = () => {
             }
         
         } catch (error) {
-                console.error(error);
+            console.error(error);
             if (!error?.response) {
                 setError('No Server Response');
             } else {

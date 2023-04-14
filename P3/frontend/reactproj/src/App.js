@@ -14,7 +14,8 @@ import Password from './accounts/Password';
 import Search from './search/SearchBar';
 import SearchResults from './search/SearchResults';
 
-import Reservations from './reservations';
+import Rentals from './rentals';
+import Reservation from './reservations/Reservation';
 
 import NotificationPage from './notifications/notifications';
 import CommentSection from './comments/comments';
@@ -37,7 +38,8 @@ const App = () => {
                     <Route exact path='/reset_password' element={<Password />} />
                     <Route exact path='/search' element={<Search />} />
                     <Route exact path='/search_results' element={<SearchResults />} />
-                    <Route exact path='/reservations' element={<Reservations />} />
+                    <Route exact path='/rentals' element={<Rentals />} />
+                    <Route exact path='/reservation' element={<Reservation />} />
                     <Route exact path='/notifications' element={<NotificationPage />} />
                     <Route exact path='/comments' element={<CommentSection propertyId={1}/>}/>
                     <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>

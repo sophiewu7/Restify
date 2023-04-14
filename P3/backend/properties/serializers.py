@@ -67,6 +67,7 @@ class SearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
         fields = [
+            'id',
             'property_name',
             'city',
             'country',

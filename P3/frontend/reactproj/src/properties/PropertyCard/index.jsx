@@ -34,6 +34,10 @@ function Property({ property }) {
                 <p className="card-text">
                   Regular Price: ${property.price}/night
                 </p>
+                <div>
+                  <Link to={`/properties/${property.id}/edit`} className="btn btn-primary me-3">Edit</Link>
+                  <Link to={`/properties/${property.id}/delete`} className="btn btn-danger">Delete</Link>
+                </div>
               </div>
             </div>
           </div>
@@ -43,7 +47,7 @@ function Property({ property }) {
   );
 }
 
-function SearchProperty({ results }) {
+function ListProperty({ results }) {
   return (
     <ul>
       {results?.map((property, index) => (
@@ -55,4 +59,4 @@ function SearchProperty({ results }) {
   );
 }
 
-export default SearchProperty;
+export default ListProperty;

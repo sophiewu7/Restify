@@ -7,16 +7,28 @@ from django.shortcuts import render, get_object_or_404
 
 class ReservationSerializer(serializers.ModelSerializer):
     reserve_guest = serializers.ReadOnlyField(source='reserve_guest.username')
+    reserve_guest_firstname = serializers.ReadOnlyField(source='reserve_guest.owner.first_name')
+    reserve_guest_lastname = serializers.ReadOnlyField(source='reserve_guest.owner.last_name')
     reserve_property = serializers.ReadOnlyField(source='reserve_property.property_name')
-    reserve_host = serializers.ReadOnlyField(source='reserve_property.owner.id')
+    reserve_host = serializers.ReadOnlyField(source='reserve_property.owner.username')
+    reserve_host_firstname = serializers.ReadOnlyField(source='reserve_property.owner.first_name')
+    reserve_host_lastname = serializers.ReadOnlyField(source='reserve_property.owner.last_name')
+    city = serializers.ReadOnlyField(source='reserve_property.city')
+    country = serializers.ReadOnlyField(source='reserve_property.country')
 
     class Meta:
         model = Reservation
         fields = [
             'id',
             'reserve_guest',
+            'reserve_guest_firstname',
+            'reserve_guest_lastname',
             'reserve_host',
+            'reserve_host_firstname',
+            'reserve_host_lastname',
             'reserve_property',
+            'city',
+            'country',
             'check_in',
             'check_out',
             'last_modified',

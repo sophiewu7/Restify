@@ -2,7 +2,7 @@
 
 .search-result-container {
     padding-top: 56px;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem !important;
     min-height: 100vh;
 }
 
