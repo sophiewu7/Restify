@@ -150,7 +150,7 @@ function PropertyForm() {
     
 
   return (
-    <div className="container pt-5 pb-5">
+    <div className="container pt-5 pb-5 mt-4">
       <div className="row">
         <div className="col-md me-3">
           <div className="d-flex justify-content-center align-items-center mb-3 mt-3">
@@ -343,58 +343,60 @@ function PropertyForm() {
                     </label>
                     </div>
               </div>
-
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    src={uploadedAvatar1 ? URL.createObjectURL(uploadedAvatar1) : '/images/avatar.jpg'}
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image1" onChange={handleImageChange} />
-                    </label>
+              <div className='d-flex flex-row justify-content-evenly flex-wrap'>
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                  <img
+                      className="mt-5 mb-3"
+                      width="250px"
+                      height="150px"
+                      src={uploadedAvatar1 ? URL.createObjectURL(uploadedAvatar1) : '/images/property.jpg'}
+                      alt="User Avatar"
+                  />
+                  <div className="btn btn-outline-primary btn-rounded mt-4">
+                      <label className="form-label m-1">
+                      Upload Image
+                      <input type="file" className="form-control d-none" name="image1" onChange={handleImageChange} />
+                      </label>
+                  </div>
                 </div>
-              </div>
 
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    src={uploadedAvatar2 ? URL.createObjectURL(uploadedAvatar2) : '/images/avatar.jpg'}
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image2" onChange={handleImageChange2} />
-                    </label>
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                  <img
+                      className="mt-5 mb-3"
+                      width="250px"
+                      height="150px"
+                      src={uploadedAvatar2 ? URL.createObjectURL(uploadedAvatar2) : '/images/property.jpg'}
+                      alt="User Avatar"
+                  />
+                  <div className="btn btn-outline-primary btn-rounded mt-4">
+                      <label className="form-label m-1">
+                      Upload Image
+                      <input type="file" className="form-control d-none" name="image2" onChange={handleImageChange2} />
+                      </label>
+                  </div>
                 </div>
-              </div>
 
-              <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
-                <img
-                    className="mt-5 mb-3"
-                    width="150px"
-                    height="150px"
-                    src={uploadedAvatar3 ? URL.createObjectURL(uploadedAvatar3) : '/images/avatar.jpg'}
-                    alt="User Avatar"
-                />
-                <div className="btn btn-outline-primary btn-rounded mt-4">
-                    <label className="form-label m-1">
-                    Upload Image
-                    <input type="file" className="form-control d-none" name="image3" onChange={handleImageChange3} />
-                    </label>
+                <div className='d-flex flex-column align-items-center text-center p-3 py-5'>
+                  <img
+                      className="mt-5 mb-3"
+                      width="250px"
+                      height="150px"
+                      src={uploadedAvatar3 ? URL.createObjectURL(uploadedAvatar3) : '/images/property.jpg'}
+                      alt="User Avatar"
+                  />
+                  <div className="btn btn-outline-primary btn-rounded mt-4">
+                      <label className="form-label m-1">
+                      Upload Image
+                      <input type="file" className="form-control d-none" name="image3" onChange={handleImageChange3} />
+                      </label>
+                  </div>
                 </div>
+
               </div>
+              
 
-
-              <div className="col-md-12 mt-2">
-                <button type="submit" className="btn btn-primary">
+              <div className="col-md-12 mt-2 w-100 mb-5">
+                <button type="submit" className="btn btn-primary w-100">
                   submit
                 </button>
               </div>
