@@ -6,12 +6,15 @@ import './styles.css';
 
 const PRO_DETAIL_URL = 'http://localhost:8000/properties/';
 const PRO_EDIT_URL = 'http://localhost:8000/properties/';
+const CREATE_RES_URL = 'http://localhost:8000/reservations/property/';
 
 function PropertyDetails() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState(''); 
 
 
   useEffect(() => {
@@ -33,28 +36,53 @@ function PropertyDetails() {
     }
   }, [navigate, id]);
 
+
+    const handleBook = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('access_token');
+        const data = {
+            check_in: checkIn,
+            check_out: checkOut,
+        }
+
+        try {
+            const response = await axios.post (
+                `${CREATE_RES_URL}${id}/book/`,
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            ).catch((error) => {
+                console.error(error.response);
+                if (!error?.response) {
+                    setError('No Server Response');
+                } else if (error.response?.status === 400) {
+                    if(error.response.data.error){
+                        setError(error.response.data.error);
+                    } else {
+                        setError("Failed to book a property.");
+                    }
+                    
+                }
+            });
+        
+            console.log(response);
+        } catch (error) {
+            console.log(error.response);
+        }
+    };
+
+    
+    const today = new Date().toISOString().split('T')[0];
+
+
+
+
+
   return(
-    // <div className="container mt-4 container-prodetail-padding">
-    //     <div className="row mt-4">
-    //     <div className="col-md-9">
-    //       <img
-    //         src={formData.image1}
-    //         className="img-fluid rounded"
-    //       />
-    //     </div>
-    //     <div className="col-md-3">
-    //       <img
-    //         src={formData.image2}
-    //         className="img-fluid rounded mb-1"
-    //       />
-    //       <img
-    //         src={formData.image3}
-    //         className="img-fluid rounded mt-1"
-    //       />
-    //     </div>
-    //   </div>
-      
-    // </div>
 
     <div className='property_details_style'>
         <div className="property_details_name">
@@ -73,20 +101,6 @@ function PropertyDetails() {
         </div>
         </div>
         </div>
-
-        {/* <div className='row w-70' >
-            <div class="col-lg-6 col-md-12">
-                <img src={formData.image1} class="w-100 shadow-1-strong rounded mb-2 mb-lg-3"/>
-            </div>
-            <div class="col-lg-6 col-md-12 ">
-                <div class="row">
-                <div class="col-lg-6 mb-2 mb-lg-4">
-                    <img src={formData.image1} class="w-100 shadow-1-strong rounded mb-2 mb-lg-3"/>
-                    <img src={formData.image1} class="w-100 shadow-1-strong rounded"/>
-                </div>
-                </div>
-            </div>
-        </div> */}
 
         <div className='row custom-width'>
         <div className="col-lg-6 col-md-12">
@@ -115,34 +129,31 @@ function PropertyDetails() {
         </div>
         <div className="guest_div">
             <label>Check-in</label>
-            <input type="date" placeholder="Add date" name="checkin" />
+            <input type="date" placeholder="Add date" min={today} name="check_in" onChange={(e) => setCheckIn(e.target.value)}/>
         </div>
         <div className="guest_div">
             <label>Check-out</label>
-            <input type="date" placeholder="Add date" name="checkout" />
+            <input type="date" placeholder="Add date" min={today} name="check_out" onChange={(e) => setCheckOut(e.target.value)}/>
         </div>
         <div className="guest_div">
             <label>Guest</label>
             <input type="text" placeholder="2 guest" />
         </div>
-        <button className="guest_div btn-primary comment-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
+        <button className="guest_div btn-primary comment-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleBook}>Book Now</button>
         </form>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">Order Confirmation</h1>
+                <h1 className="modal-title fs-5" id="exampleModalLabel">Book status</h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-                Congratulation! Your Booking is successful.
+                {error === '' ? 'Congratulation! Your Booking is successful.' : error}
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="reservation.html">
-                <button type="button" className="btn btn-primary">Order Details</button>
-                </a>
             </div>
             </div>
         </div>

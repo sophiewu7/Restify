@@ -34,12 +34,12 @@ class ReservationCreateView(generics.CreateAPIView):
         
 
         if property_id in [t[0] for t in reserved_property_ids]:
-            return Response({'error': 'Cannot book, this property is already booked'})
+            return Response({'error': 'Cannot book, this property is already booked'}, status=400)
 
         
         serializer.is_valid(raise_exception=True)
         if reserve_property.status is False:
-            return Response({'error': 'Cannot book, this property is currently unavailable.'})
+            return Response({'error': 'Cannot book, this property is currently unavailable.'}, status=400)
         reservation = serializer.save(
             reserve_guest=self.request.user,
             reserve_property=reserve_property,
