@@ -15,9 +15,9 @@ pip3 install requests
 pip3 install django-cors-headers
 pip3 install exc
 python3 ./manage.py flush
-python3 ./manage.py loaddata data.json
 python3 ./manage.py makemigrations
 python3 ./manage.py migrate
+python3 ./manage.py loaddata data.json
 cd ..
 
 cd frontend/reactproj
