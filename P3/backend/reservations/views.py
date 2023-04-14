@@ -195,7 +195,7 @@ class ReservationGuestUpdateView(generics.UpdateAPIView):
             serializer = self.serializer_class(instance)
             return Response(serializer.data)
         else:
-            return Response({'error': 'You don\'t have the permission'})
+            return Response({'error': 'You don\'t have the permission'}, status=400)
 
 class ReservationHostUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated, IsReservationHost]
@@ -206,7 +206,7 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
 
     def put(self, request, *args, **kwargs):
-        return Response({'error': 'You should use PATCH'})
+        return Response({'error': 'You should use PATCH'}, status=400)
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -218,7 +218,7 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
         if status_keyword == 'approve':
             instance = self.get_object()
             if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
-                return Response({'error': 'You can only approve an pending reservation'})
+                return Response({'error': 'You can only approve an pending reservation'}, status=400)
             instance.status = Reservation.APPROVED
             instance.save()
 
@@ -227,7 +227,7 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
         elif status_keyword == 'deny':
             instance = self.get_object()
             if instance.status != Reservation.PENDING and instance.status != Reservation.PENDING_CANCELED:
-                return Response({'error': 'You can only deny an pending reservation'})
+                return Response({'error': 'You can only deny an pending reservation'}, status=400)
             instance.status = Reservation.DENIED
             instance.save()
 
@@ -236,7 +236,7 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
         elif status_keyword == 'terminate':
             instance = self.get_object()
             if instance.status != Reservation.APPROVED:
-                return Response({'error': 'You can only terminate an approved reservation'})
+                return Response({'error': 'You can only terminate an approved reservation'}, status=400)
             
             instance.status = Reservation.TERMINATED
             instance.save()
@@ -244,4 +244,4 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
             serializer = self.serializer_class(instance)
             return Response(serializer.data)
         else:
-            return Response({'error': 'You don\'t have the permission'})
+            return Response({'error': 'You don\'t have the permission'}, status=400)

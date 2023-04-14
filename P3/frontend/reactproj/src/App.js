@@ -15,8 +15,8 @@ import Search from './search/SearchBar';
 import SearchResults from './search/SearchResults';
 
 import Rentals from './rentals';
-import ReservationHost from './reservations/host';
-import ReservationGuest from './reservations/guest';
+import ReservationHost from './reservations/Host';
+import ReservationGuest from './reservations/Guest';
 
 import NotificationPage from './notifications/notifications';
 import CommentSection from './comments/comments';
