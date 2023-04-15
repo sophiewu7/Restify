@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 
 class ReservationSerializer(serializers.ModelSerializer):
     reserve_guest = serializers.ReadOnlyField(source='reserve_guest.username')
+    reserve_guest_id = serializers.ReadOnlyField(source='reserve_guest.id')
     reserve_guest_firstname = serializers.ReadOnlyField(source='reserve_guest.first_name')
     reserve_guest_lastname = serializers.ReadOnlyField(source='reserve_guest.last_name')
     reserve_property = serializers.ReadOnlyField(source='reserve_property.property_name')
@@ -22,6 +23,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'reserve_guest',
+            'reserve_guest_id',
             'reserve_guest_firstname',
             'reserve_guest_lastname',
             'reserve_host',

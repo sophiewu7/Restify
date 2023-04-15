@@ -61,6 +61,7 @@ function Reservation({ reservation }) {
     }
 
     function handleRateUser(userId){
+        console.log(userId)
         navigate(`/user_comments/${userId}/`); // Update the URL path and access the "property" field in the JSON response
     }
       
@@ -89,7 +90,7 @@ function Reservation({ reservation }) {
                                     <button className="btn btn-secondary me-3 mb-3 mb-sm-0" value="terminate" onClick={() => handleReservationStatusChange(reservation.id, "terminate")}>Terminate</button>
                                     <button className="btn btn-danger me-3 mb-3 mb-sm-0" value="cancel" onClick={() => handleReservationStatusChange(reservation.id, "cancel")}>Cancel</button>
                                     <button className="btn btn-warning me-3 mb-3 mb-sm-0" value="pendingcancel" onClick={() => handleReservationStatusChange(reservation.id, "pendingcancel")}>Cancel Pending</button>
-                                    <button className="btn btn-success me-3 mb-3 mb-sm-0" onClick={() => handleRateUser(reservation.reserve_guest)}>Rate User</button>
+                                    <button className="btn btn-success me-3 mb-3 mb-sm-0" onClick={() => handleRateUser(reservation.reserve_guest_id)}>Rate User</button>
 
                                 </div>
                             </div>  
