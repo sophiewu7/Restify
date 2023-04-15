@@ -44,7 +44,7 @@ const Register = () => {
                 }
               );
 
-            navigate('/');
+            navigate('/login');
 
         } catch (error) {
             if (!error?.response) {
