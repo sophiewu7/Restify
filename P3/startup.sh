@@ -20,6 +20,9 @@ python3 ./manage.py migrate
 python3 ./manage.py loaddata data.json
 cd ..
 
+sudo apt-get install nodejs
+sudo apt-get install npm
+
 cd frontend/reactproj
 npm outdated
 npm update
