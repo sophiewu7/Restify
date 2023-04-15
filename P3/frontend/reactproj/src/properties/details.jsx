@@ -89,14 +89,6 @@ function PropertyDetails() {
         <h2>{formData.property_name}</h2>
         <div className="row">
         <div>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-half"></i>
-            <span>102 reviews</span>
-        </div>
-        <div>
             <p>Location: {formData.country}, {formData.city}</p>
         </div>
         </div>
@@ -221,13 +213,7 @@ function PropertyDetails() {
             <div>
                 <h2>Host by {formData.owner}</h2>
                 <p>
-                <span>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-half"></i>
-                </span>&nbsp; &nbsp; 102 reviews &nbsp; &nbsp; Response rate 100% 
+                    Response rate 100% 
                 </p>
                 <p>
                 Email: {formData.email} &nbsp; &nbsp; Phone: {formData.phone_number} 
