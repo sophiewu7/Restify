@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
-
+import CommentSection from '../comments/comments';
 
 const PRO_DETAIL_URL = 'http://localhost:8000/properties/';
 const PRO_EDIT_URL = 'http://localhost:8000/properties/';
@@ -129,17 +129,14 @@ function PropertyDetails() {
         </div>
         <div className="guest_div">
             <label>Check-in</label>
-            <input type="date" placeholder="Add date" min={today} name="check_in" onChange={(e) => setCheckIn(e.target.value)}/>
+            <input type="date" placeholder="Add date" min={today} name="check_in" onChange={(e) => setCheckIn(e.target.value)} required/>
         </div>
         <div className="guest_div">
             <label>Check-out</label>
-            <input type="date" placeholder="Add date" min={today} name="check_out" onChange={(e) => setCheckOut(e.target.value)}/>
+            <input type="date" placeholder="Add date" min={today} name="check_out" onChange={(e) => setCheckOut(e.target.value)} required/>
         </div>
-        <div className="guest_div">
-            <label>Guest</label>
-            <input type="text" placeholder="2 guest" />
-        </div>
-        <button className="guest_div btn-primary comment-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleBook}>Book Now</button>
+
+        <button className="guest_div btn-primary comment-btn" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleBook}>Book Now</button>
         </form>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -242,21 +239,9 @@ function PropertyDetails() {
 
 
 
-
-
-
-
-
-
-
-
-
+    <></>
+    <CommentSection propertyId={id}/>
     </div>
-
-        
-
-
-
   );
 
 
