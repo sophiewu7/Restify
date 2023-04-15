@@ -40,11 +40,12 @@ const App = () => {
                     <Route exact path='/search_results' element={<SearchResults />} />
                     <Route exact path='/rentals' element={<Rentals />} />
                     <Route exact path='/reservation' element={<Reservation />} />
+
                     <Route exact path='/notifications' element={<NotificationPage />} />
                     <Route exact path='/comments' element={<CommentSection propertyId={1}/>}/>
-                    <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
-                    <Route exact path='/user_comments' element={<UserComment userId={1}/>}/>
+                    <Route exact path='/user_comments/:userId/' element={<UserComment/>}/>                    
                     <Route exact path='/add_user_comments' element={<AddUserComment userId={1}/>}/>
+
                     <Route exact path='/createproperty' element={<Profileform />} />
                     <Route exact path='/properties/:id/edit' element={<EditPropertyForm />} />
                     <Route exact path='/properties/:id/detail' element={<PropertyDetails />} />

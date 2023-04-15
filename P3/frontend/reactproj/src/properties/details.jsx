@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
-
+import CommentSection from '../comments/comments';
 
 const PRO_DETAIL_URL = 'http://localhost:8000/properties/';
 const PRO_EDIT_URL = 'http://localhost:8000/properties/';
@@ -239,21 +239,9 @@ function PropertyDetails() {
 
 
 
-
-
-
-
-
-
-
-
-
+    <></>
+    <CommentSection propertyId={id}/>
     </div>
-
-        
-
-
-
   );
 
 

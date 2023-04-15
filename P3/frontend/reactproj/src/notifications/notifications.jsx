@@ -1,7 +1,7 @@
 import React, {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import './styles.css'; // Import the CSS file
+import './notification_styles.css'; // Import the CSS file
 
 const NotificationPage = () => {
   const [notifications, setNotifications] = useState([]);
@@ -42,7 +42,7 @@ const NotificationPage = () => {
         // Handle the response data as needed
         // console.log('Notification details:', response.data);
         // fetchNotifications();
-        navigate(`/property/${response.data.property}`); // Update the URL path and access the "property" field in the JSON response
+        navigate(`/properties/${response.data.property}/detail`); // Update the URL path and access the "property" field in the JSON response
       })
       .catch(error => {
         // console.log('Notification clicked:', notification);
