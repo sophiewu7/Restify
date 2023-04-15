@@ -40,6 +40,7 @@ class AddComment extends Component {
         console.log('Comment posted successfully:', response.data);
         // Reset the comment text in state after successful submission
         this.setState({ commentText: '' });
+        this.props.updateComments();
       })
       .catch(error => {
         console.error('Failed to post comment:', error);
