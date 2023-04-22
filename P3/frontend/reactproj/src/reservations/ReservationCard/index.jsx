@@ -47,34 +47,34 @@ function Reservation({ reservation }) {
                 console.log(response.data)
 
                 //push notification here
-                let message = ""
                 let data;
                 const config = {
                     headers: {
                       Authorization: `Bearer ${token}`
                     }
                 };
-                if(statusValue == "approve"){
+                if(statusValue === "approve"){
                     data = {
                         type: "APPROVED",
                         property_id: reservation.reserve_property_id,
                         user_id: reservation.reserve_guest_id,
                     }
                 }
-                else if (statusValue == "cancel"){
+                else if (statusValue === "cancel"){
                     data = {
-                        type: "UCANCLE",
+                        type: "UCANCEL",
                         property_id: reservation.reserve_property_id,
                         user_id: reservation.reserve_host,
                     }
                 }
-                else if (statusValue == "deny"){
+                else if (statusValue === "deny"){
                     data = {
-                        type: "HCANCLE",
+                        type: "HCANCEL",
                         property_id: reservation.reserve_property_id,
                         user_id: reservation.reserve_guest_id,
                     }
                 }
+                console.log(data)
                 axios.post('http://localhost:8000/notifications/',
                 data, config)
                 .then(response => {
