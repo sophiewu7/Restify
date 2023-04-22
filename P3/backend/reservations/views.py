@@ -18,6 +18,11 @@ class ReservationCreateView(generics.CreateAPIView):
 
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     # def perform_create(self, serializer):
     def create(self, request, *args, **kwargs):
         property_id = self.kwargs['id']
@@ -57,6 +62,11 @@ class ReservationAllListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id)|
                                           Q(reserve_guest=self.request.user))
@@ -69,6 +79,11 @@ class ReservationGuestListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(reserve_guest=self.request.user.id)
 
@@ -80,6 +95,11 @@ class ReservationHostListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(reserve_host=self.request.user.id)
 
@@ -90,6 +110,11 @@ class ReservationCancelListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.CANCELED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.CANCELED) )
@@ -101,6 +126,11 @@ class ReservationApproveListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.APPROVED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.APPROVED) )
@@ -113,6 +143,11 @@ class ReservationDenyListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.DENIED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.DENIED) )
@@ -124,6 +159,11 @@ class ReservationPendingListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+    
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.PENDING)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.PENDING) )
@@ -134,6 +174,11 @@ class ReservationTerminatedListView(generics.ListAPIView):
 
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
 
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.TERMINATED)|
@@ -146,6 +191,11 @@ class ReservationCompletedListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.COMPLETED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.COMPLETED) )
@@ -157,6 +207,11 @@ class ReservationExpiredListView(generics.ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.EXPIRED)|
                                             Q(reserve_guest=self.request.user.id, status=Reservation.EXPIRED) )
@@ -167,6 +222,11 @@ class ReservationPendingcancelListView(generics.ListAPIView):
 
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
 
     def get_queryset(self):
         return Reservation.objects.filter(Q(reserve_host=self.request.user.id, status=Reservation.PENDING_CANCELED)|
@@ -187,6 +247,11 @@ class ReservationGuestUpdateView(generics.UpdateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'id'
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -212,6 +277,11 @@ class ReservationHostUpdateView(generics.UpdateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'id'
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
 
     def put(self, request, *args, **kwargs):
         return Response({'error': 'You should use PATCH'}, status=400)
@@ -264,6 +334,11 @@ class ReservationUpdateView(generics.UpdateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = "id"
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()
