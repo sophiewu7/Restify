@@ -55,7 +55,31 @@ function PropertyDetails() {
                         'Content-Type': 'multipart/form-data',
                     },
                 }
-            ).catch((error) => {
+            ).then(response => {
+                // //push notification to the reservation host
+                console.log(response.data)
+                const config = {
+                    headers: {
+                      Authorization: `Bearer ${token}`
+                    }
+                };
+
+                axios.post('http://localhost:8000/notifications/',
+                {
+                    type: "NEW",
+                    property_id: id,
+                    user_id: response.data.reserve_host,
+                },
+                config)
+                .then(response => {
+                    console.log("Notification pushed!")
+                })
+                .catch(error => {
+                    console.log("Notification failed!")
+
+                });
+            })
+            .catch((error) => {
                 console.error(error.response);
                 if (!error?.response) {
                     setError('No Server Response');
@@ -69,7 +93,7 @@ function PropertyDetails() {
                 }
             });
         
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             console.log(error.response);
         }

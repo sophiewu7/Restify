@@ -11,6 +11,8 @@ class ReservationSerializer(serializers.ModelSerializer):
     reserve_guest_firstname = serializers.ReadOnlyField(source='reserve_guest.first_name')
     reserve_guest_lastname = serializers.ReadOnlyField(source='reserve_guest.last_name')
     reserve_property = serializers.ReadOnlyField(source='reserve_property.property_name')
+    reserve_property_id = serializers.ReadOnlyField(source='reserve_property.id')
+
     reserve_host = serializers.ReadOnlyField(source='reserve_property.owner.id')
     reserve_host_firstname = serializers.ReadOnlyField(source='reserve_property.owner.first_name')
     reserve_host_lastname = serializers.ReadOnlyField(source='reserve_property.owner.last_name')
@@ -29,7 +31,8 @@ class ReservationSerializer(serializers.ModelSerializer):
             'reserve_host',
             'reserve_host_firstname',
             'reserve_host_lastname',
-            'reserve_property',
+            'reserve_property',            
+            'reserve_property_id',
             'city',
             'country',
             'check_in',

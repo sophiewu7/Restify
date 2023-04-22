@@ -16,6 +16,8 @@ function Reservation({ reservation }) {
         if (!token) {
             navigate("/login");
         } else {
+            console.log(reservation)
+
             const params = new URLSearchParams({
                 status: statusValue
             });
@@ -41,6 +43,48 @@ function Reservation({ reservation }) {
                 .catch(error => {
                     console.log(error);
                 });
+                
+                console.log(response.data)
+
+                //push notification here
+                let message = ""
+                let data;
+                const config = {
+                    headers: {
+                      Authorization: `Bearer ${token}`
+                    }
+                };
+                if(statusValue == "approve"){
+                    data = {
+                        type: "APPROVED",
+                        property_id: reservation.reserve_property_id,
+                        user_id: reservation.reserve_guest_id,
+                    }
+                }
+                else if (statusValue == "cancel"){
+                    data = {
+                        type: "UCANCLE",
+                        property_id: reservation.reserve_property_id,
+                        user_id: reservation.reserve_host,
+                    }
+                }
+                else if (statusValue == "deny"){
+                    data = {
+                        type: "HCANCLE",
+                        property_id: reservation.reserve_property_id,
+                        user_id: reservation.reserve_guest_id,
+                    }
+                }
+                axios.post('http://localhost:8000/notifications/',
+                data, config)
+                .then(response => {
+                    console.log("Notification pushed!")
+                })
+                .catch(error => {
+                    console.log("Notification failed!")
+
+                });
+
             })
             .catch((error) => {
                 console.error("error:", error);
