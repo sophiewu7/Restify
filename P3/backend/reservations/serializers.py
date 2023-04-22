@@ -42,7 +42,11 @@ class ReservationSerializer(serializers.ModelSerializer):
         read_only_fields = ['last_modified']
 
     def get_current_user(self, obj):
-        return self.context['request'].user.id
+        request = self.context.get('request')
+        if request is not None and hasattr(request, 'user'):
+            return request.user.id
+        return None
+
 
     def validate(self, data):
         check_in = data.get('check_in')
