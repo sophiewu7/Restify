@@ -26,11 +26,7 @@ sudo apt-get install npm
 cd frontend/reactproj
 npm outdated
 npm update
-npm install react
-npm install react-router-dom
-npm install react-bootstrap bootstrap
-npm install react-bootstrap-icons --save
-npm install react-paginate
+npm install
 
 cd ../..
 
